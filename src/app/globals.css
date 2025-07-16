@@ -10,6 +10,28 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* Primary */
+  --color-cockpit-sky-blue: #6ec3ee;
+  /* Secondary */
+  --color-cockpit-pink: #f19ed7;
+  --color-cockpit-light-red: #fae0e0;
+  --color-cockpit-red: #e76266;
+  --color-cockpit-orange: #eea351;
+  --color-cockpit-green: #77c691;
+  --color-cockpit-teal-blue: #2e84b0;
+  --color-cockpit-navy-blue: #4e59af;
+  --color-cockpit-turquoise-blue: #20bbc6;
+  --color-cockpit-blue: #37a7e1;
+  --color-cockpit-deep-blue: #00527b;
+  /* Neutral */
+  --color-cockpit-white: #ffffff;
+  --color-cockpit-ghost-white: #f8f8f8;
+  --color-cockpit-light-gray: #eeeeee;
+  --color-cockpit-soft-gray: #c1c1c1;
+  --color-cockpit-gray: #969696;
+  --color-cockpit-slate-gray: #6b7280;
+  --color-cockpit-black: #323232;
+  --color-cockpit-dark-blue: #0f4bc5;
 }
 
 @media (prefers-color-scheme: dark) {

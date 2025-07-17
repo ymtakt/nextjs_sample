@@ -11,7 +11,7 @@ type YexNoProps = {
   rightButtonText: string;
 };
 
-export default function YexNoModal({
+export default function YexNoRedModal({
   isOpen,
   onLeft,
   onRight,

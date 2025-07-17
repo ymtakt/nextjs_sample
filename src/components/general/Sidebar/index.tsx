@@ -13,7 +13,7 @@ import { MdAccountCircle } from "react-icons/md";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 
 import { ROUTES } from "@/constants/routes";
-import YexNoModal from "@/components/general/Modal/yesNoModal";
+import ButtonModal from "@/components/general/Modal/ButtonModal";
 
 type Props = {
   setIsOpen?: (isOpen: boolean) => void;
@@ -105,9 +105,9 @@ export default function Navigation(props: Props) {
         </button>
       </div>
 
-      <YexNoModal
+      <ButtonModal
         isOpen={showLogoutModal}
-        mainText="ログアウトしてよろしいですか？"
+        title="ログアウトしてよろしいですか？"
         leftButtonText="キャンセル"
         rightButtonText="はい"
         onRight={handleLogout}

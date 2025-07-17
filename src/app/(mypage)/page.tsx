@@ -1,9 +1,41 @@
+"use client";
+
+import { useState } from "react";
+import ButtonModal from "@/components/general/Modal/ButtonModal";
+
 export default function Home() {
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+  const handleLogout = () => {
+    // TODO 実際のログアウト処理を書く場所
+    setShowLogoutModal(false);
+  };
   return (
     <div>
       <p className="text-red-500 font-noto">フォント指定test</p>
       <p className="text-red-500 ">フォント指定test</p>
       <p className="text-red-500 font-test">フォント指定test</p>
+      <div>
+        <button
+          onClick={() => setShowLogoutModal(true)}
+          className="flex w-full justify-center items-center space-x-2.5 h-15 bg-cp-deep-blue cursor-pointer"
+        >
+          <span>ボタン</span>
+        </button>
+      </div>
+      <ButtonModal
+        isOpen={showLogoutModal}
+        title="ログアウトしてよろしいですか？"
+        leftButtonText="キャンセル"
+        rightButtonText="はい"
+        rightButtonColor="bg-cp-red"
+        isCaption={true}
+        caption="ログアウトしてよろしいですか？ログアウトしてよろしいですか？ログアウトしてよろしいですか？ログアウトしてよろしいですか？ログアウトしてよろしいですか？ログアウトしてよろしいですか？ログアウトしてよろしいですか？"
+        isCaptionLine={true}
+        onRight={handleLogout}
+        onLeft={() => setShowLogoutModal(false)}
+        isSingleButton={true}
+      />
     </div>
   );
 }

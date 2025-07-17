@@ -77,31 +77,37 @@ export default function Navigation(props: Props) {
   ];
 
   return (
-    <div className="h-screen w-[200] bg-cp-blue text-white flex flex-col justify-between">
-      <nav>
-        <ul>
-          {menuItems.map((item, index) => (
-            <li key={index}>
-              <Link
-                href={item.route}
-                className="flex items-center space-x-2 px-4 h-[60] hover:bg-cp-sky-blue"
-                onClick={() => setIsOpen?.(false)}
-              >
-                <item.icon className="size-6" />
-                <span>{item.name}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+    <div className="h-full w-50 bg-cp-blue text-white flex flex-col">
+      {/* 上部メニューエリア - flex-1で残りの空間を占有 */}
+      <div className="flex-1 overflow-y-auto">
+        <nav>
+          <ul>
+            {menuItems.map((item, index) => (
+              <li key={index}>
+                <Link
+                  href={item.route}
+                  className="flex items-center space-x-2 px-4 h-15 hover:bg-cp-sky-blue"
+                  onClick={() => setIsOpen?.(false)}
+                >
+                  <item.icon className="size-6" />
+                  <span>{item.name}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
 
-      <button
-        onClick={() => setShowLogoutModal(true)}
-        className="flex w-full items-center space-x-2 px-4 h-[60px] hover:bg-cp-sky-blue"
-      >
-        <RiLogoutBoxRFill className="size-6" />
-        <span>ログアウト</span>
-      </button>
+      {/* 下部ログアウトボタン - flex-shrink-0で固定 */}
+      <div className="flex-shrink-0">
+        <button
+          onClick={() => setShowLogoutModal(true)}
+          className="flex w-full items-center space-x-2 px-4 h-15 hover:bg-cp-sky-blue"
+        >
+          <RiLogoutBoxRFill className="size-6" />
+          <span>ログアウト</span>
+        </button>
+      </div>
 
       <LogoutModal
         isOpen={showLogoutModal}

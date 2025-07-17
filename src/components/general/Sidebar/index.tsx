@@ -13,7 +13,7 @@ import { MdAccountCircle } from "react-icons/md";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 
 import { ROUTES } from "@/constants/routes";
-import ButtonModal from "@/components/general/Modal/ButtonModal";
+import ButtonModal from "@/components/general/Modals/ButtonModal";
 
 type Props = {
   setIsOpen?: (isOpen: boolean) => void;

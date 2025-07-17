@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import BaseButton from "../Button";
+import BaseButton from "@/components/general/Button/BaseButton";
 import { ButtonColor } from "@/utils/buttonColor";
 
 type ButtonModalProps = {

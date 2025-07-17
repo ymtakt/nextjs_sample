@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import ButtonModal from "@/components/general/Modal/ButtonModal";
-import BaseButton from "@/components/general/Button";
+import ButtonModal from "@/components/general/Modals/ButtonModal";
+import BaseButton from "@/components/general/Button/BaseButton";
 
 export default function Home() {
   const [showLogoutModal, setShowLogoutModal] = useState(false);

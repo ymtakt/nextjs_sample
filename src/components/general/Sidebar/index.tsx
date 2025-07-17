@@ -98,7 +98,7 @@ export default function Navigation(props: Props) {
       <div>
         <button
           onClick={() => setShowLogoutModal(true)}
-          className="flex w-full items-center space-x-2 px-4 h-15 hover:bg-cp-sky-blue"
+          className="flex w-full justify-center items-center space-x-2.5 h-15 bg-cp-deep-blue cursor-pointer"
         >
           <RiLogoutBoxRFill className="size-6" />
           <span>ログアウト</span>

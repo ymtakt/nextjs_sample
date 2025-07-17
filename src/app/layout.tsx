@@ -24,15 +24,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="flex h-screen">
           <Navigation />
-          <main className="flex-1 overflow-y-auto">
-            {children}
-          </main>
+          <main className="flex-1 overflow-y-auto">{children}</main>
         </div>
       </body>
     </html>

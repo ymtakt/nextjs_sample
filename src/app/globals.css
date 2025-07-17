@@ -6,32 +6,53 @@
 }
 
 @theme inline {
+  /* TEST */
+  --font-test: "Courier New", monospace;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   /* Primary */
-  --color-cockpit-sky-blue: #6ec3ee;
+  --color-cp-sky-blue: #6ec3ee;
   /* Secondary */
-  --color-cockpit-pink: #f19ed7;
-  --color-cockpit-light-red: #fae0e0;
-  --color-cockpit-red: #e76266;
-  --color-cockpit-orange: #eea351;
-  --color-cockpit-green: #77c691;
-  --color-cockpit-teal-blue: #2e84b0;
-  --color-cockpit-navy-blue: #4e59af;
-  --color-cockpit-turquoise-blue: #20bbc6;
-  --color-cockpit-blue: #37a7e1;
-  --color-cockpit-deep-blue: #00527b;
+  --color-cp-pink: #f19ed7;
+  --color-cp-light-red: #fae0e0;
+  --color-cp-red: #e76266;
+  --color-cp-orange: #eea351;
+  --color-cp-green: #77c691;
+  --color-cp-teal-blue: #2e84b0;
+  --color-cp-navy-blue: #4e59af;
+  --color-cp-turquoise-blue: #20bbc6;
+  --color-cp-blue: #37a7e1;
+  --color-cp-deep-blue: #00527b;
   /* Neutral */
-  --color-cockpit-white: #ffffff;
-  --color-cockpit-ghost-white: #f8f8f8;
-  --color-cockpit-light-gray: #eeeeee;
-  --color-cockpit-soft-gray: #c1c1c1;
-  --color-cockpit-gray: #969696;
-  --color-cockpit-slate-gray: #6b7280;
-  --color-cockpit-black: #323232;
-  --color-cockpit-dark-blue: #0f4bc5;
+  --color-cp-white: #ffffff;
+  --color-cp-ghost-white: #f8f8f8;
+  --color-cp-light-gray: #eeeeee;
+  --color-cp-soft-gray: #c1c1c1;
+  --color-cp-gray: #969696;
+  --color-cp-slate-gray: #6b7280;
+  --color-cp-black: #323232;
+  --color-cp-dark-blue: #0f4bc5;
+
+  /* Font Families */
+  --font-noto: "Noto Sans JP", sans-serif;
+
+  /* Text styles */
+  --headline-cp-large: 700 20px / normal var(--font-noto);
+  --headline-cp-medium: 700 16px / normal var(--font-noto);
+  --headline-cp-small: 400 16px / normal var(--font-noto);
+
+  --title-cp-large: 700 16px / normal var(--font-noto);
+  --title-cp-small: 700 14px / normal var(--font-noto);
+
+  --body-cp-large: 700 16px / normal var(--font-noto);
+  --body-cp-medium: 400 16px / normal var(--font-noto);
+  --body-cp-small: 400 14px / normal var(--font-noto);
+
+  --label-cp-large: 700 16px/16px var(--font-noto);
+  --label-cp-medium: 400 12px / normal var(--font-noto);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -42,7 +63,39 @@
 }
 
 body {
-  background: var(--background);
+  background: var(--color-cp-light-gray);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-noto);
+}
+
+/* Typography Utility Classes */
+.headline-cp-large {
+  font: var(--headline-cp-large);
+}
+.headline-cp-medium {
+  font: var(--headline-cp-medium);
+}
+.headline-cp-small {
+  font: var(--headline-cp-small);
+}
+.title-cp-large {
+  font: var(--title-cp-large);
+}
+.title-cp-small {
+  font: var(--title-cp-small);
+}
+.body-cp-large {
+  font: var(--body-cp-large);
+}
+.body-cp-medium {
+  font: var(--body-cp-medium);
+}
+.body-cp-small {
+  font: var(--body-cp-small);
+}
+.label-cp-large {
+  font: var(--label-cp-large);
+}
+.label-cp-medium {
+  font: var(--label-cp-medium);
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 // iconのインポート
 import { FaUserFriends } from "react-icons/fa";
 import { FaBell, FaCirclePlay } from "react-icons/fa6";
@@ -10,9 +10,10 @@ import { PiChats } from "react-icons/pi";
 import { TbNumber123 } from "react-icons/tb";
 import { GiMedicines } from "react-icons/gi";
 import { MdAccountCircle } from "react-icons/md";
-// import { RiLogoutBoxRFill } from 'react-icons/ri'
+import { RiLogoutBoxRFill } from "react-icons/ri";
 
 import { ROUTES } from "@/constants/routes";
+import LogoutModal from "../Modal";
 
 type Props = {
   setIsOpen?: (isOpen: boolean) => void;
@@ -20,6 +21,12 @@ type Props = {
 
 export default function Navigation(props: Props) {
   const { setIsOpen } = props;
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+  const handleLogout = () => {
+    // TODO 実際のログアウト処理を書く場所
+    setShowLogoutModal(false);
+  };
 
   const menuItems = [
     // {
@@ -67,22 +74,17 @@ export default function Navigation(props: Props) {
       icon: MdAccountCircle,
       route: `/${ROUTES.ACCOUNT_MANAGEMENT}`,
     },
-    // {
-    //   name: 'ログアウト',
-    //   icon: RiLogoutBoxRFill,
-    //   route: `/${ROUTES.LOGOUT}`,
-    // },
   ];
 
   return (
-    <div className="h-screen w-[200] bg-cockpit-blue text-white">
+    <div className="h-screen w-[200] bg-cp-blue text-white flex flex-col justify-between">
       <nav>
         <ul>
           {menuItems.map((item, index) => (
             <li key={index}>
               <Link
                 href={item.route}
-                className="flex items-center space-x-2 px-4 h-[60px] hover:bg-cockpit-sky-blue"
+                className="flex items-center space-x-2 px-4 h-[60] hover:bg-cp-sky-blue"
                 onClick={() => setIsOpen?.(false)}
               >
                 <item.icon className="size-6" />
@@ -92,6 +94,20 @@ export default function Navigation(props: Props) {
           ))}
         </ul>
       </nav>
+
+      <button
+        onClick={() => setShowLogoutModal(true)}
+        className="flex w-full items-center space-x-2 px-4 h-[60px] hover:bg-cp-sky-blue"
+      >
+        <RiLogoutBoxRFill className="size-6" />
+        <span>ログアウト</span>
+      </button>
+
+      <LogoutModal
+        isOpen={showLogoutModal}
+        onConfirm={handleLogout}
+        onCancel={() => setShowLogoutModal(false)}
+      />
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ButtonModal from "@/components/general/Modal/ButtonModal";
+import BaseButton from "@/components/general/Button";
 
 export default function Home() {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -18,23 +19,32 @@ export default function Home() {
       <div>
         <button
           onClick={() => setShowLogoutModal(true)}
-          className="flex w-full justify-center items-center space-x-2.5 h-15 bg-cp-deep-blue cursor-pointer"
+          className="mb-5 flex w-full justify-center items-center space-x-2.5 h-15 bg-cp-deep-blue cursor-pointer"
         >
           <span>ボタン</span>
         </button>
+      </div>
+      <div>
+        <BaseButton
+          onClick={handleLogout}
+          text="ログアウト"
+          color="cp-white"
+          size="medium"
+        />
       </div>
       <ButtonModal
         isOpen={showLogoutModal}
         title="ログアウトしてよろしいですか？"
         leftButtonText="キャンセル"
         rightButtonText="はい"
-        rightButtonColor="bg-cp-red"
+        leftButtonColor="cp-white"
+        rightButtonColor="cp-red"
         isCaption={true}
         caption="ログアウトしてよろしいですか？ログアウトしてよろしいですか？ログアウトしてよろしいですか？ログアウトしてよろしいですか？ログアウトしてよろしいですか？ログアウトしてよろしいですか？ログアウトしてよろしいですか？"
         isCaptionLine={true}
         onRight={handleLogout}
         onLeft={() => setShowLogoutModal(false)}
-        isSingleButton={true}
+        // isSingleButton={true}
       />
     </div>
   );

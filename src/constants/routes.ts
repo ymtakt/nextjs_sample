@@ -7,6 +7,8 @@ export const ROUTES = {
   USER_MANAGEMENT: "user-management",
   // 検査管理
   INSPECTION_MANAGEMENT: "inspection-management",
+  INSPECTION_BOOKING: "inspection-management/booking",
+  INSPECTION_SETTING: "inspection-management/setting",
   // 相談予約管理
   CONSULTATION_BOOKING: "consultation-booking",
   // 動画管理

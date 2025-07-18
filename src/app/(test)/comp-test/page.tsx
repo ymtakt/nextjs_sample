@@ -18,6 +18,9 @@ export default function Home() {
         <TextLink href="/comp-test/pagination" size="large">
           ページネーションリンクの確認
         </TextLink>
+        <TextLink href="/comp-test/toast" size="large">
+          トーストの確認
+        </TextLink>
       </div>
     </div>
   );

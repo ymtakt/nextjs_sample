@@ -35,6 +35,13 @@
   --color-cp-slate-gray: #6b7280;
   --color-cp-black: #323232;
   --color-cp-dark-blue: #0f4bc5;
+  /* Other */
+  --color-cp-toast-success-main: #edf9ff;
+  --color-cp-toast-success-sub: #6ec3ee;
+  --color-cp-toast-warning-main: #fffeed;
+  --color-cp-toast-warning-sub: #bf6a02;
+  --color-cp-toast-error-main: #ffeded;
+  --color-cp-toast-error-sub: #ec221f;
 
   /* Font Families */
   --font-noto: "Noto Sans JP", sans-serif;

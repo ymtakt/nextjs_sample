@@ -22,7 +22,7 @@ export default function BaseButton({
   return (
     <button
       onClick={onClick}
-      className={`${sizeClass} ${colorClass} rounded-[6px] headline-cp-medium`}
+      className={`${sizeClass} ${colorClass} rounded-[6px] headline-cp-medium cursor-pointer`}
     >
       {text}
     </button>

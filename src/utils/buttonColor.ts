@@ -16,7 +16,7 @@ export function getButtonColorClass(color: ButtonColor): string {
     case "cp-white":
       return "bg-cp-white text-cp-sky-blue border border-sky-blue";
     case "cp-slate-gray":
-      return "bg-slate-gray text-white";
+      return "bg-cp-slate-gray text-white";
     default:
       return "bg-cp-sky-blue text-white";
   }

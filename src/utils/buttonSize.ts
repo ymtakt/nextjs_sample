@@ -1,6 +1,6 @@
 export type ButtonSize = "small" | "medium" | "large";
 
-export function getButtonSizeClass(size: ButtonSize): string {
+export function getButtonSizeStyle(size: ButtonSize): string {
   switch (size) {
     case "small":
       return "w-[100px] h-[38px]";

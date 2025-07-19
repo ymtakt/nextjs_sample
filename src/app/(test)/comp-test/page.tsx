@@ -21,6 +21,9 @@ export default function Home() {
         <TextLink href="/comp-test/toast" size="large">
           トーストの確認
         </TextLink>
+        <TextLink href="/comp-test/text-box" size="large">
+          テキストボックスの確認
+        </TextLink>
       </div>
     </div>
   );

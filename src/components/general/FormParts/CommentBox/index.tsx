@@ -26,7 +26,7 @@ export default function CommentBox({
   const roundedType = isRounded ? "rounded" : "";
   const bgColorStyle = isDisabled ? "bg-gray-100 cursor-not-allowed" : bgColor;
   return (
-    <div className="w-105">
+    <div>
       {label && <label className="body-cp-medium">{label}</label>}
       <textarea
         placeholder={placeholder}
@@ -35,7 +35,7 @@ export default function CommentBox({
         disabled={isDisabled}
         {...(isMaxLength && maxLength ? { maxLength } : {})}
         className={`
-          ${roundedType} ${bgColorStyle}
+          ${roundedType} ${bgColorStyle} border border-cp-soft-gray
           w-full h-76 body-cp-small pl-2.5 pt-2 mt-1 focus:outline-none resize-none
         `}
       />

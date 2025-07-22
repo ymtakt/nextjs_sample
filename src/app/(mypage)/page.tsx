@@ -41,7 +41,7 @@ export default function Home() {
         rightButtonColor="cp-red"
         isCaption={true}
         caption="ログアウトしてよろしいですか？ログアウトしてよろしいですか？ログアウトしてよろしいですか？ログアウトしてよろしいですか？ログアウトしてよろしいですか？ログアウトしてよろしいですか？ログアウトしてよろしいですか？"
-        isCaptionLine={true}
+        isLine={true}
         onRight={handleLogout}
         onLeft={() => setShowLogoutModal(false)}
         // isSingleButton={true}

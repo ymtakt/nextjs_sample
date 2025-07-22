@@ -15,14 +15,20 @@ export default function Home() {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
+        <CommentBox
+          label="コメント"
+          bgColor="bg-cp-soft-gray"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        <CommentBox
+          label="コメント 文字数表示付き"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          isMaxLength={true}
+          maxLength={300}
+        />
       </div>
-      <CommentBox
-        label="コメント 文字数表示付き"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        isMaxLength={true}
-        maxLength={300}
-      />
     </div>
   );
 }

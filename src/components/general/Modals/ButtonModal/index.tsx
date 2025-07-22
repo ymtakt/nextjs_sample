@@ -4,6 +4,7 @@ import React from "react";
 import BaseButton from "@/components/general/Button/BaseButton";
 import { ButtonColor } from "@/utils/buttonColor";
 import CommentBox from "@/components/general/FormParts/CommentBox";
+import TextBox from "@/components/general/FormParts/TextBox";
 
 type ButtonModalProps = {
   isOpen: boolean;
@@ -18,10 +19,17 @@ type ButtonModalProps = {
   caption?: string;
   isLine?: boolean;
   isSingleButton?: boolean;
+  // コメント用
   isComment?: boolean;
   inputComment?: string;
   commentLabel?: string;
   onChangeComment?: (val: string) => void;
+  // テキストボックス用
+  isTextBox?: boolean;
+  inputTextBox?: string;
+  textBoxLabel?: string;
+  textBoxPlaceholder?: string;
+  onChangeTextBox?: (val: string) => void;
 };
 
 export default function ButtonModal({
@@ -41,6 +49,11 @@ export default function ButtonModal({
   inputComment = "",
   commentLabel = "",
   onChangeComment,
+  isTextBox = false,
+  inputTextBox = "",
+  textBoxLabel = "",
+  textBoxPlaceholder = "",
+  onChangeTextBox,
 }: ButtonModalProps): React.JSX.Element | null {
   if (!isOpen) return null;
 
@@ -56,6 +69,19 @@ export default function ButtonModal({
               {caption}
             </div>
           )}
+          {/* --- テキストボックス部分 --- */}
+          <div className="text-left mb-2.5">
+            {isTextBox && (
+              <TextBox
+                label={textBoxLabel}
+                value={inputTextBox}
+                placeholder={textBoxPlaceholder}
+                onChange={(e) => {
+                  onChangeTextBox?.(e.target.value);
+                }}
+              />
+            )}
+          </div>
           {/* --- コメント部分 --- */}
           <div className="text-left">
             {isComment && (

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
-type TextBoxSize = "small" | "medium" | "large";
+type TextBoxSize = "small" | "medium" | "large" | "full";
 
 type TextBoxProps = {
   value: string;
@@ -25,7 +25,7 @@ export default function TextBox({
   placeholder = "",
   value,
   onChange,
-  size = "medium",
+  size = "full",
   isDisabled = false,
   error,
   type = "text",
@@ -36,6 +36,7 @@ export default function TextBox({
     small: "h-7.5 w-45",
     medium: "h-15 w-70",
     large: "h-37.5 w-200",
+    full: "h-15 w-full",
   };
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);

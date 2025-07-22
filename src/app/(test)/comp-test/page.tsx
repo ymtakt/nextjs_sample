@@ -27,6 +27,9 @@ export default function Home() {
         <TextLink href="/comp-test/comment-box" size="large">
           コメントボックス確認
         </TextLink>
+        <TextLink href="/comp-test/drop-down" size="large">
+          ドロップダウン確認
+        </TextLink>
       </div>
     </div>
   );

@@ -19,6 +19,7 @@ type DropdownProps = {
   isDisabled?: boolean;
   error?: string;
   isRounded?: boolean;
+  bgColor?: string;
 };
 
 export default function DropDown({
@@ -30,6 +31,7 @@ export default function DropDown({
   isDisabled = false,
   size = "medium",
   isRounded = true,
+  bgColor = "bg-cp-white",
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -61,10 +63,10 @@ export default function DropDown({
   const borderStyle = error
     ? "border border-cp-red"
     : "border border-cp-soft-gray";
+
   const roundedType = isRounded ? "rounded" : "";
-  const disabledStyle = isDisabled
-    ? "bg-gray-100 cursor-not-allowed"
-    : "bg-white";
+
+  const bgColorStyle = isDisabled ? "bg-gray-100 cursor-not-allowed" : bgColor;
 
   return (
     <div className="flex flex-col relative">
@@ -73,7 +75,7 @@ export default function DropDown({
       <div
         onClick={toggleDropdown}
         className={`
-          ${sizeStyle[size]} ${borderStyle} ${disabledStyle} ${roundedType}
+          ${sizeStyle[size]} ${borderStyle} ${bgColorStyle} ${roundedType}
           flex items-center justify-between pl-2.5 pr-2 mt-1 cursor-pointer
           `}
       >
@@ -91,7 +93,7 @@ export default function DropDown({
       </div>
       {/* ドロップダウンリスト */}
       {isOpen && !isDisabled && (
-        <ul className={`absolute top-full z-50  bg-cp-white  `}>
+        <ul className={`absolute top-full z-50 ${bgColorStyle}`}>
           {options.map((opt) => (
             <li
               key={opt.value}

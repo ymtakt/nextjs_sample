@@ -18,6 +18,14 @@ export default function Home() {
           size="small"
         />
         <TextBox
+          label="テキストボックス S"
+          placeholder="テキスト"
+          bgColor="bg-cp-ghost-white"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          size="small"
+        />
+        <TextBox
           label="テキストボックス M"
           placeholder="テキスト"
           value={inputValue}

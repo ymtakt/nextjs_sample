@@ -17,6 +17,7 @@ type TextBoxProps = {
   error?: string;
   type?: "text" | "password";
   isRounded?: boolean;
+  bgColor?: string;
 };
 
 export default function TextBox({
@@ -29,6 +30,7 @@ export default function TextBox({
   error,
   type = "text",
   isRounded = true,
+  bgColor = "bg-cp-white",
 }: TextBoxProps) {
   const sizeStyle = {
     small: "h-7.5 w-45",
@@ -44,10 +46,7 @@ export default function TextBox({
   const borderStyle = error
     ? "border border-cp-red"
     : "border border-cp-soft-gray";
-  // 背景色の指定も含む
-  const disabledStyle = isDisabled
-    ? "bg-gray-100 cursor-not-allowed"
-    : "bg-white";
+  const bgColorStyle = isDisabled ? "bg-gray-100 cursor-not-allowed" : bgColor;
   const passwordIconStyle = isPasswordVisible
     ? "text-cp-soft-gray"
     : "text-cp-black";
@@ -63,13 +62,13 @@ export default function TextBox({
           onChange={onChange}
           disabled={isDisabled}
           className={`
-            ${sizeStyle[size]} ${borderStyle} ${disabledStyle} ${roundedType}
+            ${sizeStyle[size]} ${borderStyle} ${bgColorStyle} ${roundedType}
             body-cp-small pl-2.5 mt-1 focus:outline-none resize-none `}
         />
       ) : // パスワードの場合はdivコンテナで囲む
       isPasswordType ? (
         <div
-          className={`${sizeStyle[size]} ${borderStyle} ${disabledStyle} ${roundedType} relative mt-1`}
+          className={`${sizeStyle[size]} ${borderStyle} ${bgColorStyle} ${roundedType} relative mt-1`}
         >
           <input
             type={inputType}
@@ -78,7 +77,7 @@ export default function TextBox({
             onChange={onChange}
             disabled={isDisabled}
             className={` 
-              h-full ${disabledStyle} ${roundedType}
+              h-full ${bgColorStyle} ${roundedType}
               body-cp-small pl-2.5 focus:outline-none `}
           />
           <button
@@ -102,7 +101,7 @@ export default function TextBox({
           onChange={onChange}
           disabled={isDisabled}
           className={`
-            ${sizeStyle[size]} ${borderStyle} ${disabledStyle} ${roundedType}
+            ${sizeStyle[size]} ${borderStyle} ${bgColorStyle} ${roundedType}
             body-cp-small pl-2.5 mt-1 border focus:outline-none `}
         />
       )}

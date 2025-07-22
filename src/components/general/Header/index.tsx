@@ -12,7 +12,7 @@ export default function Header({ userName }: Props) {
   return (
     <header className="h-[70] w-full flex items-center justify-between px-5 bg-white">
       {/* ロゴとバッジ */}
-      <div className="flex items-center w-62.5 h-10 space-x-2.5">
+      <div className="flex items-center w-[250] h-[40] my-[15] space-x-2.5">
         {/* ミラレル ロゴ */}
         <Image src="/logo.svg" alt="ミラレル" width={160} height={40} />
         {/* cockpitバッジ */}

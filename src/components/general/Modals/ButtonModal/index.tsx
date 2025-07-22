@@ -61,7 +61,7 @@ export default function ButtonModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-cp-black/80">
       <div className="bg-cp-white text-cp-black rounded-[6] w-100 text-center">
         <div className="mx-5 mt-10 mb-5 ">
-          <p className="headline-cp-large mb-5 h-5 ">{title}</p>
+          <p className="headline-cp-large mb-10 h-5 ">{title}</p>
           {isLine && <div className="my-2.5 border-b border-cp-soft-gray" />}
           {/* --- キャプション部分 --- */}
           {isCaption && (

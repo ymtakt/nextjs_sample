@@ -5,6 +5,12 @@ import ButtonModal from "@/components/general/Modals/ButtonModal";
 import BaseButton from "@/components/general/Button/BaseButton";
 
 export default function Home() {
+  // ベースモーダル用
+  const [showBaseModal, setShowBaseModal] = useState(false);
+  // キャプションモーダル用
+  const [showCaptionModal, setShowCaptionModal] = useState(false);
+  // 通知モーダル用
+  const [showNotificationModal, setShowNotificationModal] = useState(false);
   // コメント用
   const [sendComment, setSendComment] = useState("");
   const [inputComment, setInputComment] = useState("");
@@ -17,13 +23,84 @@ export default function Home() {
   const handleLogout = () => {
     setSendComment(inputComment);
     setSendTextBox(inputTextBox);
-
+    // モーダル非表示
+    setShowBaseModal(false);
+    setShowCaptionModal(false);
+    setShowNotificationModal(false);
     setShowCommentModal(false);
     setShowTextBoxModal(false);
   };
   return (
     <div className="ml-5 my-6  space-y-2 text-black">
       <h2 className="text-xl font-bold mb-4">📌 モーダル テスト</h2>
+      {/* ベースモーダル */}
+      <div className="flex">
+        <div>
+          <BaseButton
+            onClick={() => setShowBaseModal(true)}
+            text="ベース"
+            color="cp-white"
+            size="medium"
+          />
+        </div>
+        <ButtonModal
+          isOpen={showBaseModal}
+          title="ベース タイトル"
+          leftButtonText="キャンセル"
+          rightButtonText="送信"
+          leftButtonColor="cp-white"
+          rightButtonColor="cp-red"
+          onRight={handleLogout}
+          onLeft={() => setShowBaseModal(false)}
+        />
+      </div>
+      {/* キャプションモーダル */}
+      <div className="flex">
+        <div>
+          <BaseButton
+            onClick={() => setShowCaptionModal(true)}
+            text="キャプション"
+            color="cp-white"
+            size="medium"
+          />
+        </div>
+        <ButtonModal
+          isOpen={showCaptionModal}
+          title="キャプション タイトル"
+          isCaption={true}
+          caption="キャプション キャプション キャプション キャプション キャプション キャプション キャプション キャプション キャプション キャプション キャプション キャプション キャプション キャプション "
+          leftButtonText="キャンセル"
+          rightButtonText="送信"
+          leftButtonColor="cp-white"
+          rightButtonColor="cp-red"
+          onRight={handleLogout}
+          onLeft={() => setShowCaptionModal(false)}
+          isLine={true}
+        />
+      </div>
+      {/* 通知モーダル */}
+      <div className="flex">
+        <div>
+          <BaseButton
+            onClick={() => setShowNotificationModal(true)}
+            text="通知"
+            color="cp-white"
+            size="medium"
+          />
+        </div>
+        <ButtonModal
+          isOpen={showNotificationModal}
+          title="通知 タイトル"
+          leftButtonText="閉じる"
+          rightButtonText="送信"
+          isCaption={true}
+          caption="通知内容 通知内容 通知内容 通知内容 通知内容 通知内容 通知内容 通知内容 通知内容 通知内容 通知内容 通知内容 通知内容 通知内容 通知内容 通知内容 "
+          onRight={handleLogout}
+          onLeft={() => setShowNotificationModal(false)}
+          isSingleButton={true}
+        />
+      </div>
+      {/* コメントモーダル */}
       <div className="flex">
         <div>
           <BaseButton
@@ -53,6 +130,7 @@ export default function Home() {
           <p className="text-cp-black">{sendComment}</p>
         </div>
       </div>
+      {/* テキストボックスモーダル */}
       <div className="flex">
         <div>
           <BaseButton

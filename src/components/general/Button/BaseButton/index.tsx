@@ -10,6 +10,7 @@ type BaseButtonProps = {
   color: "cp-sky-blue" | "cp-gray" | "cp-red" | "cp-white" | "cp-slate-gray";
   size: "large" | "medium" | "small";
   className?: string;
+  isRounded?: boolean;
 };
 
 export default function BaseButton({
@@ -18,13 +19,15 @@ export default function BaseButton({
   color,
   size,
   className = "",
+  isRounded = true,
 }: BaseButtonProps): React.JSX.Element | null {
   const sizeStyle = getButtonSizeStyle(size);
   const colorStyle = getButtonColorStyle(color);
+  const roundedType = isRounded ? "rounded" : "";
   return (
     <button
       onClick={onClick}
-      className={`${sizeStyle} ${colorStyle} ${className}`}
+      className={`${sizeStyle} ${colorStyle} ${className} ${roundedType}`}
     >
       {text}
     </button>

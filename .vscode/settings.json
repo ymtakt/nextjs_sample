@@ -1,0 +1,55 @@
+{
+  // 保存時に自動フォーマットを有効にする
+  "editor.formatOnSave": true,
+
+  // 保存時に ESLint の自動修正を適用（明示的に保存した場合のみ実行される）
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // ファイル全体でデフォルトのフォーマッタを Prettier に設定
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // TypeScriptの静的エラーが常に問題タブに表示されるようにする
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+
+  // SQL ファイル用のデフォルトフォーマッタに adpyke.vscode-sql-formatter を指定
+  "[sql]": {
+    "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+  },
+
+  // ESLint が検査対象とするファイルタイプを定義
+  "eslint.validate": [
+    "javascript", // JavaScript ファイル
+    "typescript", // TypeScript ファイル
+    "typescriptreact" // TypeScript React ファイル（.tsx）
+  ],
+
+  // VSCode エクスプローラーから除外するディレクトリを設定
+  "files.exclude": {
+    "**/.next": true, // Next.js のビルドディレクトリ
+    "**/node_modules": true // Node.js の依存パッケージディレクトリ
+  },
+
+  // ファイルウォッチャーから除外するディレクトリを設定し、パフォーマンスを向上
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.next/**": true
+  },
+
+  "cSpell.words": [
+    "daygrid",
+    "fullcalendar",
+    "heroui",
+    "ISESClisnt",
+    "karte",
+    "Karteuser",
+    "msrc",
+    "msrq",
+    "msrqc",
+    "Notificationsread",
+    "pkarte",
+    "svgs",
+    "mvpt"
+  ]
+}

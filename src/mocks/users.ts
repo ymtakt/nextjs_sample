@@ -16,7 +16,7 @@ export const mockUsers: User[] = [
   {
     id: 1,
     nameKanji: "鈴木 明美",
-    nameKana: "ゴトウ アケミ",
+    nameKana: "スズキ アケミ",
     gender: "女性",
     membership: "有料",
     prefecture: "広島県",
@@ -29,7 +29,7 @@ export const mockUsers: User[] = [
   {
     id: 2,
     nameKanji: "鈴木 くみ子",
-    nameKana: "マエダ クミコ",
+    nameKana: "スズキ クミコ",
     gender: "女性",
     membership: "無料",
     prefecture: "岡山県",
@@ -42,7 +42,7 @@ export const mockUsers: User[] = [
   {
     id: 3,
     nameKanji: "山田 舞",
-    nameKana: "イシカワ マアヤ",
+    nameKana: "ヤマダ マイ",
     gender: "女性",
     membership: "無料",
     prefecture: "埼玉県",
@@ -55,7 +55,7 @@ export const mockUsers: User[] = [
   {
     id: 4,
     nameKanji: "佐々木 結衣",
-    nameKana: "ヤマモト カナ",
+    nameKana: "ササキ ユイ",
     gender: "女性",
     membership: "無料",
     prefecture: "宮城県",
@@ -68,7 +68,7 @@ export const mockUsers: User[] = [
   {
     id: 5,
     nameKanji: "山田 淳",
-    nameKana: "ムラカミ ヒデキ",
+    nameKana: "ヤマダ ジュン",
     gender: "男性",
     membership: "無料",
     prefecture: "大阪府",
@@ -81,7 +81,7 @@ export const mockUsers: User[] = [
   {
     id: 6,
     nameKanji: "吉田 明美",
-    nameKana: "ヤマダ ナオコ",
+    nameKana: "ヨシダ アケミ",
     gender: "女性",
     membership: "有料",
     prefecture: "沖縄県",
@@ -94,7 +94,7 @@ export const mockUsers: User[] = [
   {
     id: 7,
     nameKanji: "長谷川 くみ子",
-    nameKana: "ヨシダ カナ",
+    nameKana: "ハセガワ クミコ",
     gender: "女性",
     membership: "無料",
     prefecture: "静岡県",
@@ -107,7 +107,7 @@ export const mockUsers: User[] = [
   {
     id: 8,
     nameKanji: "佐藤 修平",
-    nameKana: "ハヤシ ケンイチ",
+    nameKana: "サトウ シュウヘイ",
     gender: "男性",
     membership: "有料",
     prefecture: "栃木県",
@@ -120,7 +120,7 @@ export const mockUsers: User[] = [
   {
     id: 9,
     nameKanji: "田中 翔太",
-    nameKana: "サトウ アツシ",
+    nameKana: "タナカ ショウタ",
     gender: "男性",
     membership: "有料",
     prefecture: "長崎県",
@@ -133,7 +133,7 @@ export const mockUsers: User[] = [
   {
     id: 10,
     nameKanji: "松田 京助",
-    nameKana: "ヤマモト ナオト",
+    nameKana: "マツダ キョウスケ",
     gender: "男性",
     membership: "無料",
     prefecture: "熊本県",
@@ -146,7 +146,7 @@ export const mockUsers: User[] = [
   {
     id: 11,
     nameKanji: "高橋 翔太",
-    nameKana: "ゴトウ ユウキ",
+    nameKana: "タカハシ ショウタ",
     gender: "男性",
     membership: "無料",
     prefecture: "兵庫県",
@@ -159,7 +159,7 @@ export const mockUsers: User[] = [
   {
     id: 12,
     nameKanji: "小川 加奈",
-    nameKana: "タナカ チヨ",
+    nameKana: "オガワ カナ",
     gender: "女性",
     membership: "無料",
     prefecture: "静岡県",
@@ -172,7 +172,7 @@ export const mockUsers: User[] = [
   {
     id: 13,
     nameKanji: "鈴木 七夏",
-    nameKana: "サトウ ナナミ",
+    nameKana: "スズキ ナナカ",
     gender: "女性",
     membership: "有料",
     prefecture: "香川県",
@@ -185,7 +185,7 @@ export const mockUsers: User[] = [
   {
     id: 14,
     nameKanji: "渡辺 里佳",
-    nameKana: "モリ サトミ",
+    nameKana: "ワタナベ リカ",
     gender: "女性",
     membership: "有料",
     prefecture: "千葉県",
@@ -198,7 +198,7 @@ export const mockUsers: User[] = [
   {
     id: 15,
     nameKanji: "中村 京助",
-    nameKana: "ナカジマ ナオキ",
+    nameKana: "ナカムラ キョウスケ",
     gender: "男性",
     membership: "無料",
     prefecture: "群馬県",
@@ -211,7 +211,7 @@ export const mockUsers: User[] = [
   {
     id: 16,
     nameKanji: "石川 涼平",
-    nameKana: "ゴトウ タロウ",
+    nameKana: "イシカワ リョウヘイ",
     gender: "男性",
     membership: "無料",
     prefecture: "岩手県",
@@ -224,7 +224,7 @@ export const mockUsers: User[] = [
   {
     id: 17,
     nameKanji: "高橋 くみ子",
-    nameKana: "サイトウ ミカコ",
+    nameKana: "タカハシ クミコ",
     gender: "女性",
     membership: "有料",
     prefecture: "高知県",
@@ -237,7 +237,7 @@ export const mockUsers: User[] = [
   {
     id: 18,
     nameKanji: "伊藤 七夏",
-    nameKana: "ヨシダ ミカコ",
+    nameKana: "イトウ ナナカ",
     gender: "女性",
     membership: "有料",
     prefecture: "山口県",
@@ -250,7 +250,7 @@ export const mockUsers: User[] = [
   {
     id: 19,
     nameKanji: "中村 幹",
-    nameKana: "スズキ ハナコ",
+    nameKana: "ナカムラ ミキ",
     gender: "女性",
     membership: "無料",
     prefecture: "兵庫県",
@@ -263,7 +263,7 @@ export const mockUsers: User[] = [
   {
     id: 20,
     nameKanji: "佐藤 結衣",
-    nameKana: "イケダ ミキ",
+    nameKana: "サトウ ユイ",
     gender: "女性",
     membership: "有料",
     prefecture: "宮崎県",
@@ -276,7 +276,7 @@ export const mockUsers: User[] = [
   {
     id: 21,
     nameKanji: "中村 健一",
-    nameKana: "サトウ タイチ",
+    nameKana: "ナカムラ ケンイチ",
     gender: "男性",
     membership: "有料",
     prefecture: "栃木県",
@@ -289,7 +289,7 @@ export const mockUsers: User[] = [
   {
     id: 22,
     nameKanji: "佐藤 充",
-    nameKana: "サトウ ヒロシ",
+    nameKana: "サトウ ミツル",
     gender: "男性",
     membership: "有料",
     prefecture: "兵庫県",
@@ -302,7 +302,7 @@ export const mockUsers: User[] = [
   {
     id: 23,
     nameKanji: "山下 直人",
-    nameKana: "アベ アツシ",
+    nameKana: "ヤマシタ ナオト",
     gender: "男性",
     membership: "無料",
     prefecture: "群馬県",
@@ -315,7 +315,7 @@ export const mockUsers: User[] = [
   {
     id: 24,
     nameKanji: "斎藤 淳",
-    nameKana: "ワタナベ ミノル",
+    nameKana: "サイトウ ジュン",
     gender: "男性",
     membership: "有料",
     prefecture: "岩手県",
@@ -328,7 +328,7 @@ export const mockUsers: User[] = [
   {
     id: 25,
     nameKanji: "吉田 結衣",
-    nameKana: "イケダ ユミコ",
+    nameKana: "ヨシダ ユイ",
     gender: "女性",
     membership: "無料",
     prefecture: "岩手県",
@@ -341,7 +341,7 @@ export const mockUsers: User[] = [
   {
     id: 26,
     nameKanji: "井上 花子",
-    nameKana: "スズキ モモコ",
+    nameKana: "イノウエ ハナコ",
     gender: "女性",
     membership: "有料",
     prefecture: "長崎県",
@@ -354,7 +354,7 @@ export const mockUsers: User[] = [
   {
     id: 27,
     nameKanji: "渡辺 美加子",
-    nameKana: "フジタ ナナミ",
+    nameKana: "ワタナベ ミカコ",
     gender: "女性",
     membership: "有料",
     prefecture: "岡山県",
@@ -367,7 +367,7 @@ export const mockUsers: User[] = [
   {
     id: 28,
     nameKanji: "坂本 七夏",
-    nameKana: "コバヤシ リカ",
+    nameKana: "サカモト ナナカ",
     gender: "女性",
     membership: "無料",
     prefecture: "宮崎県",
@@ -380,7 +380,7 @@ export const mockUsers: User[] = [
   {
     id: 29,
     nameKanji: "鈴木 知実",
-    nameKana: "サイトウ カナ",
+    nameKana: "スズキ トモミ",
     gender: "女性",
     membership: "無料",
     prefecture: "東京都",
@@ -393,7 +393,7 @@ export const mockUsers: User[] = [
   {
     id: 30,
     nameKanji: "石井 花子",
-    nameKana: "イシイ リカ",
+    nameKana: "イシイ ハナコ",
     gender: "女性",
     membership: "有料",
     prefecture: "佐賀県",
@@ -406,7 +406,7 @@ export const mockUsers: User[] = [
   {
     id: 31,
     nameKanji: "佐藤 翔太",
-    nameKana: "サイトウ タロウ",
+    nameKana: "サトウ ショウタ",
     gender: "男性",
     membership: "有料",
     prefecture: "京都府",
@@ -419,7 +419,7 @@ export const mockUsers: User[] = [
   {
     id: 32,
     nameKanji: "林 治",
-    nameKana: "イトウ ソウタロウ",
+    nameKana: "ハヤシ オサム",
     gender: "男性",
     membership: "有料",
     prefecture: "栃木県",
@@ -432,7 +432,7 @@ export const mockUsers: User[] = [
   {
     id: 33,
     nameKanji: "田中 修平",
-    nameKana: "ヤマモト キョウスケ",
+    nameKana: "タナカ シュウヘイ",
     gender: "男性",
     membership: "無料",
     prefecture: "青森県",
@@ -445,7 +445,7 @@ export const mockUsers: User[] = [
   {
     id: 34,
     nameKanji: "石井 春香",
-    nameKana: "フジタ ユミコ",
+    nameKana: "イシイ ハルカ",
     gender: "女性",
     membership: "無料",
     prefecture: "三重県",
@@ -458,7 +458,7 @@ export const mockUsers: User[] = [
   {
     id: 35,
     nameKanji: "佐々木 学",
-    nameKana: "ヤマモト タロウ",
+    nameKana: "ササキ マナブ",
     gender: "男性",
     membership: "有料",
     prefecture: "佐賀県",
@@ -471,7 +471,7 @@ export const mockUsers: User[] = [
   {
     id: 36,
     nameKanji: "佐藤 陽一",
-    nameKana: "タナカ ミツル",
+    nameKana: "サトウ ヨウイチ",
     gender: "男性",
     membership: "有料",
     prefecture: "高知県",
@@ -484,7 +484,7 @@ export const mockUsers: User[] = [
   {
     id: 37,
     nameKanji: "佐藤 美加子",
-    nameKana: "サトウ ユイ",
+    nameKana: "サトウ ミカコ",
     gender: "女性",
     membership: "有料",
     prefecture: "大分県",
@@ -497,7 +497,7 @@ export const mockUsers: User[] = [
   {
     id: 38,
     nameKanji: "村上 洋介",
-    nameKana: "ヤマダ カズヤ",
+    nameKana: "ムラカミ ヨウスケ",
     gender: "男性",
     membership: "有料",
     prefecture: "岩手県",
@@ -510,7 +510,7 @@ export const mockUsers: User[] = [
   {
     id: 39,
     nameKanji: "加藤 真綾",
-    nameKana: "ハヤシ ユイ",
+    nameKana: "カトウ マアヤ",
     gender: "女性",
     membership: "無料",
     prefecture: "岐阜県",
@@ -523,7 +523,7 @@ export const mockUsers: User[] = [
   {
     id: 40,
     nameKanji: "長谷川 浩",
-    nameKana: "ナカムラ ユウキ",
+    nameKana: "ハセガワ ヒロシ",
     gender: "男性",
     membership: "無料",
     prefecture: "岐阜県",
@@ -536,7 +536,7 @@ export const mockUsers: User[] = [
   {
     id: 41,
     nameKanji: "中村 和也",
-    nameKana: "ナカガワ トモヤ",
+    nameKana: "ナカムラ カズヤ",
     gender: "男性",
     membership: "無料",
     prefecture: "福島県",
@@ -549,7 +549,7 @@ export const mockUsers: User[] = [
   {
     id: 42,
     nameKanji: "山田 健一",
-    nameKana: "ナカジマ リョウヘイ",
+    nameKana: "ヤマダ ケンイチ",
     gender: "男性",
     membership: "無料",
     prefecture: "島根県",
@@ -562,7 +562,7 @@ export const mockUsers: User[] = [
   {
     id: 43,
     nameKanji: "田中 裕樹",
-    nameKana: "ササキ キョウスケ",
+    nameKana: "タナカ ヒロキ",
     gender: "男性",
     membership: "無料",
     prefecture: "徳島県",
@@ -575,7 +575,7 @@ export const mockUsers: User[] = [
   {
     id: 44,
     nameKanji: "岡田 幹",
-    nameKana: "ミウラ カナ",
+    nameKana: "オカダ ミキ",
     gender: "女性",
     membership: "有料",
     prefecture: "香川県",
@@ -588,7 +588,7 @@ export const mockUsers: User[] = [
   {
     id: 45,
     nameKanji: "小林 花子",
-    nameKana: "ヤマダ サトミ",
+    nameKana: "コバヤシ ハナコ",
     gender: "女性",
     membership: "無料",
     prefecture: "新潟県",
@@ -601,7 +601,7 @@ export const mockUsers: User[] = [
   {
     id: 46,
     nameKanji: "橋本 零",
-    nameKana: "イノウエ ショウタ",
+    nameKana: "ハシモト レイ",
     gender: "男性",
     membership: "無料",
     prefecture: "栃木県",
@@ -614,7 +614,7 @@ export const mockUsers: User[] = [
   {
     id: 47,
     nameKanji: "木村 加奈",
-    nameKana: "スズキ ナオコ",
+    nameKana: "キムラ カナ",
     gender: "女性",
     membership: "有料",
     prefecture: "福井県",
@@ -627,7 +627,7 @@ export const mockUsers: User[] = [
   {
     id: 48,
     nameKanji: "岡本 浩",
-    nameKana: "マエダ ユウキ",
+    nameKana: "オカモト ヒロシ",
     gender: "男性",
     membership: "有料",
     prefecture: "山梨県",
@@ -640,7 +640,7 @@ export const mockUsers: User[] = [
   {
     id: 49,
     nameKanji: "鈴木 浩",
-    nameKana: "サトウ カズヤ",
+    nameKana: "スズキ ヒロシ",
     gender: "男性",
     membership: "有料",
     prefecture: "富山県",
@@ -653,7 +653,7 @@ export const mockUsers: User[] = [
   {
     id: 50,
     nameKanji: "佐藤 幹",
-    nameKana: "スズキ リカ",
+    nameKana: "サトウ ミキ",
     gender: "女性",
     membership: "無料",
     prefecture: "愛媛県",

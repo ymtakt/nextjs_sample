@@ -11,8 +11,8 @@ export default function Pagination({
 }: PaginationProps) {
   const paginationStyle = active
     ? // TODO: カラー未定のため暫定
-      "text-white bg-cp-dark-blue"
-    : "text-white bg-cp-sky-blue";
+      "text-white bg-cp-sky-blue"
+    : "text-white bg-cp-soft-gray";
 
   return (
     <div

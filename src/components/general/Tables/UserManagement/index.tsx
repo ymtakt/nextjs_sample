@@ -23,7 +23,7 @@ export default function UserTable({ users }: Props) {
   );
 
   const handleRowClick = (id: number) => {
-    router.push(`/${ROUTES.USER_MANAGEMENT}/${id}`);
+    router.push(`/${ROUTES.USER_MANAGEMENT}/${id}/${ROUTES.USER_INFO}`);
   };
 
   return (

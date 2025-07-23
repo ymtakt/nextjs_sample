@@ -5,6 +5,12 @@ export const ROUTES = {
   HOME: "/",
   // ユーザー管理
   USER_MANAGEMENT: "user-management",
+  USER_INFO: "user-info",
+  BODY_INFO: "body-info",
+  SUPPLEMENT_LOG: "supplement-intake-log",
+  MEAL_RECORD: "meal-record",
+  CONDITION_RECORD: "condition-record",
+  RESERVATION_HISTORY: "reservation-history",
   // 検査管理
   INSPECTION_MANAGEMENT: "inspection-management",
   INSPECTION_BOOKING: "inspection-management/booking",

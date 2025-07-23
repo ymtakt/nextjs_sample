@@ -6,10 +6,10 @@ import UserSearchForm from "@/components/general/Tables/UserManagementSearch";
 import { User, mockUsers } from "@/mocks/users";
 import type { UserSearchParams } from "@/components/general/Tables/UserManagementSearch";
 import BaseButton from "@/components/general/Button/BaseButton";
-import StatusToast from "@/components/general/Toast";
+import ButtonModal from "@/components/general/Modals/ButtonModal";
 
 export default function UserManagement() {
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [showCSVDownloadModal, setShowCSVDownloadModal] = useState(false);
   const [filteredUsers, setFilteredUsers] = useState<User[]>(mockUsers);
 
   const handleSearch = (params: UserSearchParams) => {
@@ -30,7 +30,8 @@ export default function UserManagement() {
 
   const csvDownload = () => {
     // TODO: ダウンロード処理を書く
-    setShowSuccess(true);
+    console.log("csvダウンロード処理");
+    setShowCSVDownloadModal(false);
   };
 
   return (
@@ -38,10 +39,23 @@ export default function UserManagement() {
       <UserSearchForm onSearch={handleSearch} onReset={handleReset} />
       <div className="pl-4 pt-4 pb-2">
         <BaseButton
-          onClick={csvDownload}
+          onClick={() => setShowCSVDownloadModal(true)}
           text={"CSVダウンロード"}
           color={"cp-sky-blue"}
           size={"medium"}
+        />
+        <ButtonModal
+          isOpen={showCSVDownloadModal}
+          title="CSVダウンロード"
+          leftButtonText="キャンセル"
+          rightButtonText="ダウンロードする"
+          leftButtonColor="cp-white"
+          rightButtonColor="cp-sky-blue"
+          isCaption={true}
+          caption="CSVをダウンロードしますか？"
+          isLine={true}
+          onRight={csvDownload}
+          onLeft={() => setShowCSVDownloadModal(false)}
         />
       </div>
       {/* 件数表示 */}
@@ -49,14 +63,6 @@ export default function UserManagement() {
         合計{filteredUsers.length} 件
       </div>
       <UserTable users={filteredUsers} />
-      {/* トースト表示 */}
-      {showSuccess && (
-        <StatusToast
-          message="CSVの処理を追加してください"
-          status="error"
-          onClose={() => setShowSuccess(false)}
-        />
-      )}
     </div>
   );
 }

@@ -51,5 +51,6 @@
     "pkarte",
     "svgs",
     "mvpt"
-  ]
+  ],
+  "cSpell.ignoreRegExpList": ["/referralCode:*.+/g"]
 }

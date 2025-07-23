@@ -8,6 +8,7 @@ type TextBoxSize = "small" | "medium" | "large" | "full";
 type TextBoxProps = {
   value: string;
   label?: string;
+  labelColor?: string;
   placeholder?: string;
   onChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -22,6 +23,7 @@ type TextBoxProps = {
 
 export default function TextBox({
   label,
+  labelColor = "",
   placeholder = "",
   value,
   onChange,
@@ -54,7 +56,9 @@ export default function TextBox({
 
   return (
     <div className="flex flex-col space-y-1">
-      {label && <label className="body-cp-medium">{label}</label>}
+      {label && (
+        <label className={`${labelColor} body-cp-medium`}>{label}</label>
+      )}
 
       {size === "large" ? (
         <textarea
@@ -63,7 +67,7 @@ export default function TextBox({
           onChange={onChange}
           disabled={isDisabled}
           className={`
-            ${sizeStyle[size]} ${borderStyle} ${bgColorStyle} ${roundedType}
+            ${sizeStyle[size]} ${borderStyle} ${bgColorStyle} ${roundedType} ${labelColor}
             body-cp-small pl-2.5 mt-1 focus:outline-none resize-none `}
         />
       ) : // パスワードの場合はdivコンテナで囲む
@@ -102,7 +106,7 @@ export default function TextBox({
           onChange={onChange}
           disabled={isDisabled}
           className={`
-            ${sizeStyle[size]} ${borderStyle} ${bgColorStyle} ${roundedType}
+            ${sizeStyle[size]} ${borderStyle} ${bgColorStyle} ${roundedType} ${labelColor}
             body-cp-small pl-2.5 mt-1 border focus:outline-none `}
         />
       )}

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { User } from "@/mocks/users";
 import Pagination from "@/components/general/Pagination";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 type Props = {
   users: User[];
@@ -64,38 +63,11 @@ export default function UserTable({ users }: Props) {
       </div>
 
       {/* --- ページネーション --- */}
-      <div className="mt-6 flex justify-center items-center gap-2">
-        {/* 前へ */}
-        <button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-          className={`p-1 ${
-            currentPage === 1 ? "opacity-30 cursor-not-allowed" : ""
-          }`}
-          aria-label="前のページ"
-        >
-          <IoIosArrowBack size={24} className="text-cp-slate-gray" />
-        </button>
-        {/* ページ番号 */}
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-          <button key={page} onClick={() => setCurrentPage(page)}>
-            <Pagination number={page} active={page === currentPage} />
-          </button>
-        ))}
-        {/* 次へ */}
-        <button
-          onClick={() =>
-            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-          }
-          disabled={currentPage === totalPages}
-          className={`p-1 ${
-            currentPage === totalPages ? "opacity-30 cursor-not-allowed" : ""
-          }`}
-          aria-label="次のページ"
-        >
-          <IoIosArrowForward size={24} className="text-cp-slate-gray" />
-        </button>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+      />
     </div>
   );
 }

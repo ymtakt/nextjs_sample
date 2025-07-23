@@ -24,7 +24,7 @@ export default function UserTable({ users }: Props) {
     <div className="pl-4">
       <div className="p-4 w-[1160px] h-full bg-cp-white overflow-x-auto mx-auto rounded">
         {/* --- テーブル部分 --- */}
-        <table className="min-w-[1300px] w-full">
+        <table className="min-w-[1500px] w-full">
           <thead>
             <tr className="h-[40px] text-left title-cp-small px-2.5 text-cp-sky-blue bg-cp-white border-cp-soft-gray border-b">
               <th className="w-[92px] pl-2.5">ミラレルID</th>

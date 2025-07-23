@@ -12,6 +12,7 @@ type Option = {
 
 type DropdownProps = {
   label?: string;
+  labelColor?: string;
   options: Option[];
   value: string;
   size?: DropBoxSize;
@@ -24,6 +25,7 @@ type DropdownProps = {
 
 export default function DropDown({
   label,
+  labelColor = "",
   options,
   value,
   onChange,
@@ -70,7 +72,9 @@ export default function DropDown({
 
   return (
     <div className="flex flex-col relative">
-      {label && <label className="body-cp-medium">{label}</label>}
+      {label && (
+        <label className={`${labelColor} body-cp-medium`}>{label}</label>
+      )}
 
       <div
         onClick={toggleDropdown}
@@ -93,7 +97,7 @@ export default function DropDown({
       </div>
       {/* ドロップダウンリスト */}
       {isOpen && !isDisabled && (
-        <ul className={`absolute top-full z-50 ${bgColorStyle}`}>
+        <ul className={`absolute top-full z-50 ${labelColor} ${bgColorStyle}`}>
           {options.map((opt) => (
             <li
               key={opt.value}

@@ -7,6 +7,7 @@ import DropDown from "@/components/general/FormParts/DropDown";
 import { genderOptions } from "@/mocks/gender";
 import { UserRankOptions } from "@/mocks/userRank";
 import { mailAllowedOptions } from "@/mocks/mailAllowed";
+import { ROUTES } from "@/constants/routes";
 
 export type UserSearchParams = {
   id: string;
@@ -49,7 +50,7 @@ export default function UserSearchForm({ onSearch, onReset }: Props) {
       if (value) query.append(key, value);
     });
 
-    router.push(`/user-management?${query.toString()}`);
+    router.push(`/${ROUTES.USER_MANAGEMENT}?${query.toString()}`);
     onSearch(form);
   };
 

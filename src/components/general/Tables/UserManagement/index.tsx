@@ -9,7 +9,7 @@ type Props = {
   users: User[];
 };
 
-const USERS_PER_PAGE = 7;
+const USERS_PER_PAGE = 10;
 
 export default function UserTable({ users }: Props) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -22,11 +22,11 @@ export default function UserTable({ users }: Props) {
 
   return (
     <div className="pl-4">
-      <div className="p-4 w-[1160px] h-[440] bg-cp-white overflow-x-auto mx-auto rounded">
+      <div className="p-4 w-[1160px] h-full bg-cp-white overflow-x-auto mx-auto rounded">
         {/* --- テーブル部分 --- */}
-        <table className="min-w-[1200px] w-full">
+        <table className="min-w-[1300px] w-full">
           <thead>
-            <tr className="h-[40px] text-left title-cp-small px-2.5 text-cp-sky-blue bg-cp-white">
+            <tr className="h-[40px] text-left title-cp-small px-2.5 text-cp-sky-blue bg-cp-white border-cp-soft-gray border-b">
               <th className="w-[92px] pl-2.5">ミラレルID</th>
               <th className="w-[132px] pl-2.5">氏名漢字</th>
               <th className="w-[170px] pl-2.5">氏名かな</th>
@@ -40,6 +40,7 @@ export default function UserTable({ users }: Props) {
               <th className="w-[160px] pl-2.5">メルマガ配信許可</th>
             </tr>
           </thead>
+
           <tbody>
             {paginatedUsers.map((user) => (
               <tr key={user.id} className="text-left">

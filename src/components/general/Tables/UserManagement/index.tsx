@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { User } from "@/mocks/users";
 import Pagination from "@/components/general/Pagination";
+import { useRouter } from "next/navigation";
+import { ROUTES } from "@/constants/routes";
 
 type Props = {
   users: User[];
@@ -11,6 +13,7 @@ type Props = {
 const USERS_PER_PAGE = 10;
 
 export default function UserTable({ users }: Props) {
+  const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(users.length / USERS_PER_PAGE);
 
@@ -18,6 +21,10 @@ export default function UserTable({ users }: Props) {
     (currentPage - 1) * USERS_PER_PAGE,
     currentPage * USERS_PER_PAGE
   );
+
+  const handleRowClick = (id: number) => {
+    router.push(`/${ROUTES.USER_MANAGEMENT}/${id}`);
+  };
 
   return (
     <div className="pl-4">
@@ -42,7 +49,11 @@ export default function UserTable({ users }: Props) {
 
           <tbody>
             {paginatedUsers.map((user) => (
-              <tr key={user.id} className="text-left">
+              <tr
+                onClick={() => handleRowClick(user.id)}
+                key={user.id}
+                className="text-left cursor-pointer hover:bg-cp-ghost-white"
+              >
                 <td className="px-2 py-1 text-black body-cp-small">
                   {user.id.toString().padStart(6, "0")}
                 </td>

@@ -85,7 +85,7 @@ export default function UserTable({ referralCodes }: Props) {
                     <IoMdTrash size={25} />
                   </button>
                   <ButtonModal
-                    isOpen={selectedDeleteId !== null}
+                    isOpen={selectedDeleteId === referralCode.id}
                     title="本当に削除しますか？"
                     leftButtonText="キャンセル"
                     rightButtonText="削除"

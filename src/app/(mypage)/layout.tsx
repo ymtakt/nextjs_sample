@@ -22,7 +22,7 @@ export default function RootLayout({
         <div>
           <Navigation />
         </div>
-        <div>{children}</div>
+        <div className="overflow-x-hidden">{children}</div>
       </main>
     </div>
   );

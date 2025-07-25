@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import UserTable from "@/components/general/Tables/UserManagement";
-import UserSearchForm from "@/components/general/Tables/UserManagementSearch";
+import UserSearchForm from "@/components/general/TableSearches/UserManagementSearch";
 import { User, mockUsers } from "@/mocks/users";
-import type { UserSearchParams } from "@/components/general/Tables/UserManagementSearch";
+import type { UserSearchParams } from "@/components/general/TableSearches/UserManagementSearch";
 import BaseButton from "@/components/general/Button/BaseButton";
 import ButtonModal from "@/components/general/Modals/ButtonModal";
 

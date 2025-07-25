@@ -3,11 +3,10 @@
 import { useState } from "react";
 
 import BaseButton from "@/components/general/Button/BaseButton";
-// import ButtonModal from "@/components/general/Modals/ButtonModal";
 import ReferralCodeTable from "@/components/general/Tables/ReferralCodeManagement";
 import ReferralCodeSearchForm, {
   ReferralCodeSearchParams,
-} from "@/components/general/Tables/ReferralCodeManagementSearch";
+} from "@/components/general/TableSearches/ReferralCodeManagementSearch";
 import { mockReferralCodes, ReferralCode } from "@/mocks/referralCodes";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/constants/routes";

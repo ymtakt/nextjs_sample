@@ -27,6 +27,8 @@ export const ROUTES = {
   EDIT_REFERRAL_CODE: "edit-referral-code",
   // サプリメント管理
   SUPPLEMENT_MANAGEMENT: "supplement-management",
+  MAKE_SUPPLEMENT: "make-supplement",
+  EDIT_SUPPLEMENT: "edit-supplement",
   // アカウント管理
   ACCOUNT_MANAGEMENT: "account-management",
   // ログアウト

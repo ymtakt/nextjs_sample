@@ -89,7 +89,7 @@ export default function SupplementSearchForm({ onSearch, onReset }: Props) {
           <div className="border-cp-soft-gray border-b mx-4" />
           <div className="pt-5 flex justify-center gap-4">
             <button
-              className="text-cp-sky-blue underline"
+              className="text-cp-sky-blue underline cursor-pointer"
               onClick={handleReset}
               type="button"
             >

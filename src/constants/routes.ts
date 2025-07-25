@@ -23,6 +23,8 @@ export const ROUTES = {
   NOTIFICATION_MANAGEMENT: "notification-management",
   // 紹介コード管理
   REFERRAL_CODE_MANAGEMENT: "referral-code-management",
+  MAKE_REFERRAL_CODE: "make-referral-code",
+  EDIT_REFERRAL_CODE: "edit-referral-code",
   // サプリメント管理
   SUPPLEMENT_MANAGEMENT: "supplement-management",
   // アカウント管理

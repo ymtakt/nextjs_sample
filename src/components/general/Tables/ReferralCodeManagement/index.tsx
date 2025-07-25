@@ -42,7 +42,7 @@ export default function UserTable({ referralCodes }: Props) {
 
   return (
     <div className="px-5 pb-5">
-      <div className="w-full overflow-x-scroll bg-cp-white rounded">
+      <div className="p-4 w-full overflow-x-scroll bg-cp-white rounded">
         {/* --- テーブル部分 --- */}
 
         <table className="min-w-[1160px]">

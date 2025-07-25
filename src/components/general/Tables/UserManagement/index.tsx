@@ -54,7 +54,7 @@ export default function UserTable({ users }: Props) {
                 key={user.id}
                 className="text-left cursor-pointer hover:bg-cp-ghost-white"
               >
-                <td className="px-2 py-1 text-black body-cp-small">
+                <td className="h-[40px] px-2 py-1 text-black body-cp-small">
                   {user.id.toString().padStart(6, "0")}
                 </td>
                 <td className="px-2 py-1 text-black">{user.nameKanji}</td>

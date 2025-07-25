@@ -27,8 +27,8 @@ export default function UserTable({ users }: Props) {
   };
 
   return (
-    <div className="pl-4">
-      <div className="p-4 w-[1160px] h-full bg-cp-white overflow-x-auto mx-auto rounded">
+    <div className="">
+      <div className="p-4 h-full bg-cp-white overflow-x-auto mx-auto rounded">
         {/* --- テーブル部分 --- */}
         <table className="min-w-[1500px] w-full">
           <thead>

@@ -69,9 +69,8 @@ export default function UserSearchForm({ onSearch, onReset }: Props) {
   };
 
   return (
-    <div className="pl-2 w-full max-w-[1160px] mx-auto text-sm">
-      <p className="p-2 title-cp-medium text-cp-slate-gray">ユーザー管理</p>
-      <div className="bg-cp-white rounded py-4">
+    <div className="p-5 overflow-x-scroll bg-cp-white text-sm">
+      <div className="w-full min-w-[1160px] rounded ">
         <div className="p-4 grid grid-cols-5 gap-4">
           <div>
             <TextBox

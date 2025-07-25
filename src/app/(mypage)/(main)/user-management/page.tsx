@@ -35,9 +35,12 @@ export default function UserManagement() {
   };
 
   return (
-    <div className="justify-center">
-      <UserSearchForm onSearch={handleSearch} onReset={handleReset} />
-      <div className="pl-4 pt-4 pb-2">
+    <div className="">
+      <p className="p-5 title-cp-medium text-cp-slate-gray">ユーザー管理</p>
+      <div className="px-5">
+        <UserSearchForm onSearch={handleSearch} onReset={handleReset} />
+      </div>
+      <div className="pl-5 py-4">
         <BaseButton
           onClick={() => setShowCSVDownloadModal(true)}
           text={"CSVダウンロード"}
@@ -59,10 +62,12 @@ export default function UserManagement() {
         />
       </div>
       {/* 件数表示 */}
-      <div className="body-cp-small text-cp-slate-gray text-left pl-4 pt-2">
-        合計{filteredUsers.length} 件
+      <div className="body-cp-small text-cp-slate-gray text-left pl-5">
+        合計 {filteredUsers.length}件
       </div>
-      <UserTable users={filteredUsers} />
+      <div className="px-5 ">
+        <UserTable users={filteredUsers} />
+      </div>
     </div>
   );
 }

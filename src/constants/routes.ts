@@ -31,6 +31,8 @@ export const ROUTES = {
   EDIT_SUPPLEMENT: "edit-supplement",
   // アカウント管理
   ACCOUNT_MANAGEMENT: "account-management",
+  MAKE_ACCOUNT: "make-account",
+  EDIT_ACCOUNT: "edit-account",
   // ログアウト
   // LOGOUT: 'logout',
 };

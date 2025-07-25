@@ -27,7 +27,7 @@ export default function BaseButton({
   return (
     <button
       onClick={onClick}
-      className={`${sizeStyle} ${colorStyle} ${className} ${roundedType}`}
+      className={`${sizeStyle} ${colorStyle} ${className} ${roundedType} cursor-pointer`}
     >
       {text}
     </button>

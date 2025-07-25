@@ -109,7 +109,7 @@ export default function ReferralCodeSearchForm({ onSearch, onReset }: Props) {
             </button>
             <div>
               <BaseButton
-                onClick={() => handleSearch}
+                onClick={handleSearch}
                 text={"検索"}
                 color={"cp-sky-blue"}
                 size={"small"}

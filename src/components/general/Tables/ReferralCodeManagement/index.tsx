@@ -40,6 +40,13 @@ export default function UserTable({ referralCodes }: Props) {
     }
   };
 
+  // テーブルの要素
+  const columns = [
+    { label: "紹介コード", key: "referralCode", className: "w-[150px]" },
+    { label: "紹介者名", key: "referredName", className: "w-[150px]" },
+    { label: "区分", key: "section", className: "w-[150px]" },
+  ];
+
   return (
     <div className="px-5 pb-5">
       <div className="p-4 w-full overflow-x-scroll bg-cp-white rounded">
@@ -48,25 +55,34 @@ export default function UserTable({ referralCodes }: Props) {
         <table className="min-w-[1160px]">
           <thead>
             <tr className="h-[40px] text-left title-cp-small px-2.5 text-cp-sky-blue bg-cp-white border-cp-soft-gray border-b">
-              <th className="w-[150px] pl-2.5">紹介コード</th>
-              <th className="w-[150px] pl-2.5">紹介者名</th>
-              <th className="w-[150px] pl-2.5">区分</th>
+              {columns.map((col) => (
+                <th key={col.key} className={`${col.className} pl-2.5`}>
+                  {col.label}
+                </th>
+              ))}
+              {/* アクションボタン用 */}
               <th className="w-[50px] pl-2.5"></th>
             </tr>
           </thead>
 
           <tbody>
             {paginatedUsers.map((referralCode) => (
-              <tr key={referralCode.id} className="text-left ">
-                <td className="px-2 py-1 text-cp-black body-cp-small">
-                  {referralCode.referralCode.toString().padStart(6, "0")}
-                </td>
-                <td className="px-2 py-1 text-cp-black">
-                  {referralCode.referredName}
-                </td>
-                <td className="px-2 py-1 text-cp-black">
-                  {referralCode.section}
-                </td>
+              <tr
+                key={referralCode.id}
+                className="text-left border-cp-soft-gray border-b"
+              >
+                {columns.map((col) => (
+                  <td
+                    key={col.key}
+                    className="px-2 py-1 text-cp-black body-cp-small"
+                  >
+                    {col.key === "referralCode"
+                      ? referralCode[col.key as keyof ReferralCode]
+                          ?.toString()
+                          .padStart(6, "0")
+                      : referralCode[col.key as keyof ReferralCode]}
+                  </td>
+                ))}
                 <td className="px-2 py-1 text-right">
                   <BaseButton
                     onClick={() => handleEditClick(referralCode.id)}
@@ -102,11 +118,13 @@ export default function UserTable({ referralCodes }: Props) {
       </div>
 
       {/* --- ページネーション --- */}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={setCurrentPage}
-      />
+      <div className="pb-5">
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      </div>
     </div>
   );
 }

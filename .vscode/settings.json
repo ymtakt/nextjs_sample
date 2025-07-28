@@ -44,13 +44,14 @@
     "ISESClisnt",
     "karte",
     "Karteuser",
+    "mirallel",
     "msrc",
     "msrq",
     "msrqc",
+    "mvpt",
     "Notificationsread",
     "pkarte",
-    "svgs",
-    "mvpt"
+    "svgs"
   ],
   "cSpell.ignoreRegExpList": ["/referralCode:*.+/g"]
 }

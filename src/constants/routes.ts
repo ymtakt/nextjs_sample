@@ -16,7 +16,8 @@ export const ROUTES = {
   INSPECTION_BOOKING: "inspection-management/booking",
   INSPECTION_SETTING: "inspection-management/setting",
   // 相談予約管理
-  CONSULTATION_BOOKING: "consultation-booking",
+  CONSULTATION_RESERVATION: "consultation-reservation",
+  EDIT_CONSULTATION: "edit-consultation",
   // 動画管理
   VIDEO_MANAGEMENT: "video-management",
   // お知らせ管理

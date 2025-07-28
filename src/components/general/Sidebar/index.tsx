@@ -60,7 +60,7 @@ export default function Navigation(props: Props) {
     {
       name: "相談予約管理",
       icon: PiChats,
-      route: `/${ROUTES.CONSULTATION_BOOKING}`,
+      route: `/${ROUTES.CONSULTATION_RESERVATION}`,
       subMenu: false,
     },
     {

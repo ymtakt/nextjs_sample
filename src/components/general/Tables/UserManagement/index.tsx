@@ -26,6 +26,20 @@ export default function UserTable({ users }: Props) {
     router.push(`/${ROUTES.USER_MANAGEMENT}/${id}/${ROUTES.USER_INFO}`);
   };
 
+  const columns = [
+    { label: "ミラレルID", key: "id", className: "w-[92px]" },
+    { label: "氏名漢字", key: "nameKanji", className: "w-[132px]" },
+    { label: "氏名かな", key: "nameKana", className: "w-[170px]" },
+    { label: "性別", key: "gender", className: "w-[91px]" },
+    { label: "会員ランク", key: "membership", className: "w-[108px]" },
+    { label: "住所（都道府県）", key: "prefecture", className: "w-[148px]" },
+    { label: "生年月日", key: "birthDate", className: "w-[129px]" },
+    { label: "KYB-ID", key: "kybId", className: "w-[132px]" },
+    { label: "紹介コード", key: "referralCode", className: "w-[132px]" },
+    { label: "紹介者", key: "referredBy", className: "w-[132px]" },
+    { label: "メルマガ配信許可", key: "mailAllowed", className: "w-[160px]" },
+  ];
+
   return (
     <div className="">
       <div className="p-4 h-full bg-cp-white overflow-x-auto mx-auto rounded">
@@ -33,17 +47,11 @@ export default function UserTable({ users }: Props) {
         <table className="min-w-[1500px] w-full">
           <thead>
             <tr className="h-[40px] text-left title-cp-small px-2.5 text-cp-sky-blue bg-cp-white border-cp-soft-gray border-b">
-              <th className="w-[92px] pl-2.5">ミラレルID</th>
-              <th className="w-[132px] pl-2.5">氏名漢字</th>
-              <th className="w-[170px] pl-2.5">氏名かな</th>
-              <th className="w-[91px] pl-2.5">性別</th>
-              <th className="w-[108px] pl-2.5">会員ランク</th>
-              <th className="w-[148px] pl-2.5">住所（都道府県）</th>
-              <th className="w-[129px] pl-2.5">生年月日</th>
-              <th className="w-[132px] pl-2.5">KYB-ID</th>
-              <th className="w-[132px] pl-2.5">紹介コード</th>
-              <th className="w-[132px] pl-2.5">紹介者</th>
-              <th className="w-[160px] pl-2.5">メルマガ配信許可</th>
+              {columns.map((col) => (
+                <th key={col.key} className={`${col.className} pl-2.5`}>
+                  {col.label}
+                </th>
+              ))}
             </tr>
           </thead>
 
@@ -52,21 +60,18 @@ export default function UserTable({ users }: Props) {
               <tr
                 onClick={() => handleRowClick(user.id)}
                 key={user.id}
-                className="text-left cursor-pointer hover:bg-cp-ghost-white"
+                className="text-left cursor-pointer hover:bg-cp-ghost-white border-cp-soft-gray border-b"
               >
-                <td className="h-[40px] px-2 py-1 text-black body-cp-small">
-                  {user.id.toString().padStart(6, "0")}
-                </td>
-                <td className="px-2 py-1 text-black">{user.nameKanji}</td>
-                <td className="px-2 py-1 text-black">{user.nameKana}</td>
-                <td className="px-2 py-1 text-black">{user.gender}</td>
-                <td className="px-2 py-1 text-black">{user.membership}</td>
-                <td className="px-2 py-1 text-black">{user.prefecture}</td>
-                <td className="px-2 py-1 text-black">{user.birthDate}</td>
-                <td className="px-2 py-1 text-black">{user.kybId}</td>
-                <td className="px-2 py-1 text-black">{user.referralCode}</td>
-                <td className="px-2 py-1 text-black">{user.referredBy}</td>
-                <td className="px-2 py-1 text-black">{user.mailAllowed}</td>
+                {columns.map((col) => (
+                  <td
+                    key={col.key}
+                    className="h-[40px] px-2 py-1 text-black body-cp-small"
+                  >
+                    {col.key === "id"
+                      ? user[col.key as keyof User]?.toString().padStart(6, "0")
+                      : user[col.key as keyof User]}
+                  </td>
+                ))}
               </tr>
             ))}
           </tbody>
@@ -74,11 +79,13 @@ export default function UserTable({ users }: Props) {
       </div>
 
       {/* --- ページネーション --- */}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={setCurrentPage}
-      />
+      <div className="pb-5">
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      </div>
     </div>
   );
 }

@@ -26,6 +26,15 @@ export default function AccountTable({ accounts }: Props) {
     router.push(`/${ROUTES.ACCOUNT_MANAGEMENT}/${id}/${ROUTES.EDIT_ACCOUNT}`);
   };
 
+  const columns = [
+    { label: "アカウントID", key: "accountId", className: "w-[92px]" },
+    { label: "アカウント名", key: "accountName", className: "w-[132px]" },
+    { label: "表示名", key: "displayName", className: "w-[132px]" },
+    { label: "アカウント権限", key: "accountAuthority", className: "w-[91px]" },
+    { label: "資格", key: "accountLicense", className: "w-[108px]" },
+    { label: "メールアドレス", key: "mail", className: "w-[148px]" },
+  ];
+
   return (
     <div className="">
       <div className="p-4 h-full bg-cp-white overflow-x-auto mx-auto rounded">
@@ -33,12 +42,11 @@ export default function AccountTable({ accounts }: Props) {
         <table className="min-w-[1500px] w-full">
           <thead>
             <tr className="h-[40px] text-left title-cp-small px-2.5 text-cp-sky-blue bg-cp-white border-cp-soft-gray border-b">
-              <th className="w-[92px] pl-2.5">アカウントID</th>
-              <th className="w-[132px] pl-2.5">アカウント名</th>
-              <th className="w-[132px] pl-2.5">表示名</th>
-              <th className="w-[91px] pl-2.5">アカウント権限</th>
-              <th className="w-[108px] pl-2.5">資格</th>
-              <th className="w-[148px] pl-2.5">メールアドレス</th>
+              {columns.map((col) => (
+                <th key={col.key} className={`${col.className} pl-2.5`}>
+                  {col.label}
+                </th>
+              ))}
             </tr>
           </thead>
 
@@ -49,16 +57,11 @@ export default function AccountTable({ accounts }: Props) {
                 key={account.id}
                 className="h-10 text-left cursor-pointer hover:bg-cp-ghost-white border-cp-soft-gray border-b"
               >
-                <td className="px-2 py-1 text-black">{account.accountId}</td>
-                <td className="px-2 py-1 text-black">{account.accountName}</td>
-                <td className="px-2 py-1 text-black">{account.displayName}</td>
-                <td className="px-2 py-1 text-black">
-                  {account.accountAuthority}
-                </td>
-                <td className="px-2 py-1 text-black">
-                  {account.accountLicense}
-                </td>
-                <td className="px-2 py-1 text-black">{account.mail}</td>
+                {columns.map((col) => (
+                  <td key={col.key} className="px-2 py-1 text-black">
+                    {account[col.key as keyof Account]}
+                  </td>
+                ))}
               </tr>
             ))}
           </tbody>
@@ -66,11 +69,13 @@ export default function AccountTable({ accounts }: Props) {
       </div>
 
       {/* --- ページネーション --- */}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={setCurrentPage}
-      />
+      <div className="pb-5">
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      </div>
     </div>
   );
 }

@@ -40,6 +40,12 @@ export default function SupplementTable({ supplements }: Props) {
     }
   };
 
+  const columns = [
+    { label: "登録日", key: "registerDate", width: "w-[150px]" },
+    { label: "サプリメント名", key: "supplementName", width: "w-[150px]" },
+    { label: "ブランド名", key: "supplementBrand", width: "w-[150px]" },
+  ];
+
   return (
     <div className="px-5 pb-5">
       <div className="p-4 w-full overflow-x-scroll bg-cp-white rounded">
@@ -48,9 +54,12 @@ export default function SupplementTable({ supplements }: Props) {
         <table className="min-w-[1160px]">
           <thead>
             <tr className="h-[40px] text-left title-cp-small px-2.5 text-cp-sky-blue bg-cp-white border-cp-soft-gray border-b">
-              <th className="w-[150px] pl-2.5">登録日</th>
-              <th className="w-[150px] pl-2.5">サプリメント名</th>
-              <th className="w-[150px] pl-2.5">ブランド名</th>
+              {columns.map((col) => (
+                <th key={col.key} className={`${col.width} pl-2.5`}>
+                  {col.label}
+                </th>
+              ))}
+              {/* アクションボタン用 */}
               <th className="w-[50px] pl-2.5"></th>
             </tr>
           </thead>
@@ -61,15 +70,18 @@ export default function SupplementTable({ supplements }: Props) {
                 key={supplement.id}
                 className="text-left border-cp-soft-gray border-b"
               >
-                <td className="px-2 py-1 text-cp-black body-cp-small">
-                  {supplement.registerDate.toString().padStart(6, "0")}
-                </td>
-                <td className="px-2 py-1 text-cp-black">
-                  {supplement.supplementName}
-                </td>
-                <td className="px-2 py-1 text-cp-black">
-                  {supplement.supplementBrand}
-                </td>
+                {columns.map((col) => (
+                  <td
+                    key={col.key}
+                    className="px-2 py-1 text-cp-black body-cp-small"
+                  >
+                    {col.key === "registerDate"
+                      ? (supplement[col.key as keyof Supplement] as string)
+                          ?.toString()
+                          .padStart(6, "0")
+                      : supplement[col.key as keyof Supplement]}
+                  </td>
+                ))}
                 <td className="px-2 py-1 text-right bg-cp-white">
                   <BaseButton
                     onClick={() => handleEditClick(supplement.id)}
@@ -77,7 +89,6 @@ export default function SupplementTable({ supplements }: Props) {
                     color={"cp-sky-blue"}
                     size={"small"}
                   />
-
                   {/* 削除ボタン部分 */}
                   <button
                     type="button"
@@ -105,11 +116,13 @@ export default function SupplementTable({ supplements }: Props) {
       </div>
 
       {/* --- ページネーション --- */}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={setCurrentPage}
-      />
+      <div className="pb-5">
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      </div>
     </div>
   );
 }

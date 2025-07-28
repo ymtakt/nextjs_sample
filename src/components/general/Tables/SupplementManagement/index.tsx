@@ -41,9 +41,9 @@ export default function SupplementTable({ supplements }: Props) {
   };
 
   const columns = [
-    { label: "登録日", key: "registerDate", width: "w-[150px]" },
-    { label: "サプリメント名", key: "supplementName", width: "w-[150px]" },
-    { label: "ブランド名", key: "supplementBrand", width: "w-[150px]" },
+    { label: "登録日", key: "registerDate", className: "w-[150px]" },
+    { label: "サプリメント名", key: "supplementName", className: "w-[150px]" },
+    { label: "ブランド名", key: "supplementBrand", className: "w-[150px]" },
   ];
 
   return (
@@ -55,7 +55,7 @@ export default function SupplementTable({ supplements }: Props) {
           <thead>
             <tr className="h-[40px] text-left title-cp-small px-2.5 text-cp-sky-blue bg-cp-white border-cp-soft-gray border-b">
               {columns.map((col) => (
-                <th key={col.key} className={`${col.width} pl-2.5`}>
+                <th key={col.key} className={`${col.className} pl-2.5`}>
                   {col.label}
                 </th>
               ))}

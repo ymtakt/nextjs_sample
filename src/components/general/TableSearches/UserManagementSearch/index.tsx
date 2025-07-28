@@ -4,9 +4,11 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import TextBox from "@/components/general/FormParts/TextBox";
 import DropDown from "@/components/general/FormParts/DropDown";
-import { genderOptions } from "@/mocks/gender";
-import { UserRankOptions } from "@/mocks/userRank";
-import { mailAllowedOptions } from "@/mocks/mailAllowed";
+import {
+  genderOptions,
+  UserRankOptions,
+  mailAllowedOptions,
+} from "@/mocks/userOptions";
 import { ROUTES } from "@/constants/routes";
 
 export type UserSearchParams = {

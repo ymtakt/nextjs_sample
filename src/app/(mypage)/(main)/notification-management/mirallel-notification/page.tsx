@@ -14,7 +14,7 @@ import dayjs from "dayjs";
 export default function NotificationManagement() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const enrichNotification = useCallback(
+  const enrichTableItems = useCallback(
     (item: MirallelNotification) => ({
       ...item,
       displayDate: `${dayjs(item.displayStartDate).format(
@@ -25,14 +25,14 @@ export default function NotificationManagement() {
     }),
     []
   );
-  const [filteredNotifications, setFilteredNotifications] = useState(() =>
-    mockNotifications.map(enrichNotification)
+  const [filteredTableItems, setFilteredTableItems] = useState(() =>
+    mockNotifications.map(enrichTableItems)
   );
 
   const handleSearch = useCallback(
     (params: NotificationSearchParams) => {
       // 表示用のデータを作成
-      const enriched = mockNotifications.map(enrichNotification);
+      const enriched = mockNotifications.map(enrichTableItems);
       // フィルター処理
       const filtered = enriched.filter((item) => {
         return Object.entries(params).every(([key, value]) => {
@@ -49,14 +49,14 @@ export default function NotificationManagement() {
           return codeValue?.toString().includes(value.toString());
         });
       });
-      setFilteredNotifications(filtered);
+      setFilteredTableItems(filtered);
     },
-    [enrichNotification]
+    [enrichTableItems]
   );
 
   const handleReset = () => {
-    const resetData = mockNotifications.map(enrichNotification);
-    setFilteredNotifications(resetData);
+    const resetData = mockNotifications.map(enrichTableItems);
+    setFilteredTableItems(resetData);
   };
 
   // URLの操作でも検索を反映させる
@@ -71,8 +71,8 @@ export default function NotificationManagement() {
     handleSearch(queryParams);
   }, [handleSearch, searchParams]);
 
-  const makeNotification = () => {
-    // TODO: ダウンロード処理を書く
+  const makeNemItem = () => {
+    // TODO: お知らせの新規作成処理を書く
     console.log("お知らせの新規作成");
     router.push(
       `/${ROUTES.NOTIFICATION_MANAGEMENT}/${ROUTES.MAKE_NOTIFICATION}`
@@ -88,17 +88,17 @@ export default function NotificationManagement() {
         <div className="pt-5 justify-between bg-cp-white">
           <div className="pr-5 text-right">
             <BaseButton
-              onClick={makeNotification}
+              onClick={makeNemItem}
               text={"新規作成"}
               color={"cp-white"}
               size={"small"}
             />
           </div>
           <div className="pl-5 body-cp-small text-cp-slate-gray text-left ">
-            合計 {filteredNotifications.length}件
+            合計 {filteredTableItems.length}件
           </div>
         </div>
-        <NotificationTable notifications={filteredNotifications} />
+        <NotificationTable notifications={filteredTableItems} />
       </div>
     </div>
   );

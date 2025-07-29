@@ -48,8 +48,8 @@ const RadioButton = ({
                 disabled={value !== option.value}
                 className={`ml-2 border rounded px-2 py-1 text-sm ${
                   value !== option.value
-                    ? "bg-gray-100 text-gray-400"
-                    : "bg-white text-black"
+                    ? "bg-cp-ghost-white text-cp-gray"
+                    : "bg-cp-white text-cp-black"
                 }`}
                 value={inputValue}
                 onChange={(e) => onInputChange?.(e.target.value)}

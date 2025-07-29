@@ -1,0 +1,268 @@
+export type HealthInformation = {
+  id: number;
+  title: string;
+  registerDate: string;
+  displayStartDate: string;
+  displayEndDate: string;
+  url: string;
+};
+
+// export const mockHealthInformation: HealthInformation[] = Array.from({ length: 30 }, (_, i) => {
+//   const id = i + 1;
+//   const date = new Date(2025, 6, 1 + i); // 2025-07-01 〜
+//   const format = (d: Date) => d.toISOString().split("T")[0];
+//   const registerDate = format(date);
+//   const displayStartDate = format(date);
+//   const displayEndDate = format(new Date(date.getTime() + 7 * 24 * 60 * 60 * 1000)); // +7日
+//   return {
+//     id,
+//     title: `お知らせ #${id}`,
+//     registerDate,
+//     displayStartDate,
+//     displayEndDate,
+//     url: `https://example.com/info/${id}`,
+//   };
+// });
+
+export const mockHealthInformation: HealthInformation[] = [
+  {
+    id: 1,
+    title: "健康情報タイトル #1",
+    registerDate: "2025-06-30",
+    displayStartDate: "2025-06-30",
+    displayEndDate: "2025-07-07",
+    url: "https://example.com/info/1",
+  },
+  {
+    id: 2,
+    title: "健康情報タイトル #2",
+    registerDate: "2025-07-01",
+    displayStartDate: "2025-07-01",
+    displayEndDate: "2025-07-08",
+    url: "https://example.com/info/2",
+  },
+  {
+    id: 3,
+    title: "健康情報タイトル #3",
+    registerDate: "2025-07-02",
+    displayStartDate: "2025-07-02",
+    displayEndDate: "2025-07-09",
+    url: "https://example.com/info/3",
+  },
+  {
+    id: 4,
+    title: "健康情報タイトル #4",
+    registerDate: "2025-07-03",
+    displayStartDate: "2025-07-03",
+    displayEndDate: "2025-07-10",
+    url: "https://example.com/info/4",
+  },
+  {
+    id: 5,
+    title: "健康情報タイトル #5",
+    registerDate: "2025-07-04",
+    displayStartDate: "2025-07-04",
+    displayEndDate: "2025-07-11",
+    url: "https://example.com/info/5",
+  },
+  {
+    id: 6,
+    title: "健康情報タイトル #6",
+    registerDate: "2025-07-05",
+    displayStartDate: "2025-07-05",
+    displayEndDate: "2025-07-12",
+    url: "https://example.com/info/6",
+  },
+  {
+    id: 7,
+    title: "健康情報タイトル #7",
+    registerDate: "2025-07-06",
+    displayStartDate: "2025-07-06",
+    displayEndDate: "2025-07-13",
+    url: "https://example.com/info/7",
+  },
+  {
+    id: 8,
+    title: "健康情報タイトル #8",
+    registerDate: "2025-07-07",
+    displayStartDate: "2025-07-07",
+    displayEndDate: "2025-07-14",
+    url: "https://example.com/info/8",
+  },
+  {
+    id: 9,
+    title: "健康情報タイトル #9",
+    registerDate: "2025-07-08",
+    displayStartDate: "2025-07-08",
+    displayEndDate: "2025-07-15",
+    url: "https://example.com/info/9",
+  },
+  {
+    id: 10,
+    title: "健康情報タイトル #10",
+    registerDate: "2025-07-09",
+    displayStartDate: "2025-07-09",
+    displayEndDate: "2025-07-16",
+    url: "https://example.com/info/10",
+  },
+  {
+    id: 11,
+    title: "健康情報タイトル #11",
+    registerDate: "2025-07-10",
+    displayStartDate: "2025-07-10",
+    displayEndDate: "2025-07-17",
+    url: "https://example.com/info/11",
+  },
+  {
+    id: 12,
+    title: "健康情報タイトル #12",
+    registerDate: "2025-07-11",
+    displayStartDate: "2025-07-11",
+    displayEndDate: "2025-07-18",
+    url: "https://example.com/info/12",
+  },
+  {
+    id: 13,
+    title: "健康情報タイトル #13",
+    registerDate: "2025-07-12",
+    displayStartDate: "2025-07-12",
+    displayEndDate: "2025-07-19",
+    url: "https://example.com/info/13",
+  },
+  {
+    id: 14,
+    title: "健康情報タイトル #14",
+    registerDate: "2025-07-13",
+    displayStartDate: "2025-07-13",
+    displayEndDate: "2025-07-20",
+    url: "https://example.com/info/14",
+  },
+  {
+    id: 15,
+    title: "健康情報タイトル #15",
+    registerDate: "2025-07-14",
+    displayStartDate: "2025-07-14",
+    displayEndDate: "2025-07-21",
+    url: "https://example.com/info/15",
+  },
+  {
+    id: 16,
+    title: "健康情報タイトル #16",
+    registerDate: "2025-07-15",
+    displayStartDate: "2025-07-15",
+    displayEndDate: "2025-07-22",
+    url: "https://example.com/info/16",
+  },
+  {
+    id: 17,
+    title: "健康情報タイトル #17",
+    registerDate: "2025-07-16",
+    displayStartDate: "2025-07-16",
+    displayEndDate: "2025-07-23",
+    url: "https://example.com/info/17",
+  },
+  {
+    id: 18,
+    title: "健康情報タイトル #18",
+    registerDate: "2025-07-17",
+    displayStartDate: "2025-07-17",
+    displayEndDate: "2025-07-24",
+    url: "https://example.com/info/18",
+  },
+  {
+    id: 19,
+    title: "健康情報タイトル #19",
+    registerDate: "2025-07-18",
+    displayStartDate: "2025-07-18",
+    displayEndDate: "2025-07-25",
+    url: "https://example.com/info/19",
+  },
+  {
+    id: 20,
+    title: "健康情報タイトル #20",
+    registerDate: "2025-07-19",
+    displayStartDate: "2025-07-19",
+    displayEndDate: "2025-07-26",
+    url: "https://example.com/info/20",
+  },
+  {
+    id: 21,
+    title: "健康情報タイトル #21",
+    registerDate: "2025-07-20",
+    displayStartDate: "2025-07-20",
+    displayEndDate: "2025-07-27",
+    url: "https://example.com/info/21",
+  },
+  {
+    id: 22,
+    title: "健康情報タイトル #22",
+    registerDate: "2025-07-21",
+    displayStartDate: "2025-07-21",
+    displayEndDate: "2025-07-28",
+    url: "https://example.com/info/22",
+  },
+  {
+    id: 23,
+    title: "健康情報タイトル #23",
+    registerDate: "2025-07-22",
+    displayStartDate: "2025-07-22",
+    displayEndDate: "2025-07-29",
+    url: "https://example.com/info/23",
+  },
+  {
+    id: 24,
+    title: "健康情報タイトル #24",
+    registerDate: "2025-07-23",
+    displayStartDate: "2025-07-23",
+    displayEndDate: "2025-07-30",
+    url: "https://example.com/info/24",
+  },
+  {
+    id: 25,
+    title: "健康情報タイトル #25",
+    registerDate: "2025-07-24",
+    displayStartDate: "2025-07-24",
+    displayEndDate: "2025-07-31",
+    url: "https://example.com/info/25",
+  },
+  {
+    id: 26,
+    title: "健康情報タイトル #26",
+    registerDate: "2025-07-25",
+    displayStartDate: "2025-07-25",
+    displayEndDate: "2025-08-01",
+    url: "https://example.com/info/26",
+  },
+  {
+    id: 27,
+    title: "健康情報タイトル #27",
+    registerDate: "2025-07-26",
+    displayStartDate: "2025-07-26",
+    displayEndDate: "2025-08-02",
+    url: "https://example.com/info/27",
+  },
+  {
+    id: 28,
+    title: "健康情報タイトル #28",
+    registerDate: "2025-07-27",
+    displayStartDate: "2025-07-27",
+    displayEndDate: "2025-08-03",
+    url: "https://example.com/info/28",
+  },
+  {
+    id: 29,
+    title: "健康情報タイトル #29",
+    registerDate: "2025-07-28",
+    displayStartDate: "2025-07-28",
+    displayEndDate: "2025-08-04",
+    url: "https://example.com/info/29",
+  },
+  {
+    id: 30,
+    title: "健康情報タイトル #30",
+    registerDate: "2025-07-29",
+    displayStartDate: "2025-07-29",
+    displayEndDate: "2025-08-05",
+    url: "https://example.com/info/30",
+  },
+];

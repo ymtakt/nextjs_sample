@@ -72,7 +72,7 @@ export default function Navigation(props: Props) {
     {
       name: "お知らせ管理",
       icon: FaBell,
-      route: `/${ROUTES.NOTIFICATION_MANAGEMENT}`,
+      route: `/${ROUTES.NOTIFICATION_MANAGEMENT}/${ROUTES.MIRALLEL_NOTIFICATIONS}`,
       subMenu: false,
     },
     {

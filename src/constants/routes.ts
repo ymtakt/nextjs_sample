@@ -22,6 +22,10 @@ export const ROUTES = {
   VIDEO_MANAGEMENT: "video-management",
   // お知らせ管理
   NOTIFICATION_MANAGEMENT: "notification-management",
+  MIRALLEL_NOTIFICATIONS: "mirallel-notification",
+  HEALTH_INFORMATION: "health-information",
+  MAKE_NOTIFICATION: "make-notification",
+  NOTIFICATION_DETAIL: "notification-detail",
   // 紹介コード管理
   REFERRAL_CODE_MANAGEMENT: "referral-code-management",
   MAKE_REFERRAL_CODE: "make-referral-code",

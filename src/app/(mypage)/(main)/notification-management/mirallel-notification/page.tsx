@@ -81,7 +81,7 @@ export default function NotificationManagement() {
 
   return (
     <div className="overflow-x-scroll">
-      <div className="min-w-[1080px] w-full">
+      <div className="min-w-[1400px] w-full">
         <NotificationSearchForm onSearch={handleSearch} onReset={handleReset} />
 
         {/* 件数表示 */}

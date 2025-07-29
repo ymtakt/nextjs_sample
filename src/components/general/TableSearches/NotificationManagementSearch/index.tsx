@@ -85,7 +85,8 @@ export default function NotificationSearchForm({ onSearch, onReset }: Props) {
                 bgColor="bg-cp-ghost-white"
                 value={form.title}
                 onChange={(e) => handleChange("title", e.target.value)}
-                size="small"
+                size="manual"
+                manualSize="h-7.5 w-[415px]"
               />
             </div>
             <div>

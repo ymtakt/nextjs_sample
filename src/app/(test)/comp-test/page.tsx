@@ -33,6 +33,9 @@ export default function Home() {
         <TextLink href="/comp-test/modal" size="large">
           モーダル確認
         </TextLink>
+        <TextLink href="/comp-test/radio-button" size="large">
+          ラジオボタン確認
+        </TextLink>
       </div>
     </div>
   );

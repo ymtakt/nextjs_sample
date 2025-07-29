@@ -1,96 +1,116 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import BaseButton from "@/components/general/Button/BaseButton";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
-import { MirallelNotification, mockNotifications } from "@/mocks/notifications";
-import NotificationTable from "@/components/general/Tables/NotificationManagement";
-import NotificationSearchForm, {
-  NotificationSearchParams,
-} from "@/components/general/TableSearches/NotificationManagementSearch";
 import dayjs from "dayjs";
+import HealthInformationSearchForm, {
+  HealthInformationSearchParams,
+} from "@/components/general/TableSearches/HealthInformationManagementSearch";
+import HealthInformationTable from "@/components/general/Tables/HealthInformationManagement";
+import {
+  HealthInformation,
+  mockHealthInformation,
+} from "@/mocks/healthInformation";
 
-export default function NotificationManagement() {
+export default function HealthInformationManagement() {
   const router = useRouter();
-  const getDisplayIsShowHome = (value: boolean) => (value ? "表示" : "非表示");
-  const getDisplayIsPushNotification = (value: boolean) =>
-    value ? "ON" : "OFF";
-  const [filteredNotifications, setFilteredNotifications] =
-    useState<MirallelNotification[]>(mockNotifications);
-
-  const handleSearch = (params: NotificationSearchParams) => {
-    // 表示用のデータを作成
-    const enriched = mockNotifications.map((item) => ({
+  const searchParams = useSearchParams();
+  const enrichTableItems = useCallback(
+    (item: HealthInformation) => ({
       ...item,
       displayDate: `${dayjs(item.displayStartDate).format(
         "YYYY/MM/DD"
       )} ～ ${dayjs(item.displayEndDate).format("YYYY/MM/DD")}`,
-      displayIsShowHome: getDisplayIsShowHome(item.isShowHome),
-      displayIsPushNotification: getDisplayIsPushNotification(
-        item.isPushNotification
-      ),
-    }));
-    // フィルター処理
-    const filtered = enriched.filter((item) => {
-      return Object.entries(params).every(([key, value]) => {
-        if (!value) return true;
-        const codeValue = item[key as keyof typeof item];
-        // 完全一致させたいキーだけ === にする
-        if (
-          key === "displayIsShowHome" ||
-          key === "displayIsPushNotification"
-        ) {
-          return codeValue === value;
+    }),
+    []
+  );
+
+  const [filteredTableItems, setFilteredTableItems] = useState<
+    HealthInformation[]
+  >(mockHealthInformation.map(enrichTableItems));
+
+  const handleSearch = useCallback(
+    (params: HealthInformationSearchParams) => {
+      // 表示用のデータを作成
+      const enriched = mockHealthInformation.map(enrichTableItems);
+      // フィルター処理
+      const filtered = enriched.filter((item) => {
+        const itemStart = dayjs(item.displayStartDate);
+        const itemEnd = dayjs(item.displayEndDate);
+        // 開始日チェック
+        if (params.displayStartDate) {
+          const searchStart = dayjs(params.displayStartDate);
+          if (itemStart.isBefore(searchStart, "day")) return false;
         }
-        // 通常は部分一致
-        return codeValue?.toString().includes(value.toString());
+        // 終了日チェック
+        if (params.displayEndDate) {
+          const searchEnd = dayjs(params.displayEndDate);
+          if (itemEnd.isAfter(searchEnd, "day")) return false;
+        }
+        // 他の項目は部分一致で検索
+        return Object.entries(params).every(([key, value]) => {
+          if (!value) return true;
+          if (key === "displayStartDate" || key === "displayEndDate")
+            return true;
+          const itemValue = item[key as keyof typeof item];
+          return itemValue?.toString().includes(value.toString());
+        });
       });
-    });
-    setFilteredNotifications(filtered);
-  };
+      setFilteredTableItems(filtered);
+    },
+    [enrichTableItems]
+  );
 
   const handleReset = () => {
-    const resetData = mockNotifications.map((item) => ({
-      ...item,
-      displayDate: `${dayjs(item.displayStartDate).format(
-        "YYYY/MM/DD"
-      )} ～ ${dayjs(item.displayEndDate).format("YYYY/MM/DD")}`,
-      displayIsShowHome: getDisplayIsShowHome(item.isShowHome),
-      displayIsPushNotification: getDisplayIsPushNotification(
-        item.isPushNotification
-      ),
-    }));
-    setFilteredNotifications(resetData);
+    const resetData = mockHealthInformation.map(enrichTableItems);
+    setFilteredTableItems(resetData);
   };
 
-  const makeNotification = () => {
-    // TODO: ダウンロード処理を書く
-    console.log("お知らせの新規作成");
+  // URLの操作でも検索を反映させる
+  useEffect(() => {
+    const queryParams: HealthInformationSearchParams = {
+      title: searchParams.get("title") || "",
+      registerDate: searchParams.get("registerDate") || "",
+      displayStartDate: searchParams.get("displayStartDate") || "",
+      displayEndDate: searchParams.get("displayEndDate") || "",
+    };
+    handleSearch(queryParams);
+  }, [handleSearch, searchParams]);
+
+  const makeNewItem = () => {
+    // TODO: 健康情報の新規作成処理を書く
+    console.log("健康情報の新規作成");
     router.push(
-      `/${ROUTES.NOTIFICATION_MANAGEMENT}/${ROUTES.MAKE_NOTIFICATION}`
+      `/${ROUTES.HEALTH_INFORMATION}/${ROUTES.MAKE_HEALTH_INFORMATION}`
     );
   };
 
   return (
-    <div className="">
-      <NotificationSearchForm onSearch={handleSearch} onReset={handleReset} />
+    <div className="overflow-x-scroll">
+      <div className="min-w-[1000px] w-full">
+        <HealthInformationSearchForm
+          onSearch={handleSearch}
+          onReset={handleReset}
+        />
 
-      {/* 件数表示 */}
-      <div className="px-5 flex justify-between">
-        <div className="pl-5 pb-1 body-cp-small text-cp-slate-gray text-left">
-          合計 {filteredNotifications.length}件
+        {/* 件数表示 */}
+        <div className="pt-5 justify-between bg-cp-white">
+          <div className="pr-5 text-right">
+            <BaseButton
+              onClick={makeNewItem}
+              text={"新規作成"}
+              color={"cp-white"}
+              size={"small"}
+            />
+          </div>
+          <div className="pl-5 body-cp-small text-cp-slate-gray text-left ">
+            合計 {filteredTableItems.length}件
+          </div>
         </div>
-        <div className="py-2.5">
-          <BaseButton
-            onClick={makeNotification}
-            text={"新規作成"}
-            color={"cp-white"}
-            size={"small"}
-          />
-        </div>
+        <HealthInformationTable healthInformation={filteredTableItems} />
       </div>
-      <NotificationTable notifications={filteredNotifications} />
     </div>
   );
 }

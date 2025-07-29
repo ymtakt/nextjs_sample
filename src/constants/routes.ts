@@ -23,9 +23,11 @@ export const ROUTES = {
   // お知らせ管理
   NOTIFICATION_MANAGEMENT: "notification-management",
   MIRALLEL_NOTIFICATIONS: "mirallel-notification",
-  HEALTH_INFORMATION: "health-information",
   MAKE_NOTIFICATION: "make-notification",
   NOTIFICATION_DETAIL: "notification-detail",
+  HEALTH_INFORMATION: "health-information",
+  MAKE_HEALTH_INFORMATION: "make-health-information",
+  HEALTH_INFORMATION_DETAIL: "health-information-detail",
   // 紹介コード管理
   REFERRAL_CODE_MANAGEMENT: "referral-code-management",
   MAKE_REFERRAL_CODE: "make-referral-code",

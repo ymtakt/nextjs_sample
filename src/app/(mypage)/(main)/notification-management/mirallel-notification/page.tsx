@@ -4,7 +4,10 @@ import { useCallback, useEffect, useState } from "react";
 import BaseButton from "@/components/general/Button/BaseButton";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
-import { MirallelNotification, mockNotifications } from "@/mocks/notifications";
+import {
+  MirallelNotification,
+  mockNotifications,
+} from "@/features/notification-management/mocks/notifications";
 import dayjs from "dayjs";
 import NotificationSearchForm, {
   NotificationSearchParams,

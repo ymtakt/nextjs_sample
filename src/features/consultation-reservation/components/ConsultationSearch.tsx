@@ -9,7 +9,7 @@ import { ROUTES } from "@/constants/routes";
 import {
   ConsultationStatusOptions,
   ConsultationTypeOptions,
-} from "@/mocks/consultationOptions";
+} from "@/features/consultation-reservation/mocks/consultationOptions";
 
 export type ConsultationSearchParams = {
   reservationStartDate: string;

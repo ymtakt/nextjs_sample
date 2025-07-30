@@ -6,7 +6,7 @@ import TextBox from "@/components/general/FormParts/TextBox";
 import DropDown from "@/components/general/FormParts/DropDown";
 import BaseButton from "@/components/general/Button/BaseButton";
 import { ROUTES } from "@/constants/routes";
-import { supplementBrands } from "@/mocks/supplementOptions";
+import { supplementBrands } from "@/features/supplement-management/mocks/supplementOptions";
 
 export type SupplementSearchParams = {
   id: string;

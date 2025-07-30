@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { User, mockUsers } from "@/mocks/users";
+import { User, mockUsers } from "@/features/user-management/mocks/users";
 import BaseButton from "@/components/general/Button/BaseButton";
 import ButtonModal from "@/components/general/Modals/ButtonModal";
 import UserSearchForm, {

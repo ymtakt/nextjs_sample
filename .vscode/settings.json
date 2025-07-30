@@ -6,7 +6,9 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-
+  // ファイル移動時にインポート文の修正
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
   // ファイル全体でデフォルトのフォーマッタを Prettier に設定
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MirallelNotification } from "@/mocks/notifications";
+import { MirallelNotification } from "@/features/notification-management/mocks/notifications";
 import Pagination from "@/components/general/Pagination";
 
 import { useRouter } from "next/navigation";

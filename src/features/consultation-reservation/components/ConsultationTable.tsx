@@ -4,7 +4,7 @@ import { useState } from "react";
 import Pagination from "@/components/general/Pagination";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
-import { Consultation } from "@/mocks/consultations";
+import { Consultation } from "@/features/consultation-reservation/mocks/consultations";
 
 type Props = {
   consultations: Consultation[];

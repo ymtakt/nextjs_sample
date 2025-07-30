@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ReferralCode } from "@/mocks/referralCodes";
+import { ReferralCode } from "@/features/referral-code-management/mocks/referralCodes";
 import Pagination from "@/components/general/Pagination";
 import BaseButton from "@/components/general/Button/BaseButton";
 import ButtonModal from "@/components/general/Modals/ButtonModal";

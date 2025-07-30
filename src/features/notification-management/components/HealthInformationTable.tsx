@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { HealthInformation } from "@/mocks/healthInformation";
+import { HealthInformation } from "@/features/notification-management/mocks/healthInformation";
 import Pagination from "@/components/general/Pagination";
 
 import { useRouter } from "next/navigation";

@@ -6,7 +6,7 @@ import Pagination from "@/components/general/Pagination";
 
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
-import { InspectionReservation } from "@/mocks/inspectionReservation";
+import { InspectionReservation } from "@/features/inspection-management/inspection-reservation/mocks/inspectionReservation";
 
 type Props = {
   inspectionReservations: InspectionReservation[];

@@ -7,7 +7,7 @@ import BaseButton from "@/components/general/Button/BaseButton";
 import {
   Consultation,
   mockConsultationReservations,
-} from "@/mocks/consultations";
+} from "@/features/consultation-reservation/mocks/consultations";
 import dayjs from "dayjs";
 import ConsultationSearchForm, {
   ConsultationSearchParams,

@@ -8,7 +8,10 @@ import VideoTable from "@/features/video-management/components/VideoTable";
 import VideoSearchForm, {
   VideoSearchParams,
 } from "@/features/video-management/components/VideoSearch";
-import { MIrallelVideo, mockMIrallelVideos } from "@/mocks/videos";
+import {
+  MIrallelVideo,
+  mockMIrallelVideos,
+} from "@/features/video-management/mocks/videos";
 import VideoAddKeyword from "@/features/video-management/components/VideoKeyword";
 
 export default function NotificationManagement() {

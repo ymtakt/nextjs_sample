@@ -6,7 +6,7 @@ import Pagination from "@/components/general/Pagination";
 
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
-import { InspectionSetting } from "@/mocks/inspectionSetting";
+import { InspectionSetting } from "@/features/inspection-management/inspections-setting/mocks/inspectionSetting";
 
 type Props = {
   inspectionSettings: InspectionSetting[];

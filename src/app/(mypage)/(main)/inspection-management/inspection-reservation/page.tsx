@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 import {
   InspectionReservation,
   mockInspectionReservations,
-} from "@/mocks/inspectionReservation";
+} from "@/features/inspection-management/inspection-reservation/mocks/inspectionReservation";
 import InspectionReservationSearchForm, {
   InspectionReservationSearchParams,
 } from "@/features/inspection-management/inspection-reservation/components/InspectionsReservationSearch";

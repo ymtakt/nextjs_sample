@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Account } from "@/mocks/accounts";
+import { Account } from "@/features/account-management/mocks/accounts";
 import Pagination from "@/components/general/Pagination";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/constants/routes";

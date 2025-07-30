@@ -7,7 +7,7 @@ import ButtonModal from "@/components/general/Modals/ButtonModal";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
 import { IoMdTrash } from "react-icons/io";
-import { Supplement } from "@/mocks/supplement";
+import { Supplement } from "@/features/supplement-management/mocks/supplement";
 
 type Props = {
   supplements: Supplement[];

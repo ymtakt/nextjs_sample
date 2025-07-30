@@ -8,7 +8,7 @@ import {
   genderOptions,
   UserRankOptions,
   mailAllowedOptions,
-} from "@/mocks/userOptions";
+} from "@/features/user-management/mocks/userOptions";
 import { ROUTES } from "@/constants/routes";
 
 export type UserSearchParams = {

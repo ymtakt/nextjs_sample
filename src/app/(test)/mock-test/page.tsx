@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { mockInspectionSettings } from "@/mocks/inspectionSetting";
+import { mockInspectionSettings } from "@/features/inspection-management/inspections-setting/mocks/inspectionSetting";
 
 export default function HealthInfoPage() {
   useEffect(() => {

@@ -8,7 +8,7 @@ import RadioButton from "@/components/general/FormParts/RadioButton";
 import BaseButton from "@/components/general/Button/BaseButton";
 
 import { ROUTES } from "@/constants/routes";
-import { HomeDisplayStatusOptions } from "@/mocks/notificationOptions";
+import { HomeDisplayStatusOptions } from "@/features/notification-management/mocks/notificationOptions";
 
 export type NotificationSearchParams = {
   title: string;

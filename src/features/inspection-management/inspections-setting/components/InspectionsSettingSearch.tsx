@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import DropDown from "@/components/general/FormParts/DropDown";
 import BaseButton from "@/components/general/Button/BaseButton";
 import { ROUTES } from "@/constants/routes";
-import { PublishSettingOptions } from "@/mocks/inspectionSettingOptions";
+import { PublishSettingOptions } from "@/features/inspection-management/inspections-setting/mocks/inspectionSettingOptions";
 
 export type InspectionSettingSearchParams = {
   id: string;

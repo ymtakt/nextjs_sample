@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import TextBox from "@/components/general/FormParts/TextBox";
 import DropDown from "@/components/general/FormParts/DropDown";
 import BaseButton from "@/components/general/Button/BaseButton";
-import { referralCodeSections } from "@/mocks/referralCodeSections";
+import { referralCodeSections } from "@/features/referral-code-management/mocks/referralCodeSections";
 
 import { ROUTES } from "@/constants/routes";
 

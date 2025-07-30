@@ -4,7 +4,10 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
 import BaseButton from "@/components/general/Button/BaseButton";
-import { mockReferralCodes, ReferralCode } from "@/mocks/referralCodes";
+import {
+  mockReferralCodes,
+  ReferralCode,
+} from "@/features/referral-code-management/mocks/referralCodes";
 import ReferralCodeSearchForm, {
   ReferralCodeSearchParams,
 } from "@/features/referral-code-management/components/ReferralCodeSearch";

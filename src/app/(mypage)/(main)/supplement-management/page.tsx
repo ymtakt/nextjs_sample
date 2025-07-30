@@ -4,7 +4,10 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import BaseButton from "@/components/general/Button/BaseButton";
 import { ROUTES } from "@/constants/routes";
-import { mockSupplements, Supplement } from "@/mocks/supplement";
+import {
+  mockSupplements,
+  Supplement,
+} from "@/features/supplement-management/mocks/supplement";
 import SupplementSearchForm, {
   SupplementSearchParams,
 } from "@/features/supplement-management/components/SupplementSearch";

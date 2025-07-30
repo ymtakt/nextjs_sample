@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
 import Pagination from "@/components/general/Pagination";
-import { MIrallelVideo } from "@/mocks/videos";
+import { MIrallelVideo } from "@/features/video-management/mocks/videos";
 
 type Props = {
   videos: MIrallelVideo[];

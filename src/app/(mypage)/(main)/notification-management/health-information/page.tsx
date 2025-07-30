@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 import {
   HealthInformation,
   mockHealthInformation,
-} from "@/mocks/healthInformation";
+} from "@/features/notification-management/mocks/healthInformation";
 import HealthInformationSearchForm, {
   HealthInformationSearchParams,
 } from "@/features/notification-management/components/HealthInformationSearch";

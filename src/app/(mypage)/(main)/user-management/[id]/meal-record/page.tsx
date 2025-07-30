@@ -1,4 +1,4 @@
-import { mockUserDetails } from "@/mocks/userDetails";
+import { mockUserDetails } from "@/features/user-management/mocks/userDetails";
 import { notFound } from "next/navigation";
 
 type Props = {

@@ -11,7 +11,7 @@ import {
   videoCategories,
   videoKeywords,
   viewingRestrictions,
-} from "@/mocks/videoOptions";
+} from "@/features/video-management/mocks/videoOptions";
 
 export type VideoSearchParams = {
   id: string;

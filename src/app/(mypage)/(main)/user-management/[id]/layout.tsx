@@ -4,7 +4,7 @@ import Link from "next/link";
 import { use } from "react";
 import { ReactNode } from "react";
 import { usePathname } from "next/navigation";
-import { mockUserDetails } from "@/mocks/userDetails";
+import { mockUserDetails } from "@/features/user-management/mocks/userDetails";
 import { ROUTES } from "@/constants/routes";
 
 export default function UserLayout({

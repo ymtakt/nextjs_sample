@@ -9,7 +9,7 @@ import { ROUTES } from "@/constants/routes";
 import {
   InspectionItemOptions,
   InspectionReservationStatusOptions,
-} from "@/mocks/inspectionReservationOptions";
+} from "@/features/inspection-management/inspection-reservation/mocks/inspectionReservationOptions";
 
 export type InspectionReservationSearchParams = {
   reservationId: string;

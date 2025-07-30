@@ -7,7 +7,7 @@ import BaseButton from "@/components/general/Button/BaseButton";
 import {
   InspectionSetting,
   mockInspectionSettings,
-} from "@/mocks/inspectionSetting";
+} from "@/features/inspection-management/inspections-setting/mocks/inspectionSetting";
 import InspectionSettingSearchForm, {
   InspectionSettingSearchParams,
 } from "@/features/inspection-management/inspections-setting/components/InspectionsSettingSearch";

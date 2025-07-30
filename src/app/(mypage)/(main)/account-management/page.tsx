@@ -4,7 +4,10 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
 import BaseButton from "@/components/general/Button/BaseButton";
-import { Account, mockAccounts } from "@/mocks/accounts";
+import {
+  Account,
+  mockAccounts,
+} from "@/features/account-management/mocks/accounts";
 import AccountSearchForm, {
   AccountSearchParams,
 } from "@/features/account-management/components/AccountSearch";

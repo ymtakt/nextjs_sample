@@ -9,7 +9,7 @@ import { ROUTES } from "@/constants/routes";
 import {
   AccountAuthorityOptions,
   AccountLicenseOptions,
-} from "@/mocks/accountOptions";
+} from "@/features/account-management/mocks/accountOptions";
 
 export type AccountSearchParams = {
   accountId: string;

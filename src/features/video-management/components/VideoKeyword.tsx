@@ -15,7 +15,7 @@ export default function VideoAddKeyword() {
   return (
     <div className="px-5 pb-5">
       <div className="p-5 overflow-x-scroll bg-cp-white text-sm rounded">
-        <div className="w-full min-w-[1160px]">
+        <div className="w-full min-w-[600px]">
           <div className="flex items-end gap-4">
             <div className="pb-1">
               <TextBox

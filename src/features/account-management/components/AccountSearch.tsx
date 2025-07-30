@@ -66,8 +66,8 @@ export default function AccountSearchForm({ onSearch, onReset }: Props) {
 
   return (
     <div className="p-5 overflow-x-scroll bg-cp-white text-sm rounded">
-      <div className="w-full min-w-[1160px]  ">
-        <div className="p-4 grid grid-cols-5 gap-4">
+      <div className="w-full min-w-[800px]  ">
+        <div className="p-4 grid grid-cols-3 gap-4">
           <div>
             <TextBox
               label="アカウント名"

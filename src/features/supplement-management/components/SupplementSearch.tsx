@@ -58,8 +58,8 @@ export default function SupplementSearchForm({ onSearch, onReset }: Props) {
   return (
     <div className="px-5 pb-5">
       <div className="p-5 overflow-x-scroll bg-cp-white text-sm rounded">
-        <div className="w-full min-w-[1160px] ">
-          <div className="p-4 grid grid-cols-5 gap-4">
+        <div className="w-full min-w-[600px] ">
+          <div className="p-4 grid grid-cols-2 gap-4">
             <div>
               <TextBox
                 label="サプリメント名"

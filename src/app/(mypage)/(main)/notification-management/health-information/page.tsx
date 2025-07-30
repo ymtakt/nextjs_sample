@@ -5,14 +5,14 @@ import BaseButton from "@/components/general/Button/BaseButton";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
 import dayjs from "dayjs";
-import HealthInformationSearchForm, {
-  HealthInformationSearchParams,
-} from "@/components/general/TableSearches/HealthInformationManagementSearch";
-import HealthInformationTable from "@/components/general/Tables/HealthInformationManagement";
 import {
   HealthInformation,
   mockHealthInformation,
 } from "@/mocks/healthInformation";
+import HealthInformationSearchForm, {
+  HealthInformationSearchParams,
+} from "@/features/notification-management/components/HealthInformationSearch";
+import HealthInformationTable from "@/features/notification-management/components/HealthInformationTable";
 
 export default function HealthInformationManagement() {
   const router = useRouter();

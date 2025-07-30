@@ -44,7 +44,7 @@ export default function AccountManagement() {
     <div className="">
       <div className="px-5 flex justify-between">
         <p className="flex items-center title-cp-medium text-cp-slate-gray">
-          サプリメント管理
+          アカウント管理
         </p>
         <div className="py-2.5">
           <BaseButton

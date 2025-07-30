@@ -1,16 +1,14 @@
 "use client";
 
 import { useState } from "react";
-
-import BaseButton from "@/components/general/Button/BaseButton";
-
 import { useRouter } from "next/navigation";
+import BaseButton from "@/components/general/Button/BaseButton";
 import { ROUTES } from "@/constants/routes";
-import SupplementTable from "@/components/general/Tables/SupplementManagement";
+import { mockSupplements, Supplement } from "@/mocks/supplement";
 import SupplementSearchForm, {
   SupplementSearchParams,
-} from "@/components/general/TableSearches/SupplementManagementSearch";
-import { mockSupplements, Supplement } from "@/mocks/supplement";
+} from "@/features/supplement-management/components/SupplementSearch";
+import SupplementTable from "@/features/supplement-management/components/SupplementTable";
 
 export default function SupplementManagement() {
   const router = useRouter();

@@ -20,6 +20,9 @@ export const ROUTES = {
   EDIT_CONSULTATION: "edit-consultation",
   // 動画管理
   VIDEO_MANAGEMENT: "video-management",
+  VIDEO_INFO: "video-info",
+  MAKE_VIDEO: "make-video",
+  EDIT_VIDEO: "edit-video",
   // お知らせ管理
   NOTIFICATION_MANAGEMENT: "notification-management",
   MIRALLEL_NOTIFICATIONS: "mirallel-notification",

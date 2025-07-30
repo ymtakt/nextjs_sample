@@ -7,8 +7,8 @@ import BaseButton from "@/components/general/Button/BaseButton";
 import { Account, mockAccounts } from "@/mocks/accounts";
 import AccountSearchForm, {
   AccountSearchParams,
-} from "@/features/account-management/compnentes/AccountSearch";
-import AccountTable from "@/features/account-management/compnentes/AccountTable";
+} from "@/features/account-management/components/AccountSearch";
+import AccountTable from "@/features/account-management/components/AccountTable";
 
 export default function AccountManagement() {
   const router = useRouter();

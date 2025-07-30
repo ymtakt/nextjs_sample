@@ -10,6 +10,7 @@ import {
   mailAllowedOptions,
 } from "@/features/user-management/mocks/userOptions";
 import { ROUTES } from "@/constants/routes";
+import BaseButton from "@/components/general/Button/BaseButton";
 
 export type UserSearchParams = {
   id: string;
@@ -168,21 +169,22 @@ export default function UserSearchForm({ onSearch, onReset }: Props) {
         </div>
         {/* --- 検索／リセット --- */}
         <div className="border-cp-soft-gray border-b mx-4" />
-        <div className="py-4 flex justify-center gap-4">
+        <div className="pt-5 flex justify-center gap-4">
           <button
-            className="text-cp-sky-blue underline"
+            className="text-cp-sky-blue underline cursor-pointer"
             onClick={handleReset}
             type="button"
           >
             リセット
           </button>
-          <button
-            className="bg-cp-sky-blue text-white px-4 py-1 rounded"
-            onClick={handleSearch}
-            type="button"
-          >
-            検索
-          </button>
+          <div>
+            <BaseButton
+              onClick={handleSearch}
+              text={"検索"}
+              color={"cp-sky-blue"}
+              size={"small"}
+            />
+          </div>
         </div>
       </div>
     </div>

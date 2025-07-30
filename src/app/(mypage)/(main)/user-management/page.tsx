@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { User, mockUsers } from "@/features/user-management/mocks/users";
 import BaseButton from "@/components/general/Button/BaseButton";
 import ButtonModal from "@/components/general/Modals/ButtonModal";
@@ -10,11 +11,12 @@ import UserSearchForm, {
 import UserTable from "@/features/user-management/components/UserTable";
 
 export default function UserManagement() {
+  const searchParams = useSearchParams();
   const [showCSVDownloadModal, setShowCSVDownloadModal] = useState(false);
   const [filteredTableItems, setFilteredTableItems] =
     useState<User[]>(mockUsers);
 
-  const handleSearch = (params: UserSearchParams) => {
+  const handleSearch = useCallback((params: UserSearchParams) => {
     const filtered = mockUsers.filter((item) => {
       return Object.entries(params).every(([key, value]) => {
         if (!value) return true;
@@ -24,11 +26,26 @@ export default function UserManagement() {
     });
 
     setFilteredTableItems(filtered);
-  };
+  }, []);
 
   const handleReset = () => {
     setFilteredTableItems(mockUsers);
   };
+
+  // URLの操作でも検索を反映させる
+  useEffect(() => {
+    const queryParams: UserSearchParams = {
+      id: searchParams.get("id") || "",
+      nameKanji: searchParams.get("nameKanji") || "",
+      nameKana: searchParams.get("nameKana") || "",
+      gender: searchParams.get("gender") || "",
+      membership: searchParams.get("membership") || "",
+      appId: searchParams.get("appId") || "",
+      referralCode: searchParams.get("referralCode") || "",
+      mailAllowed: searchParams.get("mailAllowed") || "",
+    };
+    handleSearch(queryParams);
+  }, [handleSearch, searchParams]);
 
   const csvDownload = () => {
     // TODO: ダウンロード処理を書く

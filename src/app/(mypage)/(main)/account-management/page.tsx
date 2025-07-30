@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
 import BaseButton from "@/components/general/Button/BaseButton";
 import {
@@ -15,24 +15,38 @@ import AccountTable from "@/features/account-management/components/AccountTable"
 
 export default function AccountManagement() {
   const router = useRouter();
-  const [filteredAccounts, setFilteredAccounts] =
+  const searchParams = useSearchParams();
+  const [filteredTableItems, setFilteredTableItems] =
     useState<Account[]>(mockAccounts);
 
-  const handleSearch = (params: AccountSearchParams) => {
-    const filtered = mockAccounts.filter((account) => {
+  const handleSearch = useCallback((params: AccountSearchParams) => {
+    const filtered = mockAccounts.filter((item) => {
       return Object.entries(params).every(([key, value]) => {
         if (!value) return true;
-        const accountValue = account[key as keyof typeof account];
-        return accountValue?.toString().includes(value.toString());
+        const itemValue = item[key as keyof typeof item];
+        return itemValue?.toString().includes(value.toString());
       });
     });
 
-    setFilteredAccounts(filtered);
-  };
+    setFilteredTableItems(filtered);
+  }, []);
 
   const handleReset = () => {
-    setFilteredAccounts(mockAccounts);
+    setFilteredTableItems(mockAccounts);
   };
+
+  // URLの操作でも検索を反映させる
+  useEffect(() => {
+    const queryParams: AccountSearchParams = {
+      accountId: searchParams.get("accountId") || "",
+      accountName: searchParams.get("accountName") || "",
+      displayName: searchParams.get("displayName") || "",
+      accountAuthority: searchParams.get("accountAuthority") || "",
+      accountLicense: searchParams.get("accountLicense") || "",
+      mail: searchParams.get("mail") || "",
+    };
+    handleSearch(queryParams);
+  }, [handleSearch, searchParams]);
 
   const makeAccount = () => {
     // TODO: 新規作成処理を書く
@@ -61,10 +75,10 @@ export default function AccountManagement() {
 
       {/* 件数表示 */}
       <div className="body-cp-small text-cp-slate-gray text-left pl-5 pt-5 pb-2">
-        合計 {filteredAccounts.length}件
+        合計 {filteredTableItems.length}件
       </div>
       <div className="px-5 ">
-        <AccountTable accounts={filteredAccounts} />
+        <AccountTable accounts={filteredTableItems} />
       </div>
     </div>
   );

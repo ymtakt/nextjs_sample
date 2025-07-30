@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import BaseButton from "@/components/general/Button/BaseButton";
 import { ROUTES } from "@/constants/routes";
 import {
@@ -15,10 +15,11 @@ import SupplementTable from "@/features/supplement-management/components/Supplem
 
 export default function SupplementManagement() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   // テーブルのデータ
   const [filteredTableItems, setFilteredTableItems] =
     useState<Supplement[]>(mockSupplements);
-  const handleSearch = (params: SupplementSearchParams) => {
+  const handleSearch = useCallback((params: SupplementSearchParams) => {
     const filtered = mockSupplements.filter((item) => {
       return Object.entries(params).every(([key, value]) => {
         if (!value) return true;
@@ -26,13 +27,23 @@ export default function SupplementManagement() {
         return itemValue?.toString().includes(value.toString());
       });
     });
-
     setFilteredTableItems(filtered);
-  };
+  }, []);
 
   const handleReset = () => {
     setFilteredTableItems(mockSupplements);
   };
+
+  // URLの操作でも検索を反映させる
+  useEffect(() => {
+    const queryParams: SupplementSearchParams = {
+      id: searchParams.get("id") || "",
+      registerDate: searchParams.get("registerDate") || "",
+      supplementName: searchParams.get("supplementName") || "",
+      supplementBrand: searchParams.get("supplementBrand") || "",
+    };
+    handleSearch(queryParams);
+  }, [handleSearch, searchParams]);
 
   const makeNewItem = () => {
     // TODO: 新規作成処理を書く

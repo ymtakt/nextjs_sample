@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
 import BaseButton from "@/components/general/Button/BaseButton";
 import {
@@ -15,10 +15,11 @@ import ReferralCodeTable from "@/features/referral-code-management/components/Re
 
 export default function ReferralCodeManagement() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [filteredTableItems, setFilteredTableItems] =
     useState<ReferralCode[]>(mockReferralCodes);
 
-  const handleSearch = (params: ReferralCodeSearchParams) => {
+  const handleSearch = useCallback((params: ReferralCodeSearchParams) => {
     const filtered = mockReferralCodes.filter((item) => {
       return Object.entries(params).every(([key, value]) => {
         if (!value) return true;
@@ -28,11 +29,22 @@ export default function ReferralCodeManagement() {
     });
 
     setFilteredTableItems(filtered);
-  };
+  }, []);
 
   const handleReset = () => {
     setFilteredTableItems(mockReferralCodes);
   };
+
+  // URLの操作でも検索を反映させる
+  useEffect(() => {
+    const queryParams: ReferralCodeSearchParams = {
+      id: searchParams.get("id") || "",
+      referralCode: searchParams.get("referralCode") || "",
+      referredName: searchParams.get("referredName") || "",
+      section: searchParams.get("section") || "",
+    };
+    handleSearch(queryParams);
+  }, [handleSearch, searchParams]);
 
   const makeReferralCode = () => {
     // TODO: ダウンロード処理を書く

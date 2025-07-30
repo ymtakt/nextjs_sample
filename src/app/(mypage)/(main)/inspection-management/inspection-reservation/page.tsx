@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
 import BaseButton from "@/components/general/Button/BaseButton";
 import dayjs from "dayjs";
@@ -16,38 +16,57 @@ import InspectionReservationTable from "@/features/inspection-management/inspect
 
 export default function InspectionReservationManagement() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [filteredTableItems, setFilteredTableItems] = useState<
     InspectionReservation[]
   >(mockInspectionReservations);
 
-  const handleSearch = (params: InspectionReservationSearchParams) => {
-    const filtered = mockInspectionReservations.filter((item) => {
-      const CheckDate = dayjs(item.inspectionDate);
-      // 開始日チェック
-      if (params.inspectionStartDate) {
-        const startDate = dayjs(params.inspectionStartDate);
-        if (CheckDate.isBefore(startDate, "day")) return false;
-      }
-      // 終了日チェック
-      if (params.inspectionEndDate) {
-        const endDate = dayjs(params.inspectionEndDate);
-        if (CheckDate.isAfter(endDate, "day")) return false;
-      }
-      // 他の項目は部分一致で検索
-      return Object.entries(params).every(([key, value]) => {
-        if (!value) return true;
-        if (key === "reservationStartDate" || key === "reservationEndDate")
-          return true;
-        const itemValue = item[key as keyof typeof item];
-        return itemValue?.toString().includes(value.toString());
+  const handleSearch = useCallback(
+    (params: InspectionReservationSearchParams) => {
+      const filtered = mockInspectionReservations.filter((item) => {
+        const CheckDate = dayjs(item.inspectionDate);
+        // 開始日チェック
+        if (params.inspectionStartDate) {
+          const startDate = dayjs(params.inspectionStartDate);
+          if (CheckDate.isBefore(startDate, "day")) return false;
+        }
+        // 終了日チェック
+        if (params.inspectionEndDate) {
+          const endDate = dayjs(params.inspectionEndDate);
+          if (CheckDate.isAfter(endDate, "day")) return false;
+        }
+        // 他の項目は部分一致で検索
+        return Object.entries(params).every(([key, value]) => {
+          if (!value) return true;
+          if (key === "reservationStartDate" || key === "reservationEndDate")
+            return true;
+          const itemValue = item[key as keyof typeof item];
+          return itemValue?.toString().includes(value.toString());
+        });
       });
-    });
-    setFilteredTableItems(filtered);
-  };
+      setFilteredTableItems(filtered);
+    },
+    []
+  );
 
   const handleReset = () => {
     setFilteredTableItems(mockInspectionReservations);
   };
+
+  // URLの操作でも検索を反映させる
+  useEffect(() => {
+    const queryParams: InspectionReservationSearchParams = {
+      reservationId: searchParams.get("reservationId") || "",
+      inspectionStartDate: searchParams.get("inspectionStartDate") || "",
+      inspectionEndDate: searchParams.get("inspectionEndDate") || "",
+      mirallelId: searchParams.get("mirallelId") || "",
+      reservationName: searchParams.get("reservationName") || "",
+      inspectionItem: searchParams.get("inspectionItem") || "",
+      referralCode: searchParams.get("referralCode") || "",
+      reservationStatus: searchParams.get("reservationStatus") || "",
+    };
+    handleSearch(queryParams);
+  }, [handleSearch, searchParams]);
 
   const csvUpload = () => {
     // TODO: CSVアップロード処理を書く

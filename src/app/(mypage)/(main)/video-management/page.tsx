@@ -4,10 +4,10 @@ import { useCallback, useEffect, useState } from "react";
 import BaseButton from "@/components/general/Button/BaseButton";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
-import VideoTable from "@/components/general/Tables/VideoManagement";
+import VideoTable from "@/features/video-management/components/VideoTable";
 import VideoSearchForm, {
   VideoSearchParams,
-} from "@/components/general/TableSearches/VideoManagementSearch";
+} from "@/features/video-management/components/VideoSearch";
 import { MIrallelVideo, mockMIrallelVideos } from "@/mocks/videos";
 import VideoAddKeyword from "@/features/video-management/components/VideoKeyword";
 

@@ -4,10 +4,11 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
 import BaseButton from "@/components/general/Button/BaseButton";
-import AccountTable from "@/components/general/Tables/AccountManagement";
-import AccountSearchForm from "@/components/general/TableSearches/AccountManagementSearch";
 import { Account, mockAccounts } from "@/mocks/accounts";
-import type { AccountSearchParams } from "@/components/general/TableSearches/AccountManagementSearch";
+import AccountSearchForm, {
+  AccountSearchParams,
+} from "@/features/account-management/compnentes/AccountSearch";
+import AccountTable from "@/features/account-management/compnentes/AccountTable";
 
 export default function AccountManagement() {
   const router = useRouter();

@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { mockMIrallelVideos } from "@/mocks/videos";
+import { mockInspectionReservations } from "@/mocks/inspectionReservation";
 
 export default function HealthInfoPage() {
   useEffect(() => {
-    console.log("📝 mockMIrallelVideos:", mockMIrallelVideos);
+    console.log("📝 mockInspectionReservations:", mockInspectionReservations);
   }, []);
 
   return (

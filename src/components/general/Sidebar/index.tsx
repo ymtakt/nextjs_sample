@@ -99,12 +99,12 @@ export default function Navigation(props: Props) {
     {
       main: "検査管理",
       name: "検査予約管理",
-      route: `/${ROUTES.INSPECTION_BOOKING}`,
+      route: `/${ROUTES.INSPECTION_MANAGEMENT}/${ROUTES.INSPECTION_RESERVATIONS}`,
     },
     {
       main: "検査管理",
       name: "検査項目設定",
-      route: `/${ROUTES.INSPECTION_SETTING}`,
+      route: `/${ROUTES.INSPECTION_MANAGEMENT}/${ROUTES.INSPECTION_SETTING}`,
     },
   ];
 

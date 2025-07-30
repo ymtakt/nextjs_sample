@@ -13,8 +13,9 @@ export const ROUTES = {
   RESERVATION_HISTORY: "reservation-history",
   // 検査管理
   INSPECTION_MANAGEMENT: "inspection-management",
-  INSPECTION_BOOKING: "inspection-management/booking",
-  INSPECTION_SETTING: "inspection-management/setting",
+  INSPECTION_RESERVATIONS: "inspection-reservation",
+  MAKE_INSPECTION_RESERVATION: "make-inspection-reservation",
+  INSPECTION_SETTING: "inspection-setting",
   // 相談予約管理
   CONSULTATION_RESERVATION: "consultation-reservation",
   EDIT_CONSULTATION: "edit-consultation",

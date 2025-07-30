@@ -1,15 +1,14 @@
 "use client";
 
 import { useState } from "react";
-
-import BaseButton from "@/components/general/Button/BaseButton";
-import ReferralCodeTable from "@/components/general/Tables/ReferralCodeManagement";
-import ReferralCodeSearchForm, {
-  ReferralCodeSearchParams,
-} from "@/components/general/TableSearches/ReferralCodeManagementSearch";
-import { mockReferralCodes, ReferralCode } from "@/mocks/referralCodes";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
+import BaseButton from "@/components/general/Button/BaseButton";
+import { mockReferralCodes, ReferralCode } from "@/mocks/referralCodes";
+import ReferralCodeSearchForm, {
+  ReferralCodeSearchParams,
+} from "@/features/referral-code-management/components/ReferralCodeSearch";
+import ReferralCodeTable from "@/features/referral-code-management/components/ReferralCodeTable";
 
 export default function UserManagement() {
   const router = useRouter();

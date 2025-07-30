@@ -5,11 +5,11 @@ import BaseButton from "@/components/general/Button/BaseButton";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
 import { MirallelNotification, mockNotifications } from "@/mocks/notifications";
-import NotificationTable from "@/components/general/Tables/NotificationManagement";
+import dayjs from "dayjs";
 import NotificationSearchForm, {
   NotificationSearchParams,
-} from "@/components/general/TableSearches/NotificationManagementSearch";
-import dayjs from "dayjs";
+} from "@/features/notification-management/components/NotificationSearch";
+import NotificationTable from "@/features/notification-management/components/NotificationTable";
 
 export default function NotificationManagement() {
   const router = useRouter();

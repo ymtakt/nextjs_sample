@@ -4,14 +4,15 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
 import BaseButton from "@/components/general/Button/BaseButton";
-import ConsultationTable from "@/components/general/Tables/ConsultationManagement";
-import ConsultationSearchForm from "@/components/general/TableSearches/ConsultationManagementSearch";
 import {
   Consultation,
   mockConsultationReservations,
 } from "@/mocks/consultations";
-import { ConsultationSearchParams } from "@/components/general/TableSearches/ConsultationManagementSearch";
 import dayjs from "dayjs";
+import ConsultationSearchForm, {
+  ConsultationSearchParams,
+} from "@/features/consultation-reservation/components/ConsultationSearch";
+import ConsultationTable from "@/features/consultation-reservation/components/ConsultationTable";
 
 export default function ConsultationManagement() {
   const router = useRouter();

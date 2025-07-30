@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import UserTable from "@/components/general/Tables/UserManagement";
-import UserSearchForm from "@/components/general/TableSearches/UserManagementSearch";
 import { User, mockUsers } from "@/mocks/users";
-import type { UserSearchParams } from "@/components/general/TableSearches/UserManagementSearch";
 import BaseButton from "@/components/general/Button/BaseButton";
 import ButtonModal from "@/components/general/Modals/ButtonModal";
+import UserSearchForm, {
+  UserSearchParams,
+} from "@/features/user-management/components/UserSearch";
+import UserTable from "@/features/user-management/components/UserTable";
 
 export default function UserManagement() {
   const [showCSVDownloadModal, setShowCSVDownloadModal] = useState(false);

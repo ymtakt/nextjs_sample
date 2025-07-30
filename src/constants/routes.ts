@@ -16,6 +16,7 @@ export const ROUTES = {
   INSPECTION_RESERVATIONS: "inspection-reservation",
   MAKE_INSPECTION_RESERVATION: "make-inspection-reservation",
   INSPECTION_SETTING: "inspection-setting",
+  MAKE_INSPECTION_SETTING: "make-inspection-setting",
   // 相談予約管理
   CONSULTATION_RESERVATION: "consultation-reservation",
   EDIT_CONSULTATION: "edit-consultation",

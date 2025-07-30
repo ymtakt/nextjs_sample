@@ -14,9 +14,11 @@ export default function UserLayout({ children }: { children: ReactNode }) {
 
   return (
     <div>
-      <p className="p-4 title-cp-medium text-cp-slate-gray">お知らせ一覧</p>
+      <p className="px-5 pt-4 title-cp-medium text-cp-slate-gray">
+        お知らせ一覧
+      </p>
 
-      <div className="p-4">
+      <div className="p-5">
         {/* タブ */}
         <div className="flex gap-1 text-cp-black">
           {tabs.map((tab) => {

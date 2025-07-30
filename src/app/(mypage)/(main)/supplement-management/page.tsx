@@ -16,25 +16,25 @@ import SupplementTable from "@/features/supplement-management/components/Supplem
 export default function SupplementManagement() {
   const router = useRouter();
   // テーブルのデータ
-  const [filteredSupplement, setFilteredSupplement] =
+  const [filteredTableItems, setFilteredTableItems] =
     useState<Supplement[]>(mockSupplements);
   const handleSearch = (params: SupplementSearchParams) => {
-    const filtered = mockSupplements.filter((supplement) => {
+    const filtered = mockSupplements.filter((item) => {
       return Object.entries(params).every(([key, value]) => {
         if (!value) return true;
-        const codeValue = supplement[key as keyof typeof supplement];
-        return codeValue?.toString().includes(value.toString());
+        const itemValue = item[key as keyof typeof item];
+        return itemValue?.toString().includes(value.toString());
       });
     });
 
-    setFilteredSupplement(filtered);
+    setFilteredTableItems(filtered);
   };
 
   const handleReset = () => {
-    setFilteredSupplement(mockSupplements);
+    setFilteredTableItems(mockSupplements);
   };
 
-  const makeReferralCode = () => {
+  const makeNewItem = () => {
     // TODO: 新規作成処理を書く
     console.log("サプリメントの新規作成");
     router.push(`/${ROUTES.SUPPLEMENT_MANAGEMENT}/${ROUTES.MAKE_SUPPLEMENT}`);
@@ -48,7 +48,7 @@ export default function SupplementManagement() {
         </p>
         <div className="py-2.5">
           <BaseButton
-            onClick={makeReferralCode}
+            onClick={makeNewItem}
             text={"新規作成"}
             color={"cp-white"}
             size={"small"}
@@ -59,9 +59,9 @@ export default function SupplementManagement() {
 
       {/* 件数表示 */}
       <div className="pl-5 pb-1 body-cp-small text-cp-slate-gray text-left">
-        合計 {filteredSupplement.length}件
+        合計 {filteredTableItems.length}件
       </div>
-      <SupplementTable supplements={filteredSupplement} />
+      <SupplementTable supplements={filteredTableItems} />
     </div>
   );
 }

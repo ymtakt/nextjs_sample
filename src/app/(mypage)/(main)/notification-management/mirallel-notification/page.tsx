@@ -40,16 +40,16 @@ export default function NotificationManagement() {
       const filtered = enriched.filter((item) => {
         return Object.entries(params).every(([key, value]) => {
           if (!value) return true;
-          const codeValue = item[key as keyof typeof item];
+          const itemValue = item[key as keyof typeof item];
           // 完全一致させたいキー
           if (
             key === "displayIsShowHome" ||
             key === "displayIsPushNotification"
           ) {
-            return codeValue === value;
+            return itemValue === value;
           }
           // 通常は部分一致
-          return codeValue?.toString().includes(value.toString());
+          return itemValue?.toString().includes(value.toString());
         });
       });
       setFilteredTableItems(filtered);

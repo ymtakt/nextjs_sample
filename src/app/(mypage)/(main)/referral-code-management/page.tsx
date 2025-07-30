@@ -13,25 +13,25 @@ import ReferralCodeSearchForm, {
 } from "@/features/referral-code-management/components/ReferralCodeSearch";
 import ReferralCodeTable from "@/features/referral-code-management/components/ReferralCodeTable";
 
-export default function UserManagement() {
+export default function ReferralCodeManagement() {
   const router = useRouter();
-  const [filteredReferralCodes, setFilteredReferralCodes] =
+  const [filteredTableItems, setFilteredTableItems] =
     useState<ReferralCode[]>(mockReferralCodes);
 
   const handleSearch = (params: ReferralCodeSearchParams) => {
-    const filtered = mockReferralCodes.filter((code) => {
+    const filtered = mockReferralCodes.filter((item) => {
       return Object.entries(params).every(([key, value]) => {
         if (!value) return true;
-        const codeValue = code[key as keyof typeof code];
-        return codeValue?.toString().includes(value.toString());
+        const itemValue = item[key as keyof typeof item];
+        return itemValue?.toString().includes(value.toString());
       });
     });
 
-    setFilteredReferralCodes(filtered);
+    setFilteredTableItems(filtered);
   };
 
   const handleReset = () => {
-    setFilteredReferralCodes(mockReferralCodes);
+    setFilteredTableItems(mockReferralCodes);
   };
 
   const makeReferralCode = () => {
@@ -61,9 +61,9 @@ export default function UserManagement() {
 
       {/* 件数表示 */}
       <div className="pl-5 pb-1 body-cp-small text-cp-slate-gray text-left">
-        合計 {filteredReferralCodes.length}件
+        合計 {filteredTableItems.length}件
       </div>
-      <ReferralCodeTable referralCodes={filteredReferralCodes} />
+      <ReferralCodeTable referralCodes={filteredTableItems} />
     </div>
   );
 }

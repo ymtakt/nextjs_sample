@@ -11,22 +11,23 @@ import UserTable from "@/features/user-management/components/UserTable";
 
 export default function UserManagement() {
   const [showCSVDownloadModal, setShowCSVDownloadModal] = useState(false);
-  const [filteredUsers, setFilteredUsers] = useState<User[]>(mockUsers);
+  const [filteredTableItems, setFilteredTableItems] =
+    useState<User[]>(mockUsers);
 
   const handleSearch = (params: UserSearchParams) => {
-    const filtered = mockUsers.filter((user) => {
+    const filtered = mockUsers.filter((item) => {
       return Object.entries(params).every(([key, value]) => {
         if (!value) return true;
-        const userValue = user[key as keyof typeof user];
-        return userValue?.toString().includes(value.toString());
+        const itemValue = item[key as keyof typeof item];
+        return itemValue?.toString().includes(value.toString());
       });
     });
 
-    setFilteredUsers(filtered);
+    setFilteredTableItems(filtered);
   };
 
   const handleReset = () => {
-    setFilteredUsers(mockUsers);
+    setFilteredTableItems(mockUsers);
   };
 
   const csvDownload = () => {
@@ -64,10 +65,10 @@ export default function UserManagement() {
       </div>
       {/* 件数表示 */}
       <div className="body-cp-small text-cp-slate-gray text-left pl-5">
-        合計 {filteredUsers.length}件
+        合計 {filteredTableItems.length}件
       </div>
       <div className="px-5 ">
-        <UserTable users={filteredUsers} />
+        <UserTable users={filteredTableItems} />
       </div>
     </div>
   );

@@ -38,8 +38,8 @@ export default function InspectionReservationManagement() {
         if (!value) return true;
         if (key === "reservationStartDate" || key === "reservationEndDate")
           return true;
-        const consultationValue = item[key as keyof typeof item];
-        return consultationValue?.toString().includes(value.toString());
+        const itemValue = item[key as keyof typeof item];
+        return itemValue?.toString().includes(value.toString());
       });
     });
     setFilteredTableItems(filtered);

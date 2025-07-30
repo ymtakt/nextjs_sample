@@ -24,8 +24,8 @@ export default function InspectionReservationManagement() {
     const filtered = mockInspectionSettings.filter((item) => {
       return Object.entries(params).every(([key, value]) => {
         if (!value) return true;
-        const consultationValue = item[key as keyof typeof item];
-        return consultationValue?.toString().includes(value.toString());
+        const itemValue = item[key as keyof typeof item];
+        return itemValue?.toString().includes(value.toString());
       });
     });
     setFilteredTableItems(filtered);

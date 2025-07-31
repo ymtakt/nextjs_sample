@@ -1,9 +1,12 @@
 "use client";
 
+// ネイティブライブラリ
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+// 共通コンポーネント
 import BaseButton from "@/components/general/Button/BaseButton";
 import { ROUTES } from "@/constants/routes";
+// featureコンポーネント
 import {
   mockSupplements,
   Supplement,
@@ -14,11 +17,15 @@ import SupplementSearchForm, {
 import SupplementTable from "@/features/supplement-management/components/SupplementTable";
 
 export default function SupplementManagement() {
+  // インスタンス化
   const router = useRouter();
   const searchParams = useSearchParams();
-  // テーブルのデータ
+
+  // フィルターしたテーブル要素のステート
   const [filteredTableItems, setFilteredTableItems] =
     useState<Supplement[]>(mockSupplements);
+
+  // 検索時の処理
   const handleSearch = useCallback((params: SupplementSearchParams) => {
     const filtered = mockSupplements.filter((item) => {
       return Object.entries(params).every(([key, value]) => {
@@ -30,6 +37,7 @@ export default function SupplementManagement() {
     setFilteredTableItems(filtered);
   }, []);
 
+  // リセット時の処理
   const handleReset = () => {
     setFilteredTableItems(mockSupplements);
   };
@@ -45,14 +53,15 @@ export default function SupplementManagement() {
     handleSearch(queryParams);
   }, [handleSearch, searchParams]);
 
+  // TODO: 新規作成処理を書く
   const makeNewItem = () => {
-    // TODO: 新規作成処理を書く
     console.log("サプリメントの新規作成");
     router.push(`/${ROUTES.SUPPLEMENT_MANAGEMENT}/${ROUTES.MAKE_SUPPLEMENT}`);
   };
 
   return (
-    <div className="">
+    <div>
+      {/* タイトル */}
       <div className="px-5 flex justify-between">
         <p className="flex items-center title-cp-medium text-cp-slate-gray">
           サプリメント管理
@@ -66,13 +75,21 @@ export default function SupplementManagement() {
           />
         </div>
       </div>
-      <SupplementSearchForm onSearch={handleSearch} onReset={handleReset} />
+
+      {/* 検索フォーム */}
+      <div>
+        <SupplementSearchForm onSearch={handleSearch} onReset={handleReset} />
+      </div>
 
       {/* 件数表示 */}
       <div className="pl-5 pb-1 body-cp-small text-cp-slate-gray text-left">
         合計 {filteredTableItems.length}件
       </div>
-      <SupplementTable supplements={filteredTableItems} />
+
+      {/* テーブル */}
+      <div>
+        <SupplementTable supplements={filteredTableItems} />
+      </div>
     </div>
   );
 }

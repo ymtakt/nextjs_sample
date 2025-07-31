@@ -1,26 +1,34 @@
 "use client";
 
+// ネイティブライブラリ
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+// 外部ライブラリ
+import dayjs from "dayjs";
+// 共通コンポーネント
 import { ROUTES } from "@/constants/routes";
 import BaseButton from "@/components/general/Button/BaseButton";
+// featureコンポーネント
 import {
   Consultation,
   mockConsultationReservations,
 } from "@/features/consultation-reservation/mocks/consultations";
-import dayjs from "dayjs";
 import ConsultationSearchForm, {
   ConsultationSearchParams,
 } from "@/features/consultation-reservation/components/ConsultationSearch";
 import ConsultationTable from "@/features/consultation-reservation/components/ConsultationTable";
 
 export default function ConsultationManagement() {
+  // インスタンス化
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  // フィルターしたテーブル要素のステート
   const [filteredTableItems, setFilteredTableItems] = useState<Consultation[]>(
     mockConsultationReservations
   );
 
+  // 検索時の処理
   const handleSearch = useCallback((params: ConsultationSearchParams) => {
     const filtered = mockConsultationReservations.filter((item) => {
       const CheckDate = dayjs(item.reservationDate);
@@ -46,6 +54,7 @@ export default function ConsultationManagement() {
     setFilteredTableItems(filtered);
   }, []);
 
+  // リセット時の処理
   const handleReset = () => {
     setFilteredTableItems(mockConsultationReservations);
   };
@@ -65,14 +74,15 @@ export default function ConsultationManagement() {
     handleSearch(queryParams);
   }, [handleSearch, searchParams]);
 
+  // TODO: CSVアップロード処理を書く
   const csvUpload = () => {
-    // TODO: 新規作成処理を書く
-    console.log("アカウントの新規作成");
+    console.log("CSVアップロード処理");
     router.push(`/${ROUTES.CONSULTATION_RESERVATION}`);
   };
 
   return (
-    <div className="">
+    <div>
+      {/* タイトル */}
       <div className="px-5 flex justify-between">
         <p className="flex items-center title-cp-medium text-cp-slate-gray">
           相談予約管理
@@ -86,6 +96,8 @@ export default function ConsultationManagement() {
           />
         </div>
       </div>
+
+      {/* 検索フォーム */}
       <div className="px-5">
         <ConsultationSearchForm onSearch={handleSearch} onReset={handleReset} />
       </div>
@@ -94,6 +106,8 @@ export default function ConsultationManagement() {
       <div className="body-cp-small text-cp-slate-gray text-left pl-5 pt-5 pb-2">
         合計 {filteredTableItems.length}件
       </div>
+
+      {/* テーブル */}
       <div className="px-5 ">
         <ConsultationTable consultations={filteredTableItems} />
       </div>

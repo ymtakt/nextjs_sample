@@ -1,9 +1,12 @@
 "use client";
 
+// ネイティブライブラリ
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+// 共通コンポーネント
 import { ROUTES } from "@/constants/routes";
 import BaseButton from "@/components/general/Button/BaseButton";
+// featureコンポーネント
 import {
   InspectionSetting,
   mockInspectionSettings,
@@ -14,12 +17,16 @@ import InspectionSettingSearchForm, {
 import InspectionSettingTable from "@/features/inspection-management/inspections-setting/components/InspectionsSettingTable";
 
 export default function InspectionReservationManagement() {
+  // インスタンス化
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  // フィルターしたテーブル要素のステート
   const [filteredTableItems, setFilteredTableItems] = useState<
     InspectionSetting[]
   >(mockInspectionSettings);
 
+  // 検索時の処理
   const handleSearch = useCallback((params: InspectionSettingSearchParams) => {
     const filtered = mockInspectionSettings.filter((item) => {
       return Object.entries(params).every(([key, value]) => {
@@ -31,6 +38,7 @@ export default function InspectionReservationManagement() {
     setFilteredTableItems(filtered);
   }, []);
 
+  // リセット時の処理
   const handleReset = () => {
     setFilteredTableItems(mockInspectionSettings);
   };
@@ -44,8 +52,8 @@ export default function InspectionReservationManagement() {
     handleSearch(queryParams);
   }, [handleSearch, searchParams]);
 
+  // TODO: 新規作成処理を書く
   const makeNewItem = () => {
-    // TODO: 新規作成処理を書く
     console.log("新規作成");
     router.push(
       `/${ROUTES.INSPECTION_MANAGEMENT}/${ROUTES.INSPECTION_SETTING}/${ROUTES.MAKE_INSPECTION_SETTING}`
@@ -53,7 +61,8 @@ export default function InspectionReservationManagement() {
   };
 
   return (
-    <div className="">
+    <div>
+      {/* タイトル */}
       <div className="px-5 flex justify-between">
         <p className="flex items-center title-cp-medium text-cp-slate-gray">
           検査項目管理
@@ -67,6 +76,8 @@ export default function InspectionReservationManagement() {
           />
         </div>
       </div>
+
+      {/* 検索フォーム */}
       <div className="px-5">
         <InspectionSettingSearchForm
           onSearch={handleSearch}
@@ -78,6 +89,8 @@ export default function InspectionReservationManagement() {
       <div className="body-cp-small text-cp-slate-gray text-left pl-5 pt-5 pb-2">
         合計 {filteredTableItems.length}件
       </div>
+
+      {/* テーブル */}
       <div className="px-5 ">
         <InspectionSettingTable inspectionSettings={filteredTableItems} />
       </div>

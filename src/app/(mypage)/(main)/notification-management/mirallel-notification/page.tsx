@@ -1,23 +1,31 @@
 "use client";
 
+// ネイティブライブラリ
 import { useCallback, useEffect, useState } from "react";
-import BaseButton from "@/components/general/Button/BaseButton";
 import { useRouter, useSearchParams } from "next/navigation";
+// 外部ライブラリ
+import dayjs from "dayjs";
+// 共通コンポーネント
+import BaseButton from "@/components/general/Button/BaseButton";
 import { ROUTES } from "@/constants/routes";
+// featureコンポーネント
 import {
   MirallelNotification,
   mockNotifications,
 } from "@/features/notification-management/mocks/notifications";
-import dayjs from "dayjs";
+
 import NotificationSearchForm, {
   NotificationSearchParams,
 } from "@/features/notification-management/components/NotificationSearch";
 import NotificationTable from "@/features/notification-management/components/NotificationTable";
 
 export default function NotificationManagement() {
+  // インスタンス化
   const router = useRouter();
   const searchParams = useSearchParams();
-  const enrichTableItems = useCallback(
+
+  // テーブル要素を組み合わせて追加
+  const addTableItems = useCallback(
     (item: MirallelNotification) => ({
       ...item,
       displayDate: `${dayjs(item.displayStartDate).format(
@@ -28,16 +36,19 @@ export default function NotificationManagement() {
     }),
     []
   );
+
+  // フィルターしたテーブル要素のステート
   const [filteredTableItems, setFilteredTableItems] = useState(() =>
-    mockNotifications.map(enrichTableItems)
+    mockNotifications.map(addTableItems)
   );
 
+  // 検索時の処理
   const handleSearch = useCallback(
     (params: NotificationSearchParams) => {
       // 表示用のデータを作成
-      const enriched = mockNotifications.map(enrichTableItems);
+      const added = mockNotifications.map(addTableItems);
       // フィルター処理
-      const filtered = enriched.filter((item) => {
+      const filtered = added.filter((item) => {
         return Object.entries(params).every(([key, value]) => {
           if (!value) return true;
           const itemValue = item[key as keyof typeof item];
@@ -54,11 +65,12 @@ export default function NotificationManagement() {
       });
       setFilteredTableItems(filtered);
     },
-    [enrichTableItems]
+    [addTableItems]
   );
 
+  // リセット時の処理
   const handleReset = () => {
-    const resetData = mockNotifications.map(enrichTableItems);
+    const resetData = mockNotifications.map(addTableItems);
     setFilteredTableItems(resetData);
   };
 
@@ -74,8 +86,8 @@ export default function NotificationManagement() {
     handleSearch(queryParams);
   }, [handleSearch, searchParams]);
 
+  // TODO: お知らせの新規作成処理を書く
   const makeNemItem = () => {
-    // TODO: お知らせの新規作成処理を書く
     console.log("お知らせの新規作成");
     router.push(
       `/${ROUTES.NOTIFICATION_MANAGEMENT}/${ROUTES.MAKE_NOTIFICATION}`
@@ -85,9 +97,15 @@ export default function NotificationManagement() {
   return (
     <div className="overflow-x-scroll">
       <div className="min-w-[1400px] w-full">
-        <NotificationSearchForm onSearch={handleSearch} onReset={handleReset} />
+        {/* 検索フォーム */}
+        <div>
+          <NotificationSearchForm
+            onSearch={handleSearch}
+            onReset={handleReset}
+          />
+        </div>
 
-        {/* 件数表示 */}
+        {/* ボタンと件数表示 */}
         <div className="pt-5 justify-between bg-cp-white">
           <div className="pr-5 text-right">
             <BaseButton
@@ -101,7 +119,11 @@ export default function NotificationManagement() {
             合計 {filteredTableItems.length}件
           </div>
         </div>
-        <NotificationTable notifications={filteredTableItems} />
+
+        {/* テーブル */}
+        <div>
+          <NotificationTable notifications={filteredTableItems} />
+        </div>
       </div>
     </div>
   );

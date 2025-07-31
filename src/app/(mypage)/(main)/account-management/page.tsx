@@ -1,9 +1,12 @@
 "use client";
 
+// ネイティブライブラリ
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+// 共通コンポーネント
 import { ROUTES } from "@/constants/routes";
 import BaseButton from "@/components/general/Button/BaseButton";
+// featureコンポーネント
 import {
   Account,
   mockAccounts,
@@ -14,11 +17,15 @@ import AccountSearchForm, {
 import AccountTable from "@/features/account-management/components/AccountTable";
 
 export default function AccountManagement() {
+  // インスタンス化
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  // フィルターしたテーブル要素のステート
   const [filteredTableItems, setFilteredTableItems] =
     useState<Account[]>(mockAccounts);
 
+  // 検索時の処理
   const handleSearch = useCallback((params: AccountSearchParams) => {
     const filtered = mockAccounts.filter((item) => {
       return Object.entries(params).every(([key, value]) => {
@@ -27,10 +34,10 @@ export default function AccountManagement() {
         return itemValue?.toString().includes(value.toString());
       });
     });
-
     setFilteredTableItems(filtered);
   }, []);
 
+  // リセット時の処理
   const handleReset = () => {
     setFilteredTableItems(mockAccounts);
   };
@@ -48,14 +55,15 @@ export default function AccountManagement() {
     handleSearch(queryParams);
   }, [handleSearch, searchParams]);
 
+  // TODO: 新規作成処理を書く
   const makeAccount = () => {
-    // TODO: 新規作成処理を書く
     console.log("アカウントの新規作成");
     router.push(`/${ROUTES.ACCOUNT_MANAGEMENT}/${ROUTES.MAKE_ACCOUNT}`);
   };
 
   return (
-    <div className="">
+    <div>
+      {/* タイトル */}
       <div className="px-5 flex justify-between">
         <p className="flex items-center title-cp-medium text-cp-slate-gray">
           アカウント管理
@@ -69,6 +77,8 @@ export default function AccountManagement() {
           />
         </div>
       </div>
+
+      {/* 検索フォーム */}
       <div className="px-5">
         <AccountSearchForm onSearch={handleSearch} onReset={handleReset} />
       </div>
@@ -77,6 +87,8 @@ export default function AccountManagement() {
       <div className="body-cp-small text-cp-slate-gray text-left pl-5 pt-5 pb-2">
         合計 {filteredTableItems.length}件
       </div>
+
+      {/* テーブル */}
       <div className="px-5 ">
         <AccountTable accounts={filteredTableItems} />
       </div>

@@ -1,21 +1,28 @@
 "use client";
 
+// ネイティブライブラリ
 import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { User, mockUsers } from "@/features/user-management/mocks/users";
+// 共通コンポーネント
 import BaseButton from "@/components/general/Button/BaseButton";
 import ButtonModal from "@/components/general/Modals/ButtonModal";
+// featureコンポーネント
+import { User, mockUsers } from "@/features/user-management/mocks/users";
 import UserSearchForm, {
   UserSearchParams,
 } from "@/features/user-management/components/UserSearch";
 import UserTable from "@/features/user-management/components/UserTable";
 
 export default function UserManagement() {
+  // インスタンス化
   const searchParams = useSearchParams();
+
+  // ステートのインスタンス化
   const [showCSVDownloadModal, setShowCSVDownloadModal] = useState(false);
   const [filteredTableItems, setFilteredTableItems] =
     useState<User[]>(mockUsers);
 
+  // 検索時の処理
   const handleSearch = useCallback((params: UserSearchParams) => {
     const filtered = mockUsers.filter((item) => {
       return Object.entries(params).every(([key, value]) => {
@@ -24,10 +31,10 @@ export default function UserManagement() {
         return itemValue?.toString().includes(value.toString());
       });
     });
-
     setFilteredTableItems(filtered);
   }, []);
 
+  // リセット時の処理
   const handleReset = () => {
     setFilteredTableItems(mockUsers);
   };
@@ -47,18 +54,25 @@ export default function UserManagement() {
     handleSearch(queryParams);
   }, [handleSearch, searchParams]);
 
+  // TODO: ダウンロード処理を書く
   const csvDownload = () => {
-    // TODO: ダウンロード処理を書く
     console.log("csvダウンロード処理");
     setShowCSVDownloadModal(false);
   };
 
   return (
-    <div className="">
-      <p className="p-5 title-cp-medium text-cp-slate-gray">ユーザー管理</p>
+    <div>
+      {/* タイトル */}
+      <div>
+        <p className="p-5 title-cp-medium text-cp-slate-gray">ユーザー管理</p>
+      </div>
+
+      {/* 検索フォーム */}
       <div className="px-5">
         <UserSearchForm onSearch={handleSearch} onReset={handleReset} />
       </div>
+
+      {/* ボタンとモーダル */}
       <div className="pl-5 py-4">
         <BaseButton
           onClick={() => setShowCSVDownloadModal(true)}
@@ -80,10 +94,13 @@ export default function UserManagement() {
           onLeft={() => setShowCSVDownloadModal(false)}
         />
       </div>
+
       {/* 件数表示 */}
       <div className="body-cp-small text-cp-slate-gray text-left pl-5">
         合計 {filteredTableItems.length}件
       </div>
+
+      {/* テーブル */}
       <div className="px-5 ">
         <UserTable users={filteredTableItems} />
       </div>

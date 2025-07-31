@@ -1,10 +1,14 @@
 "use client";
 
+// ネイティブライブラリ
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+// 外部ライブラリ
+import dayjs from "dayjs";
+// 共通コンポーネント
 import { ROUTES } from "@/constants/routes";
 import BaseButton from "@/components/general/Button/BaseButton";
-import dayjs from "dayjs";
+// featureコンポーネント
 import {
   InspectionReservation,
   mockInspectionReservations,
@@ -15,12 +19,16 @@ import InspectionReservationSearchForm, {
 import InspectionReservationTable from "@/features/inspection-management/inspection-reservation/components/InspectionsReservationTable";
 
 export default function InspectionReservationManagement() {
+  // インスタンス化
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  // フィルターしたテーブル要素のステート
   const [filteredTableItems, setFilteredTableItems] = useState<
     InspectionReservation[]
   >(mockInspectionReservations);
 
+  // 検索時の処理
   const handleSearch = useCallback(
     (params: InspectionReservationSearchParams) => {
       const filtered = mockInspectionReservations.filter((item) => {
@@ -49,6 +57,7 @@ export default function InspectionReservationManagement() {
     []
   );
 
+  // リセット時の処理
   const handleReset = () => {
     setFilteredTableItems(mockInspectionReservations);
   };
@@ -68,8 +77,8 @@ export default function InspectionReservationManagement() {
     handleSearch(queryParams);
   }, [handleSearch, searchParams]);
 
+  // TODO: CSVアップロード処理を書く
   const csvUpload = () => {
-    // TODO: CSVアップロード処理を書く
     console.log("CSVアップロード");
     router.push(
       `/${ROUTES.INSPECTION_MANAGEMENT}/${ROUTES.INSPECTION_RESERVATIONS}/${ROUTES.MAKE_INSPECTION_RESERVATION}`
@@ -77,7 +86,8 @@ export default function InspectionReservationManagement() {
   };
 
   return (
-    <div className="">
+    <div>
+      {/* タイトル */}
       <div className="px-5 flex justify-between">
         <p className="flex items-center title-cp-medium text-cp-slate-gray">
           検査予約管理
@@ -91,6 +101,8 @@ export default function InspectionReservationManagement() {
           />
         </div>
       </div>
+
+      {/* 検索フォーム */}
       <div className="px-5">
         <InspectionReservationSearchForm
           onSearch={handleSearch}
@@ -102,6 +114,8 @@ export default function InspectionReservationManagement() {
       <div className="body-cp-small text-cp-slate-gray text-left pl-5 pt-5 pb-2">
         合計 {filteredTableItems.length}件
       </div>
+
+      {/* テーブル */}
       <div className="px-5 ">
         <InspectionReservationTable
           inspectionReservations={filteredTableItems}

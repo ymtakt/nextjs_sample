@@ -1,10 +1,14 @@
 "use client";
 
+// ネイティブライブラリ
 import { useCallback, useEffect, useState } from "react";
-import BaseButton from "@/components/general/Button/BaseButton";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ROUTES } from "@/constants/routes";
+// 外部ライブラリ
 import dayjs from "dayjs";
+// 共通コンポーネント
+import BaseButton from "@/components/general/Button/BaseButton";
+import { ROUTES } from "@/constants/routes";
+// featureコンポーネント
 import {
   HealthInformation,
   mockHealthInformation,
@@ -15,9 +19,12 @@ import HealthInformationSearchForm, {
 import HealthInformationTable from "@/features/notification-management/components/HealthInformationTable";
 
 export default function HealthInformationManagement() {
+  // インスタンス化
   const router = useRouter();
   const searchParams = useSearchParams();
-  const enrichTableItems = useCallback(
+
+  // テーブル要素を組み合わせて追加
+  const addTableItems = useCallback(
     (item: HealthInformation) => ({
       ...item,
       displayDate: `${dayjs(item.displayStartDate).format(
@@ -27,16 +34,18 @@ export default function HealthInformationManagement() {
     []
   );
 
+  // フィルターしたテーブル要素のステート
   const [filteredTableItems, setFilteredTableItems] = useState<
     HealthInformation[]
-  >(mockHealthInformation.map(enrichTableItems));
+  >(mockHealthInformation.map(addTableItems));
 
+  // 検索時の処理
   const handleSearch = useCallback(
     (params: HealthInformationSearchParams) => {
       // 表示用のデータを作成
-      const enriched = mockHealthInformation.map(enrichTableItems);
+      const added = mockHealthInformation.map(addTableItems);
       // フィルター処理
-      const filtered = enriched.filter((item) => {
+      const filtered = added.filter((item) => {
         const itemStart = dayjs(item.displayStartDate);
         const itemEnd = dayjs(item.displayEndDate);
         // 開始日チェック
@@ -60,11 +69,12 @@ export default function HealthInformationManagement() {
       });
       setFilteredTableItems(filtered);
     },
-    [enrichTableItems]
+    [addTableItems]
   );
 
+  // リセット時の処理
   const handleReset = () => {
-    const resetData = mockHealthInformation.map(enrichTableItems);
+    const resetData = mockHealthInformation.map(addTableItems);
     setFilteredTableItems(resetData);
   };
 
@@ -79,8 +89,8 @@ export default function HealthInformationManagement() {
     handleSearch(queryParams);
   }, [handleSearch, searchParams]);
 
+  // TODO: 健康情報の新規作成処理を書く
   const makeNewItem = () => {
-    // TODO: 健康情報の新規作成処理を書く
     console.log("健康情報の新規作成");
     router.push(
       `/${ROUTES.HEALTH_INFORMATION}/${ROUTES.MAKE_HEALTH_INFORMATION}`
@@ -89,14 +99,15 @@ export default function HealthInformationManagement() {
 
   return (
     <div className="overflow-x-scroll">
+      {/* 検索フォーム */}
       <div className="min-w-[1000px] w-full">
         <HealthInformationSearchForm
           onSearch={handleSearch}
           onReset={handleReset}
         />
 
-        {/* 件数表示 */}
         <div className="pt-5 justify-between bg-cp-white">
+          {/* ボタンと件数表示 */}
           <div className="pr-5 text-right">
             <BaseButton
               onClick={makeNewItem}
@@ -109,7 +120,11 @@ export default function HealthInformationManagement() {
             合計 {filteredTableItems.length}件
           </div>
         </div>
-        <HealthInformationTable healthInformation={filteredTableItems} />
+
+        {/* テーブル */}
+        <div>
+          <HealthInformationTable healthInformation={filteredTableItems} />
+        </div>
       </div>
     </div>
   );

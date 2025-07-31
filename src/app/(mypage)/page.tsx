@@ -8,9 +8,9 @@ export default function Home() {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const handleLogout = () => {
-    // TODO 実際のログアウト処理を書く場所
     setShowLogoutModal(false);
   };
+
   return (
     <div>
       <p className="text-red-500 font-noto">フォント指定test</p>
@@ -44,7 +44,6 @@ export default function Home() {
         isLine={true}
         onRight={handleLogout}
         onLeft={() => setShowLogoutModal(false)}
-        // isSingleButton={true}
       />
     </div>
   );

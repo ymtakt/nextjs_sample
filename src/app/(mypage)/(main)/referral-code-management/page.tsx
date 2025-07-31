@@ -1,9 +1,12 @@
 "use client";
 
+// ネイティブライブラリ
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+// 共通コンポーネント
 import { ROUTES } from "@/constants/routes";
 import BaseButton from "@/components/general/Button/BaseButton";
+// featureコンポーネント
 import {
   mockReferralCodes,
   ReferralCode,
@@ -14,11 +17,15 @@ import ReferralCodeSearchForm, {
 import ReferralCodeTable from "@/features/referral-code-management/components/ReferralCodeTable";
 
 export default function ReferralCodeManagement() {
+  // インスタンス化
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  // フィルターしたテーブル要素のステート
   const [filteredTableItems, setFilteredTableItems] =
     useState<ReferralCode[]>(mockReferralCodes);
 
+  // 検索時の処理
   const handleSearch = useCallback((params: ReferralCodeSearchParams) => {
     const filtered = mockReferralCodes.filter((item) => {
       return Object.entries(params).every(([key, value]) => {
@@ -27,10 +34,10 @@ export default function ReferralCodeManagement() {
         return itemValue?.toString().includes(value.toString());
       });
     });
-
     setFilteredTableItems(filtered);
   }, []);
 
+  // リセット時の処理
   const handleReset = () => {
     setFilteredTableItems(mockReferralCodes);
   };
@@ -46,8 +53,8 @@ export default function ReferralCodeManagement() {
     handleSearch(queryParams);
   }, [handleSearch, searchParams]);
 
+  // TODO: ダウンロード処理を書く
   const makeReferralCode = () => {
-    // TODO: ダウンロード処理を書く
     console.log("紹介コードの新規作成");
     router.push(
       `/${ROUTES.REFERRAL_CODE_MANAGEMENT}/${ROUTES.MAKE_REFERRAL_CODE}`
@@ -55,7 +62,8 @@ export default function ReferralCodeManagement() {
   };
 
   return (
-    <div className="">
+    <div>
+      {/* タイトル */}
       <div className="px-5 flex justify-between">
         <p className="flex items-center title-cp-medium text-cp-slate-gray">
           紹介コード管理
@@ -69,13 +77,21 @@ export default function ReferralCodeManagement() {
           />
         </div>
       </div>
-      <ReferralCodeSearchForm onSearch={handleSearch} onReset={handleReset} />
+
+      {/* 検索フォーム */}
+      <div>
+        <ReferralCodeSearchForm onSearch={handleSearch} onReset={handleReset} />
+      </div>
 
       {/* 件数表示 */}
       <div className="pl-5 pb-1 body-cp-small text-cp-slate-gray text-left">
         合計 {filteredTableItems.length}件
       </div>
-      <ReferralCodeTable referralCodes={filteredTableItems} />
+
+      {/* テーブル */}
+      <div>
+        <ReferralCodeTable referralCodes={filteredTableItems} />
+      </div>
     </div>
   );
 }

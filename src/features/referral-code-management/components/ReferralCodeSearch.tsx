@@ -42,7 +42,7 @@ export default function ReferralCodeSearchForm({ onSearch, onReset }: Props) {
       if (value) query.append(key, value);
     });
 
-    router.push(`/${ROUTES.REFERRAL_CODE_MANAGEMENT}?${query.toString()}`);
+    router.push(`${ROUTES.REFERRAL_CODE_MANAGEMENT}?${query.toString()}`);
     onSearch(form);
   };
 

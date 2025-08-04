@@ -84,7 +84,7 @@ export default function NotificationManagement() {
   // TODO: 動画追加処理を書く
   const makeNemItem = () => {
     console.log("動画追加");
-    router.push(`/${ROUTES.VIDEO_MANAGEMENT}/${ROUTES.MAKE_VIDEO}`);
+    router.push(`${ROUTES.VIDEO_MANAGEMENT}${ROUTES.MAKE_VIDEO}`);
   };
 
   return (

@@ -56,7 +56,7 @@ export default function SupplementManagement() {
   // TODO: 新規作成処理を書く
   const makeNewItem = () => {
     console.log("サプリメントの新規作成");
-    router.push(`/${ROUTES.SUPPLEMENT_MANAGEMENT}/${ROUTES.MAKE_SUPPLEMENT}`);
+    router.push(`${ROUTES.SUPPLEMENT_MANAGEMENT}${ROUTES.MAKE_SUPPLEMENT}`);
   };
 
   return (

@@ -57,7 +57,7 @@ export default function ReferralCodeManagement() {
   const makeReferralCode = () => {
     console.log("紹介コードの新規作成");
     router.push(
-      `/${ROUTES.REFERRAL_CODE_MANAGEMENT}/${ROUTES.MAKE_REFERRAL_CODE}`
+      `${ROUTES.REFERRAL_CODE_MANAGEMENT}${ROUTES.MAKE_REFERRAL_CODE}`
     );
   };
 

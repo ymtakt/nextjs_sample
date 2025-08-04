@@ -24,7 +24,7 @@ export default function ConsultationTable({ consultations }: Props) {
 
   const handleRowClick = (id: number) => {
     router.push(
-      `/${ROUTES.CONSULTATION_RESERVATION}/${id}/${ROUTES.EDIT_CONSULTATION}`
+      `${ROUTES.CONSULTATION_RESERVATION}/${id}${ROUTES.EDIT_CONSULTATION}`
     );
   };
 

@@ -25,7 +25,7 @@ export default function HealthInformationTable({ healthInformation }: Props) {
   // 編集ボタン
   const handleDetailClick = (id: number) => {
     router.push(
-      `/${ROUTES.HEALTH_INFORMATION}/${ROUTES.HEALTH_INFORMATION_DETAIL}/${id}`
+      `${ROUTES.HEALTH_INFORMATION}${ROUTES.HEALTH_INFORMATION_DETAIL}/${id}`
     );
   };
 

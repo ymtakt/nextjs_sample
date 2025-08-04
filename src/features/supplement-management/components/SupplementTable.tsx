@@ -27,7 +27,7 @@ export default function SupplementTable({ supplements }: Props) {
   // 編集ボタン
   const handleEditClick = (id: number) => {
     router.push(
-      `/${ROUTES.SUPPLEMENT_MANAGEMENT}/${ROUTES.EDIT_SUPPLEMENT}/${id}`
+      `${ROUTES.SUPPLEMENT_MANAGEMENT}${ROUTES.EDIT_SUPPLEMENT}/${id}`
     );
   };
   // 削除ボタン

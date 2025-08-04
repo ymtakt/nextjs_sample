@@ -25,7 +25,7 @@ export default function NotificationTable({ notifications }: Props) {
   // 編集ボタン
   const handleDetailClick = (id: number) => {
     router.push(
-      `/${ROUTES.NOTIFICATION_MANAGEMENT}/${ROUTES.NOTIFICATION_DETAIL}/${id}`
+      `${ROUTES.NOTIFICATION_MANAGEMENT}${ROUTES.NOTIFICATION_DETAIL}/${id}`
     );
   };
 

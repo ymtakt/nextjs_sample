@@ -93,7 +93,7 @@ export default function HealthInformationManagement() {
   const makeNewItem = () => {
     console.log("健康情報の新規作成");
     router.push(
-      `/${ROUTES.HEALTH_INFORMATION}/${ROUTES.MAKE_HEALTH_INFORMATION}`
+      `${ROUTES.HEALTH_INFORMATION}${ROUTES.MAKE_HEALTH_INFORMATION}`
     );
   };
 

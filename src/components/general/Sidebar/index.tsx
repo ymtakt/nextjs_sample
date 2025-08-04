@@ -48,49 +48,49 @@ export default function Navigation(props: Props) {
     {
       name: "ユーザー管理",
       icon: FaUserFriends,
-      route: `/${ROUTES.USER_MANAGEMENT}`,
+      route: `${ROUTES.USER_MANAGEMENT}`,
       subMenu: false,
     },
     {
       name: "検査管理",
       icon: BiInjection,
-      route: `/${ROUTES.INSPECTION_MANAGEMENT}`,
+      route: `${ROUTES.INSPECTION_MANAGEMENT}`,
       subMenu: true,
     },
     {
       name: "相談予約管理",
       icon: PiChats,
-      route: `/${ROUTES.CONSULTATION_RESERVATION}`,
+      route: `${ROUTES.CONSULTATION_RESERVATION}`,
       subMenu: false,
     },
     {
       name: "動画管理",
       icon: FaCirclePlay,
-      route: `/${ROUTES.VIDEO_MANAGEMENT}`,
+      route: `${ROUTES.VIDEO_MANAGEMENT}`,
       subMenu: false,
     },
     {
       name: "お知らせ管理",
       icon: FaBell,
-      route: `/${ROUTES.NOTIFICATION_MANAGEMENT}/${ROUTES.MIRALLEL_NOTIFICATIONS}`,
+      route: `${ROUTES.NOTIFICATION_MANAGEMENT}${ROUTES.MIRALLEL_NOTIFICATIONS}`,
       subMenu: false,
     },
     {
       name: "紹介コード管理",
       icon: TbNumber123,
-      route: `/${ROUTES.REFERRAL_CODE_MANAGEMENT}`,
+      route: `${ROUTES.REFERRAL_CODE_MANAGEMENT}`,
       subMenu: false,
     },
     {
       name: "サプリメント管理",
       icon: GiMedicines,
-      route: `/${ROUTES.SUPPLEMENT_MANAGEMENT}`,
+      route: `${ROUTES.SUPPLEMENT_MANAGEMENT}`,
       subMenu: false,
     },
     {
       name: "アカウント管理",
       icon: MdAccountCircle,
-      route: `/${ROUTES.ACCOUNT_MANAGEMENT}`,
+      route: `${ROUTES.ACCOUNT_MANAGEMENT}`,
       subMenu: false,
     },
   ];
@@ -99,12 +99,12 @@ export default function Navigation(props: Props) {
     {
       main: "検査管理",
       name: "検査予約管理",
-      route: `/${ROUTES.INSPECTION_MANAGEMENT}/${ROUTES.INSPECTION_RESERVATIONS}`,
+      route: `${ROUTES.INSPECTION_MANAGEMENT}${ROUTES.INSPECTION_RESERVATIONS}`,
     },
     {
       main: "検査管理",
       name: "検査項目設定",
-      route: `/${ROUTES.INSPECTION_MANAGEMENT}/${ROUTES.INSPECTION_SETTING}`,
+      route: `${ROUTES.INSPECTION_MANAGEMENT}${ROUTES.INSPECTION_SETTING}`,
     },
   ];
 

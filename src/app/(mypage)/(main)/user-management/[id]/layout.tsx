@@ -43,7 +43,7 @@ export default function UserLayout({
         {/* タブ */}
         <div className="flex gap-1 text-cp-black">
           {tabs.map((tab) => {
-            const tabPath = `/${ROUTES.USER_MANAGEMENT}/${id}/${tab.href}`;
+            const tabPath = `${ROUTES.USER_MANAGEMENT}/${id}${tab.href}`;
             const isActive = pathname === tabPath;
 
             return (

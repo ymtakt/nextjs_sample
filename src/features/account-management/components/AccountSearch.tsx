@@ -48,7 +48,7 @@ export default function AccountSearchForm({ onSearch, onReset }: Props) {
       if (value) query.append(key, value);
     });
 
-    router.push(`/${ROUTES.ACCOUNT_MANAGEMENT}?${query.toString()}`);
+    router.push(`${ROUTES.ACCOUNT_MANAGEMENT}?${query.toString()}`);
     onSearch(form);
   };
 

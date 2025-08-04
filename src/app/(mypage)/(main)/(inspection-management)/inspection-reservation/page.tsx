@@ -81,7 +81,7 @@ export default function InspectionReservationManagement() {
   const csvUpload = () => {
     console.log("CSVアップロード");
     router.push(
-      `/${ROUTES.INSPECTION_MANAGEMENT}/${ROUTES.INSPECTION_RESERVATIONS}/${ROUTES.MAKE_INSPECTION_RESERVATION}`
+      `${ROUTES.INSPECTION_MANAGEMENT}${ROUTES.INSPECTION_RESERVATIONS}${ROUTES.MAKE_INSPECTION_RESERVATION}`
     );
   };
 

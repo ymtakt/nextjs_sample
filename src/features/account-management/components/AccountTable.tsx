@@ -23,7 +23,7 @@ export default function AccountTable({ accounts }: Props) {
   );
 
   const handleRowClick = (id: number) => {
-    router.push(`/${ROUTES.ACCOUNT_MANAGEMENT}/${id}/${ROUTES.EDIT_ACCOUNT}`);
+    router.push(`${ROUTES.ACCOUNT_MANAGEMENT}/${id}${ROUTES.EDIT_ACCOUNT}`);
   };
 
   const columns = [

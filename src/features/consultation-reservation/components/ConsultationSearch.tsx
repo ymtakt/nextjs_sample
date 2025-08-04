@@ -57,7 +57,7 @@ export default function ConsultationSearchForm({ onSearch, onReset }: Props) {
       }
     });
 
-    router.push(`/${ROUTES.CONSULTATION_RESERVATION}?${query.toString()}`);
+    router.push(`${ROUTES.CONSULTATION_RESERVATION}?${query.toString()}`);
     onSearch(form);
   };
 

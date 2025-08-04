@@ -22,7 +22,7 @@ export default function UserLayout({ children }: { children: ReactNode }) {
         {/* タブ */}
         <div className="flex gap-1 text-cp-black">
           {tabs.map((tab) => {
-            const tabPath = `/${ROUTES.NOTIFICATION_MANAGEMENT}/${tab.href}`;
+            const tabPath = `${ROUTES.NOTIFICATION_MANAGEMENT}${tab.href}`;
             const isActive = pathname === tabPath;
 
             return (

@@ -57,7 +57,7 @@ export default function InspectionReservationSearchForm({
       if (value) query.append(key, value);
     });
     router.push(
-      `/${ROUTES.INSPECTION_MANAGEMENT}/${ROUTES.INSPECTION_RESERVATIONS}
+      `${ROUTES.INSPECTION_MANAGEMENT}${ROUTES.INSPECTION_RESERVATIONS}
         ?${query.toString()}`
     );
     onSearch(form);
@@ -75,7 +75,7 @@ export default function InspectionReservationSearchForm({
       reservationStatus: "",
     });
     router.push(
-      `/${ROUTES.INSPECTION_MANAGEMENT}/${ROUTES.INSPECTION_RESERVATIONS}`
+      `${ROUTES.INSPECTION_MANAGEMENT}${ROUTES.INSPECTION_RESERVATIONS}`
     );
     onReset();
   };

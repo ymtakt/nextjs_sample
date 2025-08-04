@@ -89,9 +89,7 @@ export default function NotificationManagement() {
   // TODO: お知らせの新規作成処理を書く
   const makeNemItem = () => {
     console.log("お知らせの新規作成");
-    router.push(
-      `/${ROUTES.NOTIFICATION_MANAGEMENT}/${ROUTES.MAKE_NOTIFICATION}`
-    );
+    router.push(`${ROUTES.NOTIFICATION_MANAGEMENT}${ROUTES.MAKE_NOTIFICATION}`);
   };
 
   return (

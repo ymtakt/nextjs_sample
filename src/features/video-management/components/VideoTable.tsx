@@ -23,7 +23,7 @@ export default function VideoTable({ videos }: Props) {
   );
 
   const handleRowClick = (id: number) => {
-    router.push(`/${ROUTES.VIDEO_MANAGEMENT}/${id}`);
+    router.push(`${ROUTES.VIDEO_MANAGEMENT}/${id}`);
   };
 
   const columns = [

@@ -28,7 +28,7 @@ export default function InspectionReservationTable({
   // 編集ボタン
   const handleDetailClick = (reservationId: number) => {
     router.push(
-      `/${ROUTES.NOTIFICATION_MANAGEMENT}/${ROUTES.NOTIFICATION_DETAIL}/${reservationId}`
+      `${ROUTES.NOTIFICATION_MANAGEMENT}${ROUTES.NOTIFICATION_DETAIL}/${reservationId}`
     );
   };
 

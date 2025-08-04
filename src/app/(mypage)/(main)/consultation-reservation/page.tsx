@@ -77,7 +77,7 @@ export default function ConsultationManagement() {
   // TODO: CSVアップロード処理を書く
   const csvUpload = () => {
     console.log("CSVアップロード処理");
-    router.push(`/${ROUTES.CONSULTATION_RESERVATION}`);
+    router.push(`${ROUTES.CONSULTATION_RESERVATION}`);
   };
 
   return (

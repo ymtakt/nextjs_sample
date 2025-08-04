@@ -56,7 +56,7 @@ export default function InspectionReservationManagement() {
   const makeNewItem = () => {
     console.log("新規作成");
     router.push(
-      `/${ROUTES.INSPECTION_MANAGEMENT}/${ROUTES.INSPECTION_SETTING}/${ROUTES.MAKE_INSPECTION_SETTING}`
+      `${ROUTES.INSPECTION_MANAGEMENT}${ROUTES.INSPECTION_SETTING}${ROUTES.MAKE_INSPECTION_SETTING}`
     );
   };
 

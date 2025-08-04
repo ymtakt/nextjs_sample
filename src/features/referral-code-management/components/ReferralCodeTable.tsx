@@ -27,7 +27,7 @@ export default function UserTable({ referralCodes }: Props) {
   // 編集ボタン
   const handleEditClick = (id: number) => {
     router.push(
-      `/${ROUTES.REFERRAL_CODE_MANAGEMENT}/${ROUTES.EDIT_REFERRAL_CODE}/${id}`
+      `${ROUTES.REFERRAL_CODE_MANAGEMENT}${ROUTES.EDIT_REFERRAL_CODE}/${id}`
     );
   };
   // 削除ボタン

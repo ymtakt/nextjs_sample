@@ -26,7 +26,7 @@ export default function InspectionSettingTable({ inspectionSettings }: Props) {
   // 編集ボタン
   const handleDetailClick = (id: number) => {
     router.push(
-      `/${ROUTES.INSPECTION_MANAGEMENT}/${ROUTES.INSPECTION_SETTING}/${id}`
+      `${ROUTES.INSPECTION_MANAGEMENT}${ROUTES.INSPECTION_SETTING}/${id}`
     );
   };
 

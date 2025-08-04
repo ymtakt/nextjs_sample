@@ -51,7 +51,7 @@ export default function NotificationSearchForm({ onSearch, onReset }: Props) {
       }
     });
     router.push(
-      `/${ROUTES.NOTIFICATION_MANAGEMENT}/${
+      `${ROUTES.NOTIFICATION_MANAGEMENT}/${
         ROUTES.MIRALLEL_NOTIFICATIONS
       }?${query.toString()}`
     );
@@ -66,7 +66,7 @@ export default function NotificationSearchForm({ onSearch, onReset }: Props) {
       targetAudience: "",
     });
     router.push(
-      `/${ROUTES.NOTIFICATION_MANAGEMENT}/${ROUTES.MIRALLEL_NOTIFICATIONS}`
+      `${ROUTES.NOTIFICATION_MANAGEMENT}${ROUTES.MIRALLEL_NOTIFICATIONS}`
     );
     setUserId("");
     onReset();

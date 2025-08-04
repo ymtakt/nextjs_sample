@@ -58,7 +58,7 @@ export default function AccountManagement() {
   // TODO: 新規作成処理を書く
   const makeAccount = () => {
     console.log("アカウントの新規作成");
-    router.push(`/${ROUTES.ACCOUNT_MANAGEMENT}/${ROUTES.MAKE_ACCOUNT}`);
+    router.push(`${ROUTES.ACCOUNT_MANAGEMENT}${ROUTES.MAKE_ACCOUNT}`);
   };
 
   return (

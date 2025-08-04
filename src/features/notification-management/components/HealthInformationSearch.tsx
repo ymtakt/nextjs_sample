@@ -49,7 +49,7 @@ export default function HealthInformationSearchForm({
       }
     });
     router.push(
-      `/${ROUTES.NOTIFICATION_MANAGEMENT}/${
+      `${ROUTES.NOTIFICATION_MANAGEMENT}/${
         ROUTES.HEALTH_INFORMATION
       }?${query.toString()}`
     );
@@ -64,7 +64,7 @@ export default function HealthInformationSearchForm({
       displayEndDate: "",
     });
     router.push(
-      `/${ROUTES.NOTIFICATION_MANAGEMENT}/${ROUTES.HEALTH_INFORMATION}`
+      `${ROUTES.NOTIFICATION_MANAGEMENT}${ROUTES.HEALTH_INFORMATION}`
     );
     onReset();
   };

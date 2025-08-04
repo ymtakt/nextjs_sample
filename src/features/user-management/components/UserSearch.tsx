@@ -53,7 +53,7 @@ export default function UserSearchForm({ onSearch, onReset }: Props) {
       if (value) query.append(key, value);
     });
 
-    router.push(`/${ROUTES.USER_MANAGEMENT}?${query.toString()}`);
+    router.push(`${ROUTES.USER_MANAGEMENT}?${query.toString()}`);
     onSearch(form);
   };
 

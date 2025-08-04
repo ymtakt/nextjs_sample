@@ -41,7 +41,7 @@ export default function InspectionSettingSearchForm({
       if (value) query.append(key, value);
     });
     router.push(
-      `${ROUTES.INSPECTION_MANAGEMENT}/${
+      `${ROUTES.INSPECTION_MANAGEMENT}${
         ROUTES.INSPECTION_SETTING
       }?${query.toString()}`
     );

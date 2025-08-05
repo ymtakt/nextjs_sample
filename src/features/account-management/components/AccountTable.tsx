@@ -17,7 +17,7 @@ export default function AccountTable({ accounts }: Props) {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(accounts.length / USERS_PER_PAGE);
 
-  const paginatedAccounts = accounts.slice(
+  const paginatedData = accounts.slice(
     (currentPage - 1) * USERS_PER_PAGE,
     currentPage * USERS_PER_PAGE
   );
@@ -36,7 +36,7 @@ export default function AccountTable({ accounts }: Props) {
   ];
 
   return (
-    <div className="">
+    <div>
       <div className="p-4 h-full bg-cp-white overflow-x-auto mx-auto rounded">
         {/* --- テーブル部分 --- */}
         <table className="min-w-[1500px] w-full">
@@ -51,19 +51,30 @@ export default function AccountTable({ accounts }: Props) {
           </thead>
 
           <tbody>
-            {paginatedAccounts.map((account) => (
-              <tr
-                onClick={() => handleRowClick(account.id)}
-                key={account.id}
-                className="h-10 text-left cursor-pointer hover:bg-cp-ghost-white border-cp-soft-gray border-b"
-              >
-                {columns.map((col) => (
-                  <td key={col.key} className="px-2 py-1 text-black">
-                    {account[col.key as keyof Account]}
-                  </td>
-                ))}
+            {paginatedData.length === 0 ? (
+              <tr>
+                <td
+                  colSpan={columns.length}
+                  className="text-center text-cp-gray py-4"
+                >
+                  データがありません
+                </td>
               </tr>
-            ))}
+            ) : (
+              paginatedData.map((item) => (
+                <tr
+                  onClick={() => handleRowClick(item.id)}
+                  key={item.id}
+                  className="h-10 text-left cursor-pointer hover:bg-cp-ghost-white border-cp-soft-gray border-b"
+                >
+                  {columns.map((col) => (
+                    <td key={col.key} className="px-2 py-1 text-black">
+                      {item[col.key as keyof Account]}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

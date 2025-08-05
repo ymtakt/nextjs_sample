@@ -18,7 +18,7 @@ export default function HealthInformationTable({ healthInformation }: Props) {
   // ページネーションの計算
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(healthInformation.length / PER_PAGE);
-  const paginatedNotifications = healthInformation.slice(
+  const paginatedData = healthInformation.slice(
     (currentPage - 1) * PER_PAGE,
     currentPage * PER_PAGE
   );
@@ -45,7 +45,7 @@ export default function HealthInformationTable({ healthInformation }: Props) {
   ];
 
   return (
-    <div className="">
+    <div>
       <div className="px-4 pb-4 w-full bg-cp-white rounded">
         {/* --- テーブル部分 --- */}
 
@@ -61,22 +61,33 @@ export default function HealthInformationTable({ healthInformation }: Props) {
           </thead>
 
           <tbody>
-            {paginatedNotifications.map((item) => (
-              <tr
-                onClick={() => handleDetailClick(item.id)}
-                key={item.id}
-                className="h-[40] text-left border-cp-soft-gray border-b cursor-pointer hover:bg-cp-ghost-white"
-              >
-                {columns.map((col) => (
-                  <td
-                    key={col.key}
-                    className="px-2 py-1 text-cp-black body-cp-small"
-                  >
-                    {String(item[col.key as keyof typeof item] ?? "")}
-                  </td>
-                ))}
+            {paginatedData.length === 0 ? (
+              <tr>
+                <td
+                  colSpan={columns.length}
+                  className="text-center text-cp-gray py-4"
+                >
+                  データがありません
+                </td>
               </tr>
-            ))}
+            ) : (
+              paginatedData.map((item) => (
+                <tr
+                  onClick={() => handleDetailClick(item.id)}
+                  key={item.id}
+                  className="h-[40] text-left border-cp-soft-gray border-b cursor-pointer hover:bg-cp-ghost-white"
+                >
+                  {columns.map((col) => (
+                    <td
+                      key={col.key}
+                      className="px-2 py-1 text-cp-black body-cp-small"
+                    >
+                      {String(item[col.key as keyof typeof item] ?? "")}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
         {/* --- ページネーション --- */}

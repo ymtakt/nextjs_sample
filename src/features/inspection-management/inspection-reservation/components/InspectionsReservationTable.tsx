@@ -21,7 +21,7 @@ export default function InspectionReservationTable({
   // ページネーションの計算
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(inspectionReservations.length / PER_PAGE);
-  const paginatedNotifications = inspectionReservations.slice(
+  const paginatedData = inspectionReservations.slice(
     (currentPage - 1) * PER_PAGE,
     currentPage * PER_PAGE
   );
@@ -89,7 +89,7 @@ export default function InspectionReservationTable({
   };
 
   return (
-    <div className="">
+    <div>
       <div className="p-4 h-full bg-cp-white overflow-x-auto mx-auto rounded">
         {/* --- テーブル部分 --- */}
 
@@ -105,35 +105,46 @@ export default function InspectionReservationTable({
           </thead>
 
           <tbody>
-            {paginatedNotifications.map((item) => (
-              <tr
-                onClick={() => handleDetailClick(item.reservationId)}
-                key={item.reservationId}
-                className="h-[40] text-left border-cp-soft-gray border-b cursor-pointer hover:bg-cp-ghost-white"
-              >
-                {columns.map((col) => {
-                  const value = item[col.key as keyof InspectionReservation];
-                  // 予約ステータスの処理
-                  if (col.key === "reservationStatus") {
-                    const badgeClass = `inline-block w-[80px] text-center px-2 py-0.5 rounded text-sm font-medium ${
-                      statusStyles[value as string] ??
-                      "bg-gray-50 text-gray-500"
-                    }`;
+            {paginatedData.length === 0 ? (
+              <tr>
+                <td
+                  colSpan={columns.length}
+                  className="text-center text-cp-gray py-4"
+                >
+                  データがありません
+                </td>
+              </tr>
+            ) : (
+              paginatedData.map((item) => (
+                <tr
+                  onClick={() => handleDetailClick(item.reservationId)}
+                  key={item.reservationId}
+                  className="h-[40] text-left border-cp-soft-gray border-b cursor-pointer hover:bg-cp-ghost-white"
+                >
+                  {columns.map((col) => {
+                    const value = item[col.key as keyof InspectionReservation];
+                    // 予約ステータスの処理
+                    if (col.key === "reservationStatus") {
+                      const badgeClass = `inline-block w-[80px] text-center px-2 py-0.5 rounded text-sm font-medium ${
+                        statusStyles[value as string] ??
+                        "bg-gray-50 text-gray-500"
+                      }`;
+                      return (
+                        <td key={col.key} className="px-2 py-1">
+                          <span className={badgeClass}>{value}</span>
+                        </td>
+                      );
+                    }
+                    // 通常の表
                     return (
-                      <td key={col.key} className="px-2 py-1">
-                        <span className={badgeClass}>{value}</span>
+                      <td key={col.key} className="px-2 py-1 text-black">
+                        {value}
                       </td>
                     );
-                  }
-                  // 通常の表
-                  return (
-                    <td key={col.key} className="px-2 py-1 text-black">
-                      {value}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
+                  })}
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

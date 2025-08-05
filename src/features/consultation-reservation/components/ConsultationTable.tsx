@@ -17,7 +17,7 @@ export default function ConsultationTable({ consultations }: Props) {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(consultations.length / USERS_PER_PAGE);
 
-  const paginatedConsultations = consultations.slice(
+  const paginatedData = consultations.slice(
     (currentPage - 1) * USERS_PER_PAGE,
     currentPage * USERS_PER_PAGE
   );
@@ -51,7 +51,7 @@ export default function ConsultationTable({ consultations }: Props) {
   };
 
   return (
-    <div className="">
+    <div>
       <div className="p-4 h-full bg-cp-white overflow-x-auto mx-auto rounded">
         <table className="min-w-[1600px] w-full">
           <thead>
@@ -65,35 +65,46 @@ export default function ConsultationTable({ consultations }: Props) {
           </thead>
 
           <tbody>
-            {paginatedConsultations.map((item) => (
-              <tr
-                key={item.id}
-                onClick={() => handleRowClick(item.id)}
-                className="h-10 text-left cursor-pointer hover:bg-cp-ghost-white border-cp-soft-gray border-b"
-              >
-                {columns.map((col) => {
-                  const value = item[col.key as keyof Consultation];
-                  // 予約ステータスの処理
-                  if (col.key === "reservationStatus") {
-                    const badgeClass = `inline-block w-[80px] text-center px-2 py-0.5 rounded text-sm font-medium ${
-                      statusStyles[value as string] ??
-                      "bg-gray-50 text-gray-500"
-                    }`;
+            {paginatedData.length === 0 ? (
+              <tr>
+                <td
+                  colSpan={columns.length}
+                  className="text-center text-cp-gray py-4"
+                >
+                  データがありません
+                </td>
+              </tr>
+            ) : (
+              paginatedData.map((item) => (
+                <tr
+                  key={item.id}
+                  onClick={() => handleRowClick(item.id)}
+                  className="h-10 text-left cursor-pointer hover:bg-cp-ghost-white border-cp-soft-gray border-b"
+                >
+                  {columns.map((col) => {
+                    const value = item[col.key as keyof Consultation];
+                    // 予約ステータスの処理
+                    if (col.key === "reservationStatus") {
+                      const badgeClass = `inline-block w-[80px] text-center px-2 py-0.5 rounded text-sm font-medium ${
+                        statusStyles[value as string] ??
+                        "bg-gray-50 text-gray-500"
+                      }`;
+                      return (
+                        <td key={col.key} className="px-2 py-1">
+                          <span className={badgeClass}>{value}</span>
+                        </td>
+                      );
+                    }
+                    // 通常の表
                     return (
-                      <td key={col.key} className="px-2 py-1">
-                        <span className={badgeClass}>{value}</span>
+                      <td key={col.key} className="px-2 py-1 text-black">
+                        {value}
                       </td>
                     );
-                  }
-                  // 通常の表
-                  return (
-                    <td key={col.key} className="px-2 py-1 text-black">
-                      {value}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
+                  })}
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

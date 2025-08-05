@@ -20,7 +20,7 @@ export default function SupplementTable({ supplements }: Props) {
   // ページネーションの計算
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(supplements.length / PER_PAGE);
-  const paginatedUsers = supplements.slice(
+  const paginatedData = supplements.slice(
     (currentPage - 1) * PER_PAGE,
     currentPage * PER_PAGE
   );
@@ -65,52 +65,63 @@ export default function SupplementTable({ supplements }: Props) {
           </thead>
 
           <tbody>
-            {paginatedUsers.map((supplement) => (
-              <tr
-                key={supplement.id}
-                className="text-left border-cp-soft-gray border-b"
-              >
-                {columns.map((col) => (
-                  <td
-                    key={col.key}
-                    className="px-2 py-1 text-cp-black body-cp-small"
-                  >
-                    {col.key === "registerDate"
-                      ? (supplement[col.key as keyof Supplement] as string)
-                          ?.toString()
-                          .padStart(6, "0")
-                      : supplement[col.key as keyof Supplement]}
-                  </td>
-                ))}
-                <td className="px-2 py-1 text-right bg-cp-white">
-                  <BaseButton
-                    onClick={() => handleEditClick(supplement.id)}
-                    text={"編集"}
-                    color={"cp-sky-blue"}
-                    size={"small"}
-                  />
-                  {/* 削除ボタン部分 */}
-                  <button
-                    type="button"
-                    onClick={() => setSelectedDeleteId(supplement.id)}
-                    className="p-2 text-cp-soft-gray"
-                    aria-label="削除"
-                  >
-                    <IoMdTrash size={25} />
-                  </button>
-                  <ButtonModal
-                    isOpen={selectedDeleteId === supplement.id}
-                    title="本当に削除しますか？"
-                    leftButtonText="キャンセル"
-                    rightButtonText="削除"
-                    leftButtonColor="cp-gray"
-                    rightButtonColor="cp-red"
-                    onRight={deleteSupplement}
-                    onLeft={() => setSelectedDeleteId(null)}
-                  />
+            {paginatedData.length === 0 ? (
+              <tr>
+                <td
+                  colSpan={columns.length}
+                  className="text-center text-cp-gray py-4"
+                >
+                  データがありません
                 </td>
               </tr>
-            ))}
+            ) : (
+              paginatedData.map((item) => (
+                <tr
+                  key={item.id}
+                  className="text-left border-cp-soft-gray border-b"
+                >
+                  {columns.map((col) => (
+                    <td
+                      key={col.key}
+                      className="px-2 py-1 text-cp-black body-cp-small"
+                    >
+                      {col.key === "registerDate"
+                        ? (item[col.key as keyof Supplement] as string)
+                            ?.toString()
+                            .padStart(6, "0")
+                        : item[col.key as keyof Supplement]}
+                    </td>
+                  ))}
+                  <td className="px-2 py-1 text-right bg-cp-white">
+                    <BaseButton
+                      onClick={() => handleEditClick(item.id)}
+                      text={"編集"}
+                      color={"cp-sky-blue"}
+                      size={"small"}
+                    />
+                    {/* 削除ボタン部分 */}
+                    <button
+                      type="button"
+                      onClick={() => setSelectedDeleteId(item.id)}
+                      className="p-2 text-cp-soft-gray"
+                      aria-label="削除"
+                    >
+                      <IoMdTrash size={25} />
+                    </button>
+                    <ButtonModal
+                      isOpen={selectedDeleteId === item.id}
+                      title="本当に削除しますか？"
+                      leftButtonText="キャンセル"
+                      rightButtonText="削除"
+                      leftButtonColor="cp-gray"
+                      rightButtonColor="cp-red"
+                      onRight={deleteSupplement}
+                      onLeft={() => setSelectedDeleteId(null)}
+                    />
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

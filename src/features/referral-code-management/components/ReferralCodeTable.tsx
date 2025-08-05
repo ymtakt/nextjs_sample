@@ -20,7 +20,7 @@ export default function UserTable({ referralCodes }: Props) {
   // ページネーションの計算
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(referralCodes.length / USERS_PER_PAGE);
-  const paginatedUsers = referralCodes.slice(
+  const paginatedData = referralCodes.slice(
     (currentPage - 1) * USERS_PER_PAGE,
     currentPage * USERS_PER_PAGE
   );
@@ -66,53 +66,64 @@ export default function UserTable({ referralCodes }: Props) {
           </thead>
 
           <tbody>
-            {paginatedUsers.map((referralCode) => (
-              <tr
-                key={referralCode.id}
-                className="text-left border-cp-soft-gray border-b"
-              >
-                {columns.map((col) => (
-                  <td
-                    key={col.key}
-                    className="px-2 py-1 text-cp-black body-cp-small"
-                  >
-                    {col.key === "referralCode"
-                      ? referralCode[col.key as keyof ReferralCode]
-                          ?.toString()
-                          .padStart(6, "0")
-                      : referralCode[col.key as keyof ReferralCode]}
-                  </td>
-                ))}
-                <td className="px-2 py-1 text-right">
-                  <BaseButton
-                    onClick={() => handleEditClick(referralCode.id)}
-                    text={"編集"}
-                    color={"cp-sky-blue"}
-                    size={"small"}
-                  />
-
-                  {/* 削除ボタン部分 */}
-                  <button
-                    type="button"
-                    onClick={() => setSelectedDeleteId(referralCode.id)}
-                    className="p-2 text-cp-soft-gray"
-                    aria-label="削除"
-                  >
-                    <IoMdTrash size={25} />
-                  </button>
-                  <ButtonModal
-                    isOpen={selectedDeleteId === referralCode.id}
-                    title="本当に削除しますか？"
-                    leftButtonText="キャンセル"
-                    rightButtonText="削除"
-                    leftButtonColor="cp-gray"
-                    rightButtonColor="cp-red"
-                    onRight={deleteReferralCode}
-                    onLeft={() => setSelectedDeleteId(null)}
-                  />
+            {paginatedData.length === 0 ? (
+              <tr>
+                <td
+                  colSpan={columns.length}
+                  className="text-center text-cp-gray py-4"
+                >
+                  データがありません
                 </td>
               </tr>
-            ))}
+            ) : (
+              paginatedData.map((item) => (
+                <tr
+                  key={item.id}
+                  className="text-left border-cp-soft-gray border-b"
+                >
+                  {columns.map((col) => (
+                    <td
+                      key={col.key}
+                      className="px-2 py-1 text-cp-black body-cp-small"
+                    >
+                      {col.key === "referralCode"
+                        ? item[col.key as keyof ReferralCode]
+                            ?.toString()
+                            .padStart(6, "0")
+                        : item[col.key as keyof ReferralCode]}
+                    </td>
+                  ))}
+                  <td className="px-2 py-1 text-right">
+                    <BaseButton
+                      onClick={() => handleEditClick(item.id)}
+                      text={"編集"}
+                      color={"cp-sky-blue"}
+                      size={"small"}
+                    />
+
+                    {/* 削除ボタン部分 */}
+                    <button
+                      type="button"
+                      onClick={() => setSelectedDeleteId(item.id)}
+                      className="p-2 text-cp-soft-gray"
+                      aria-label="削除"
+                    >
+                      <IoMdTrash size={25} />
+                    </button>
+                    <ButtonModal
+                      isOpen={selectedDeleteId === item.id}
+                      title="本当に削除しますか？"
+                      leftButtonText="キャンセル"
+                      rightButtonText="削除"
+                      leftButtonColor="cp-gray"
+                      rightButtonColor="cp-red"
+                      onRight={deleteReferralCode}
+                      onLeft={() => setSelectedDeleteId(null)}
+                    />
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
